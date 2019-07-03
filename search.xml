@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[20190704004110]]></title>
+    <title><![CDATA[测试一下]]></title>
     <url>%2F2019%2F07%2F04%2F%E6%B5%8B%E8%AF%95%E4%B8%80%E4%B8%8B%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[这是一个测试文件 1 2 3]]></content>
   </entry>
   <entry>
     <title><![CDATA[Hello World]]></title>
