@@ -1829,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e9fccd;
+  background: #ffffbd;
 }
 .feed-link,
 .chat {
@@ -3080,4 +3080,189 @@ ul.breadcrumb li+li:last-child {
 .back-to-top.back-to-top-on {
   bottom: unset;
   top: calc(100vh - 900px - 200px);
+}
+.highlight figcaption {
+  font-size: 1.2em;
+  line-height: 1.8em;
+  padding: 0 0.5em;
+  color: $highlight-figcaptionFont;
+  background-color: $highlight-figcaptionBK;
+  margin-bottom: 0;
+}
+.highlight figcaption .fileDir {
+  color: #bbb;
+}
+.highlight figcaption .caption {
+  font-weight: 700;
+}
+.highlight figcaption .suffix {
+  color: #bbb;
+}
+pre {
+  background: $BKblockquote;
+}
+pre code {
+  padding: 0;
+  color: #666;
+  background: none;
+  text-shadow: none;
+}
+figure {
+  transition: margin-right;
+/*box-shadow: 6px 6px 12px 0px #9FB6CD;*/
+}
+blockquote .highlight {
+  border: 1px solid #eff2f3;
+  margin-bottom: 0px;
+}
+.highlight .line {
+  display: flex;
+}
+.highlight {
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 4px;
+}
+.highlight td.gutter {
+  display: block;
+  position: relative;
+}
+.highlight td.code {
+  width: 100%;
+}
+.highlight td.code .line:hover {
+  background-color: #d6d6d6 !important;
+  margin: 0 -5px 0 -10px;
+  padding: 0 5px 0 10px;
+}
+.highlight .line.marked {
+  background-color: #e8eaf6;
+}
+.highlight .line.marked:before {
+  content: ">";
+  margin-left: -8px;
+  color: #fff;
+}
+pre {
+  padding: 0.4em;
+}
+pre .comment {
+  font-style: italic;
+}
+pre .keyword {
+  font-weight: 700;
+}
+figure pre {
+  font-size: 1em;
+}
+li>figure:first-child {
+  margin-top: 0 !important;
+}
+p+figure {
+  margin-top: 0 !important;
+}
+code {
+  color: $highlight-emphasisFont;
+  background: $highlight-emphasisBK;
+  border: 1px solid #bbb;
+  padding: 0.1em 0.4em;
+  font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  font-size: 0.96em;
+  border-radius: 3px;
+  vertical-align: bottom;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+pre code {
+  border: 0px solid #d1d1d1;
+}
+td.gutter {
+  border-right: 2px solid;
+}
+pre .attr {
+  color: #8959a8;
+}
+.figcode {
+  margin: 0;
+  width: 100%;
+  border: none;
+  font-size: 14px;
+  display: flex;
+  overflow: hidden;
+}
+.figcode>.gutter {
+  flex: none;
+  text-align: right;
+  background-color: #eff2f3;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.figcode>.code {
+  flex: 1;
+  border: none;
+  margin: 0;
+  overflow-x: auto;
+  display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.figcode>.code .line:hover {
+  background-color: #d6d6d6 !important;
+}
+.highlight .gutter pre,
+.highlight .code pre {
+  padding-left: 0;
+  padding-right: 0;
+  overflow: visible;
+}
+.figcode .code pre {
+  flex: 0 0 100%;
+  padding-right: 10px;
+  width: auto;
+}
+.highlight .line {
+  display: block;
+  margin: 0 0 0 -10px;
+  padding: 0 0 0 10px;
+}
+.line.diff-deletion {
+  background-color: #c7ffd7;
+}
+.line.diff-deletion::before {
+  content: '-';
+}
+.line.diff-addition {
+  background-color: #ffd3d8;
+}
+.line.diff-addition::before {
+  content: '+';
+}
+.line.diff-deletion::before,
+.line.diff-addition::before {
+  color: #fff;
+  margin-left: -8px;
+}
+@media (max-width: 767px) {
+  .post-body .highlight {
+    padding: 0px;
+  }
+  .post-body .highlight .gutter pre {
+    padding-right: 0px;
+  }
+}
+.codePinBtn {
+  flex: 0 0 auto;
+  opacity: 0;
+  z-index: 1000;
+  margin-left: -23px;
+  align-self: start;
+}
+#copyBtn {
+  opacity: 0;
+  position: fixed;
+  display: block;
+  z-index: 1000;
+  line-height: 1;
+  font-size: 1.5em;
+  left: 18px;
 }
