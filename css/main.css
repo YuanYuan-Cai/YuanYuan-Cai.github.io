@@ -1829,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2efff4;
+  background: #5b571c;
 }
 .feed-link,
 .chat {
@@ -3226,13 +3226,13 @@ pre .attr {
   padding: 0 0 0 10px;
 }
 .line.diff-deletion {
-  background-color: #c7ffd7;
+  background-color: $highlight-diffdeletion;
 }
 .line.diff-deletion::before {
   content: '-';
 }
 .line.diff-addition {
-  background-color: #ffd3d8;
+  background-color: $highlight-diffaddition;
 }
 .line.diff-addition::before {
   content: '+';
