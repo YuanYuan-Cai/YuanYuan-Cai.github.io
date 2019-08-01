@@ -1829,7 +1829,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #53336c;
+  background: #b688cd;
 }
 .feed-link,
 .chat {
@@ -3066,10 +3066,11 @@ ul.breadcrumb li+li:last-child {
   border-radius: 4px;
 }
 .back-to-top {
-  right: 60px;
+  right: 10px;
   width: 70px;
   height: 900px;
   top: -900px;
+  opacity: 1;
   bottom: unset;
   transition: all 0.5s ease-in-out;
   background: url("/images/scroll.png");
