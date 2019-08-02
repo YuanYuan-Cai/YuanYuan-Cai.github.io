@@ -111,13 +111,13 @@
 
   <meta name="keywords" content="Python,HTML5,CSS3,JavaScript">
 <meta property="og:type" content="website">
-<meta property="og:title" content="schedule">
+<meta property="og:title" content="时间表">
 <meta property="og:url" content="https://yuanyuan-cai.github.io/schedule/index.html">
 <meta property="og:site_name" content="cyyLoveStudy">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-01T07:13:16.969Z">
+<meta property="og:updated_time" content="2019-08-02T09:14:37.858Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="schedule">
+<meta name="twitter:title" content="时间表">
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>schedule | cyyLoveStudy</title>
+  <title>时间表 | cyyLoveStudy</title>
   
 
 
@@ -285,6 +285,22 @@
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-plan">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/plan/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>计划</a>
+
+  </li>
 
       
       
@@ -357,6 +373,9 @@
       
       
     
+      
+      
+    
     
 
   
@@ -373,7 +392,7 @@
     <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">schedule
+<h1 class="post-title" itemprop="name headline">时间表
 
 </h1>
 
@@ -478,7 +497,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -503,7 +524,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -610,6 +633,8 @@
 
 
   <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
 
 
 
@@ -1123,6 +1148,26 @@
   
 
   
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
 
   
 
