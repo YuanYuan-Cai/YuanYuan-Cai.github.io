@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本章将介绍如何组织代码和数据。Python语言是通过代码缩进来区分代码块结构。             #注释与\链接注释是程序中会被Python解释器忽略的一段文本。通过使用注释，可以解释和明确Python代码的功能，记录将来要修改的地方，甚至写下你想写的任何东西。在Python中使用#字符标记注释，从#开始到当前行结束的部分都是注释。 注释#12345&amp;gt;&amp;gt;">
+<meta name="keywords" content="Python,计算机：语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习：Python基础（下）">
+<meta property="og:url" content="https://yuanyuan-cai.github.io/2019/08/06/Python学习：Python基础（下）/index.html">
+<meta property="og:site_name" content="cyyLoveStudy">
+<meta property="og:description" content="本章将介绍如何组织代码和数据。Python语言是通过代码缩进来区分代码块结构。             #注释与\链接注释是程序中会被Python解释器忽略的一段文本。通过使用注释，可以解释和明确Python代码的功能，记录将来要修改的地方，甚至写下你想写的任何东西。在Python中使用#字符标记注释，从#开始到当前行结束的部分都是注释。 注释#12345&amp;gt;&amp;gt;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-06T08:43:45.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习：Python基础（下）">
+<meta name="twitter:description" content="本章将介绍如何组织代码和数据。Python语言是通过代码缩进来区分代码块结构。             #注释与\链接注释是程序中会被Python解释器忽略的一段文本。通过使用注释，可以解释和明确Python代码的功能，记录将来要修改的地方，甚至写下你想写的任何东西。在Python中使用#字符标记注释，从#开始到当前行结束的部分都是注释。 注释#12345&amp;gt;&amp;gt;">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://yuanyuan-cai.github.io/2019/08/06/Python学习：Python基础（下）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python学习：Python基础（下） | cyyLoveStudy</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cyyLoveStudy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">爱生活，爱自己</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>文章</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-plan">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/plan/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>计划</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yuanyuan-cai.github.io/2019/08/06/Python学习：Python基础（下）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cyyuan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head_img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cyyLoveStudy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python学习：Python基础（下）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-06 16:43:57" itemprop="dateCreated datePublished" datetime="2019-08-06T16:43:57+08:00">2019-08-06</time>
+            </span>
+          
+
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">24k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">43 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div class="note info">
+            <p>本章将介绍如何组织代码和数据。<br><code>Python</code>语言是通过代码缩进来区分代码块结构。</p>
+          </div>
+
+<h2 id="注释与-链接"><a href="#注释与-链接" class="headerlink" title="#注释与\链接"></a><code>#</code>注释与<code>\</code>链接</h2><p>注释是程序中会被<code>Python</code>解释器忽略的一段文本。通过使用注释，可以解释和明确<code>Python</code>代码的功能，记录将来要修改的地方，甚至写下你想写的任何东西。在<code>Python</code>中使用<code>#</code>字符标记注释，从<code>#</code>开始到当前行结束的部分都是注释。</p>
+<figure class="highlight python"><figcaption><span class="caption">注释#</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 尽管Python不会喜欢，但是我可以在这里讲任何东西 </span></div><div class="line"><span class="meta">... </span><span class="comment"># 因为我被“保护”</span></div><div class="line"><span class="meta">... </span><span class="comment"># 令人敬畏的#号 </span></div><div class="line"><span class="meta">... </span></div><div class="line">&gt;&gt;&gt;</div></pre></div></div></figure>
+
+
+<p>程序在合理的长度下是易读的。一行程序的（非强制性）最大长度建议为80个字符。如果你在该长度下写不完你的代码，可以使用连接符<code>\</code>（反斜线）。把它放在一行的结束位置，<code>Python</code>仍然将其解释为同一行。</p>
+<figure class="highlight python"><figcaption><span class="fileDir">链接\</span><span class="caption"> </span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>alphabet = <span class="string">'abcdefg'</span> + \ ...      <span class="string">'hijklmnop'</span> + \ ...      <span class="string">'qrstuv'</span> + \ ...      <span class="string">'wxyz'</span></div></pre></div></div></figure>
+
+
+<h2 id="Python的条件语句"><a href="#Python的条件语句" class="headerlink" title="Python的条件语句"></a><code>Python</code>的条件语句</h2><p><code>Python</code>条件语句是通过一条或多条语句的执行结果（<code>True</code>或者<code>False</code>）来决定执行的代码块。<br>Python程序语言指定任何非0和非空值为<code>true</code>，0或者 其他空值为<code>false</code>。<br><code>Python</code>编程中<code>if</code>语句用于控制程序的执行，基本形式为：</p>
+<figure class="highlight python"><figcaption><span class="caption">if使用</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="keyword">if</span> 判断条件：</div><div class="line">    执行语句……</div><div class="line"><span class="keyword">else</span>：</div><div class="line">    执行语句……</div></pre></div></div></figure>
+
+
+<p>其中”判断条件”成立时，则执行后面的语句，而执行内容可以多行，以缩进来区分表示同一范围。<br><code>else</code>为可选语句，当需要在条件不成立时执行内容则可以执行相关语句。</p>
+<figure class="highlight python"><figcaption><span class="caption">if 基本用法</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></div><div class="code"><pre><div class="line"> </div><div class="line">flag = <span class="literal">False</span></div><div class="line">name = <span class="string">'luren'</span></div><div class="line"><span class="keyword">if</span> name == <span class="string">'python'</span>:         <span class="comment"># 判断变量是否为 python </span></div><div class="line">    flag = <span class="literal">True</span>              <span class="comment"># 条件成立时设置标志为真</span></div><div class="line">    <span class="keyword">print</span> <span class="string">'welcome boss'</span>     <span class="comment"># 并输出欢迎信息</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> name               <span class="comment"># 条件不成立时输出变量名称</span></div></pre></div></div></figure>
+
+<p>输出结果为：</p>
+<figure class="highlight nginx"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="attribute">luren</span>            <span class="comment"># 输出结果</span></div></pre></div></div></figure>
+
+<p>当判断条件为多个值时，可以使用<code>if</code>、<code>elif</code>（即 <code>else if</code>）和 <code>else</code>:</p>
+<figure class="highlight python"><figcaption><span class="caption">if`、`elif`（即 `else if`）和 `else`</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></div><div class="code"><pre><div class="line"><span class="keyword">if</span> 判断条件<span class="number">1</span>:</div><div class="line">    执行语句<span class="number">1</span>……</div><div class="line"><span class="keyword">elif</span> 判断条件<span class="number">2</span>:</div><div class="line">    执行语句<span class="number">2</span>……</div><div class="line"><span class="keyword">elif</span> 判断条件<span class="number">3</span>:</div><div class="line">    执行语句<span class="number">3</span>……</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    执行语句<span class="number">4</span>……</div></pre></div></div></figure>
+
+<p>实例：</p>
+<figure class="highlight python"><figcaption><span class="caption">elif用法</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line"> </div><div class="line">num = <span class="number">5</span>     </div><div class="line"><span class="keyword">if</span> num == <span class="number">3</span>:            <span class="comment"># 判断num的值</span></div><div class="line">    <span class="keyword">print</span> <span class="string">'boss'</span>        </div><div class="line"><span class="keyword">elif</span> num == <span class="number">2</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'user'</span></div><div class="line"><span class="keyword">elif</span> num == <span class="number">1</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'worker'</span></div><div class="line"><span class="keyword">elif</span> num &lt; <span class="number">0</span>:           <span class="comment"># 值小于零时输出</span></div><div class="line">    <span class="keyword">print</span> <span class="string">'error'</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">    <span class="keyword">print</span> <span class="string">'roadman'</span>     <span class="comment"># 条件均不成立时输出</span></div></pre></div></div></figure>
+
+<p>输出结果：</p>
+<figure class="highlight nginx"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="attribute">roadman</span>        <span class="comment"># 输出结果</span></div></pre></div></div></figure>
+
+
+<h2 id="Python-循环语句"><a href="#Python-循环语句" class="headerlink" title="Python 循环语句"></a><code>Python</code> 循环语句</h2><p>使用<code>if</code>、<code>elif</code>和<code>else</code>条件判断的例子是自顶向下执行的，但是有时候我们需要重复一些操作——循环</p>
+<p><code>Python</code>中循环类型<br>循环类型 | 循环描述<br>—|—<br>while循环| 在给定的判断条件为 true 时执行循环体，否则退出循环体。<br>for循环 |重复执行语句<br>嵌套循环|可以在while循环、for循环中相互嵌套</p>
+<p>循环控制语句<br>循环控制语句可以更改语句执行的顺序。Python支持以下循环控制语句：<br>控制语句 | 描述<br>—|—<br><code>break</code>语句 | 在语句块执行过程中终止循环，并且跳出整个循环<br><code>continue</code>语句 | 在语句块执行过程中终止当前循环，跳出该次循环，执行下一次循环。<br><code>pass</code>语句 |pass是空语句，是为了保持程序结构的完整性。</p>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p><code>Python</code>编程中<code>while</code>语句用于循环执行程序，即在某条件下，循环执行某段程序，以处理需要重复处理的相同任务。其基本形式为：</p>
+<figure class="highlight python"><figcaption><span class="caption">while循环</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="keyword">while</span> 判断条件：</div><div class="line">    执行语句……</div></pre></div></div></figure>
+
+<p>执行语句可以是单个语句或语句块。判断条件可以是任何表达式，任何非零、或非空的值均为<code>true</code>。<br>当判断条件假<code>false</code>时，循环结束。</p>
+<figure class="highlight python"><figcaption><span class="caption">while实例</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line">count = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> (count &lt; <span class="number">9</span>):</div><div class="line">   <span class="keyword">print</span> <span class="string">'The count is:'</span>, count</div><div class="line">   count = count + <span class="number">1</span></div><div class="line"> </div><div class="line"><span class="keyword">print</span> <span class="string">"Good bye!"</span></div></pre></div></div></figure>
+
+<p>输出结果：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line">The count <span class="keyword">is</span>: <span class="number">0</span></div><div class="line">The count <span class="keyword">is</span>: <span class="number">1</span></div><div class="line">The count <span class="keyword">is</span>: <span class="number">2</span></div><div class="line">The count <span class="keyword">is</span>: <span class="number">3</span></div><div class="line">The count <span class="keyword">is</span>: <span class="number">4</span></div><div class="line">The count <span class="keyword">is</span>: <span class="number">5</span></div><div class="line">The count <span class="keyword">is</span>: <span class="number">6</span></div><div class="line">The count <span class="keyword">is</span>: <span class="number">7</span></div><div class="line">The count <span class="keyword">is</span>: <span class="number">8</span></div><div class="line">Good bye!</div></pre></div></div></figure>
+
+<h4 id="跳出循环"><a href="#跳出循环" class="headerlink" title="跳出循环"></a>跳出循环</h4><p><code>while</code>语句时还有另外两个重要的命令<code>continue</code>，<code>break</code> 来跳过循环，<code>continue</code>用于跳过该次循环，<code>break</code>则是用于退出循环。</p>
+<figure class="highlight python"><figcaption><span class="caption">continue 和 break 用法</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></div><div class="code"><pre><div class="line">i = <span class="number">1</span></div><div class="line"><span class="keyword">while</span> <span class="number">1</span>:            <span class="comment"># 循环条件为1必定成立</span></div><div class="line">    print(i)         <span class="comment"># 输出1~10</span></div><div class="line">    i += <span class="number">1</span></div><div class="line">    <span class="keyword">if</span> i &gt; <span class="number">10</span>:     <span class="comment"># 当i大于10时跳出循环</span></div><div class="line">        <span class="keyword">break</span></div><div class="line">    </div><div class="line">i = <span class="number">1</span></div><div class="line"><span class="keyword">while</span> i &lt; <span class="number">10</span>:   </div><div class="line">    i += <span class="number">1</span></div><div class="line">    <span class="keyword">if</span> i%<span class="number">2</span> &gt; <span class="number">0</span>:     <span class="comment"># 非双数时跳过输出</span></div><div class="line">        <span class="keyword">continue</span></div><div class="line">    print(i)         <span class="comment"># 输出双数2、4、6、8、10</span></div></pre></div></div></figure>
+
+<h4 id="循环使用-else-语句"><a href="#循环使用-else-语句" class="headerlink" title="循环使用 else 语句"></a>循环使用 else 语句</h4><p>如果<code>while</code>循环正常结束（没有使用<code>break</code>跳出），程序将进入到可选的<code>else</code>段。当你使用循环来遍历检查某一数据结构时，找到满足条件的解使用<code>break</code>跳出；循环结束，即没 有找到可行解时，将执行<code>else</code>部分代码段：</p>
+<figure class="highlight python"><figcaption><span class="caption">while的else语句</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line">count = <span class="number">0</span></div><div class="line"><span class="keyword">while</span> count &lt; <span class="number">5</span>:</div><div class="line">   <span class="keyword">print</span> count, <span class="string">" is  less than 5"</span></div><div class="line">   count = count + <span class="number">1</span></div><div class="line"><span class="keyword">else</span>:</div><div class="line">   <span class="keyword">print</span> count, <span class="string">" is not less than 5"</span></div></pre></div></div></figure>
+
+<p>输出结果：</p>
+<figure class="highlight basic"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line"><span class="symbol">0 </span>is less than <span class="number">5</span></div><div class="line"><span class="symbol">1 </span>is less than <span class="number">5</span></div><div class="line"><span class="symbol">2 </span>is less than <span class="number">5</span></div><div class="line"><span class="symbol">3 </span>is less than <span class="number">5</span></div><div class="line"><span class="symbol">4 </span>is less than <span class="number">5</span></div><div class="line"><span class="symbol">5 </span>is <span class="keyword">not</span> less than <span class="number">5</span></div></pre></div></div></figure>
+
+
+<h3 id="for迭代"><a href="#for迭代" class="headerlink" title="for迭代"></a>for迭代</h3><div class="note info">
+            <p><code>Python</code>频繁地使用迭代器。它允许在数据结构长度未知和具体实现未知的情况下遍历整个数据结构，并且支持迭代快速读写中的数据，以及允许不能一次读入计算机内存的数据流 的处理。</p>
+          </div>  
+
+<p><code>Python for</code>循环可以遍历任何序列的项目，如一个列表或者一个字符串。</p>
+<figure class="highlight python"><figcaption><span class="caption">for迭代实例</span></figcaption><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></div><div class="code"><pre><div class="line"><span class="keyword">for</span> letter <span class="keyword">in</span> <span class="string">'Python'</span>:     <span class="comment"># 第一个实例</span></div><div class="line">   <span class="keyword">print</span> <span class="string">'当前字母 :'</span>, letter</div><div class="line"> </div><div class="line">fruits = [<span class="string">'banana'</span>, <span class="string">'apple'</span>,  <span class="string">'mango'</span>]</div><div class="line"><span class="keyword">for</span> fruit <span class="keyword">in</span> fruits:        <span class="comment"># 第二个实例</span></div><div class="line">   <span class="keyword">print</span> <span class="string">'当前水果 :'</span>, fruit</div><div class="line"> </div><div class="line"><span class="keyword">print</span> <span class="string">"Good bye!"</span></div></pre></div></div></figure>
+
+<p>输出结果：</p>
+<figure class="highlight ada"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line">当前字母 : <span class="type">P</span></div><div class="line">当前字母 : <span class="type">y</span></div><div class="line">当前字母 : <span class="type">t</span></div><div class="line">当前字母 : <span class="type">h</span></div><div class="line">当前字母 : <span class="type">o</span></div><div class="line">当前字母 : <span class="type">n</span></div><div class="line">当前水果 : <span class="type">banana</span></div><div class="line">当前水果 : <span class="type">apple</span></div><div class="line">当前水果 : <span class="type">mango</span></div><div class="line">Good bye!</div></pre></div></div></figure>
+
+<h4 id="跳出循环-1"><a href="#跳出循环-1" class="headerlink" title="跳出循环"></a>跳出循环</h4><p><code>break</code>和<code>continue</code>在<code>for</code>循环中跳出的用法和在<code>while</code> 循环中是一样的。<code>continue</code>用于跳过该次循环，<code>break</code>则是用于退出循环。</p>
+<h4 id="循环使用-else-语句-1"><a href="#循环使用-else-语句-1" class="headerlink" title="循环使用 else 语句"></a>循环使用 else 语句</h4><p>类似于<code>while</code>，<code>for</code>循环也可以使用可选的<code>else</code>代码段，用来判断<code>for</code>循环是否正常结束（没有调用<code>break</code>跳出），否则会执行<code>else</code>段。</p>
+<figure class="highlight applescript"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; cheeses = [] </div><div class="line">&gt;&gt;&gt; <span class="keyword">for</span> cheese <span class="keyword">in</span> cheeses: </div><div class="line">...     print('This shop has <span class="keyword">some</span> lovely', cheese) </div><div class="line">...     break </div><div class="line">... <span class="keyword">else</span>:  <span class="comment"># 没有break表示没有找到奶酪 </span></div><div class="line">...     print('This <span class="keyword">is</span> <span class="keyword">not</span> much <span class="keyword">of</span> a cheese shop, <span class="keyword">is</span> <span class="keyword">it</span>?') </div><div class="line">...</div><div class="line">This <span class="keyword">is</span> <span class="keyword">not</span> much <span class="keyword">of</span> a cheese shop, <span class="keyword">is</span> <span class="keyword">it</span>?</div></pre></div></div></figure>
+
+<h4 id="使用zip-并行迭代"><a href="#使用zip-并行迭代" class="headerlink" title="使用zip()并行迭代"></a>使用<code>zip()</code>并行迭代</h4><p><code>zip()</code>函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的对象。<br>如果各个迭代器的元素个数不一致，则返回列表长度与最短的对象相同，利用 * 号操作符，可以将元组解压为列表。</p>
+<ul>
+<li>语法：<figure class="highlight stylus"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="title">zip</span><span class="params">([iterable, ...])</span></span></div></pre></div></div></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>参数说明：</p>
+<ul>
+<li>iterabl – 一个或多个迭代器;</li>
+</ul>
+</li>
+<li><p>返回值</p>
+<ul>
+<li>返回一个对象。</li>
+</ul>
+</li>
+<li><p>实例</p>
+<figure class="highlight lsl"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt;a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">&gt;&gt;&gt; b = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</div><div class="line">&gt;&gt;&gt; c = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</div><div class="line">&gt;&gt;&gt; zipped = zip(a,b)     # 返回一个对象</div><div class="line">&gt;&gt;&gt; zipped</div><div class="line">&lt;zip object at <span class="number">0x103abc288</span>&gt;</div><div class="line">&gt;&gt;&gt; <span class="type">list</span>(zipped)  # <span class="type">list</span>() 转换为列表</div><div class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</div><div class="line">&gt;&gt;&gt; <span class="type">list</span>(zip(a,c))              # 元素个数与最短的列表一致</div><div class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</div><div class="line"> </div><div class="line">&gt;&gt;&gt; a1, a2 = zip(*zip(a,b))          #与zip相反，zip(*) 可理解为解压，返回二维矩阵式</div><div class="line">&gt;&gt;&gt; <span class="type">list</span>(a1)</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line">&gt;&gt;&gt; <span class="type">list</span>(a2)</div><div class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</div><div class="line">&gt;&gt;&gt;</div></pre></div></div></figure>
+
+
+</li>
+</ul>
+<h4 id="使用range-生成自然数序列"><a href="#使用range-生成自然数序列" class="headerlink" title="使用range()生成自然数序列"></a>使用<code>range()</code>生成自然数序列</h4><p><code>range()</code>函数返回在特定区间的自然数序列，不需要创建和存储复杂的数据结构，例如列表或者元组。这允许在不使用计算机全部内存的情况下创建较大的区间，也不会使你的程序崩溃。</p>
+<ul>
+<li><p>函数语法</p>
+<figure class="highlight stylus"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="title">range</span><span class="params">(stop)</span></span></div><div class="line"><span class="function"><span class="title">range</span><span class="params">(start, stop[, step])</span></span></div></pre></div></div></figure>
+</li>
+<li><p>参数说明：</p>
+<ul>
+<li><code>start</code>:计数从<code>start</code>开始。默认是从0开始。例如<code>range（5）</code>等价于<code>range（0， 5）</code>;</li>
+<li><code>stop</code>: 计数到<code>stop</code>结束，但不包括<code>stop</code>。例如：<code>range（0， 5）</code>是<code>[0, 1, 2, 3, 4]</code>没有5</li>
+<li><code>step</code>：步长，默认为1。例如：<code>range（0， 5）</code> 等价于<code>range(0, 5, 1)</code></li>
+</ul>
+</li>
+<li><p>实例</p>
+<figure class="highlight lsl"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt;<span class="type">list</span>(range(<span class="number">0</span>, <span class="number">30</span>, <span class="number">5</span>))</div><div class="line">[<span class="number">0</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>]</div><div class="line">&gt;&gt;&gt; <span class="type">list</span>(range(<span class="number">0</span>, <span class="number">10</span>, <span class="number">2</span>))</div><div class="line">[<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>]</div><div class="line">&gt;&gt;&gt; <span class="type">list</span>(range(<span class="number">0</span>, <span class="number">-10</span>, <span class="number">-1</span>))</div><div class="line">[<span class="number">0</span>, <span class="number">-1</span>, <span class="number">-2</span>, <span class="number">-3</span>, <span class="number">-4</span>, <span class="number">-5</span>, <span class="number">-6</span>, <span class="number">-7</span>, <span class="number">-8</span>, <span class="number">-9</span>]</div><div class="line">&gt;&gt;&gt; <span class="type">list</span>(range(<span class="number">1</span>, <span class="number">0</span>))</div><div class="line">[]</div><div class="line">&gt;&gt;&gt;</div><div class="line">&gt;&gt;&gt;</div></pre></div></div></figure>
+
+
+</li>
+</ul>
+<h2 id="推导式"><a href="#推导式" class="headerlink" title="推导式"></a>推导式</h2><div class="note info">
+            <p>推导式是从一个或者多个迭代器快速简洁地创建数据结构的一种方法。它可以将循环和条件判断结合，从而避免语法冗长的代码。  </p>
+          </div>
+<h3 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h3><p>最简单的形式如下所示：<br><code>[ expression for item in iterable ]</code><br>实例：</p>
+<figure class="highlight lsl"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; number_list = [number for number in range(<span class="number">1</span>,<span class="number">6</span>)] &gt;&gt;&gt; number_list </div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</div></pre></div></div></figure>
+
+<p>在第一行中，第一个<code>number</code>变量为列表生成值，也就是说，把循环的结果放在列表<code>number_list</code>中。第二个<code>number</code>为循环变量。其中第一个<code>number</code>可以为表达式:</p>
+<figure class="highlight lsl"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; number_list = [number<span class="number">-1</span> for number in range(<span class="number">1</span>,<span class="number">6</span>)] &gt;&gt;&gt; number_list </div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</div></pre></div></div></figure>
+
+<p>列表推导也可以像下面的例子加上条件表达式：<br><code>[expression for item in iterable if condition]</code></p>
+<figure class="highlight lsl"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; a_list = [number for number in range(<span class="number">1</span>,<span class="number">6</span>) if number % <span class="number">2</span> == <span class="number">1</span>] </div><div class="line">&gt;&gt;&gt; a_list </div><div class="line">[<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>]</div></pre></div></div></figure>
+
+<p>正如存在很多嵌套循环一样，在对应的推导中会有多个<code>for</code>语句,推导式也可以嵌套循环。</p>
+<figure class="highlight maxima"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; rows = <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">4</span>) </div><div class="line">&gt;&gt;&gt; cols = <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">3</span>) </div><div class="line">&gt;&gt;&gt; cells = [(<span class="built_in">row</span>, <span class="built_in">col</span>) <span class="keyword">for</span> <span class="built_in">row</span> <span class="keyword">in</span> rows <span class="keyword">for</span> <span class="built_in">col</span> <span class="keyword">in</span> cols] </div><div class="line">&gt;&gt;&gt; <span class="keyword">for</span> cell <span class="keyword">in</span> cells: </div><div class="line">...     <span class="built_in">print</span>(cell) </div><div class="line">... </div><div class="line">(<span class="number">1</span>, <span class="number">1</span>) </div><div class="line">(<span class="number">1</span>, <span class="number">2</span>) </div><div class="line">(<span class="number">2</span>, <span class="number">1</span>)</div><div class="line">(<span class="number">2</span>, <span class="number">2</span>) </div><div class="line">(<span class="number">3</span>, <span class="number">1</span>)</div><div class="line">(<span class="number">3</span>, <span class="number">2</span>)</div></pre></div></div></figure>
+
+<h3 id="字典推导式"><a href="#字典推导式" class="headerlink" title="字典推导式"></a>字典推导式</h3><p>与列表的推导式类似，其中最简单的例子就像：<br><code>{ key_expression : value_expression for expression in iterable }</code></p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; word = <span class="string">'letters'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; letter_counts = &#123;<span class="symbol">letter:</span> word.count(letter) for letter in set(word)&#125; </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; letter_counts </div><div class="line">&#123;<span class="string">'t'</span>: <span class="number">2</span>, <span class="string">'l'</span>: <span class="number">1</span>, <span class="string">'e'</span>: <span class="number">2</span>, <span class="string">'r'</span>: <span class="number">1</span>, <span class="string">'s'</span>: <span class="number">1</span>&#125;</div></pre></div></div></figure>
+
+
+<h3 id="集合推导式"><a href="#集合推导式" class="headerlink" title="集合推导式"></a>集合推导式</h3><p>集合也不例外，同样有推导式。最简单的版本和之前的列表、字典推导类似：<br><code>{expression for expression in iterable }</code><br>最长的版本（if tests, multiple for clauses）对于集合而言也是可行的：</p>
+<figure class="highlight applescript"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; a_set = &#123;<span class="built_in">number</span> <span class="keyword">for</span> <span class="built_in">number</span> <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">6</span>) <span class="keyword">if</span> <span class="built_in">number</span> % <span class="number">3</span> == <span class="number">1</span>&#125; </div><div class="line">&gt;&gt;&gt; a_set </div><div class="line">&#123;<span class="number">1</span>, <span class="number">4</span>&#125;</div></pre></div></div></figure>
+
+
+<h3 id="生成器推导式"><a href="#生成器推导式" class="headerlink" title="生成器推导式"></a>生成器推导式</h3><figure class="highlight applescript"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; number_thing = (<span class="built_in">number</span> <span class="keyword">for</span> <span class="built_in">number</span> <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>))</div></pre></div></div></figure>
+
+<p>其实，圆括号之间的是生成器推导式，它返回的是一个生成器对象：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; type(number_thing) </div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">generotor</span>'&gt;</span></div></pre></div></div></figure>
+
+<div class="note info">
+            <p>。一个生成器只能运行一次。列表、集合、字符串和字典都存储在内存中，但是生成器仅在运行中产生值，不会被存下来，所以不能重新使用或者备份一个生成器。如果想再一次迭代此生成器，会发现它被擦除了。生成器既可以通过生成器推导式创建生成器，也可以使用生成器的函数</p>
+          </div>  
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; try_again = list(number_thing) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; try_again  </div><div class="line">[]</div></pre></div></div></figure>
+
+
+
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><div class="note info">
+            <p>函数是组织好的，可重复使用的，用来实现单一，或相关联功能的代码段。<br>函数能提高应用的模块性，和代码的重复利用率。<code>Python</code>提供了许多内建函数，比如<code>print()</code>。但也可以自己创建函数，这被叫做用户自定义函数</p>
+          </div>
+<h3 id="定义一个函数"><a href="#定义一个函数" class="headerlink" title="定义一个函数"></a>定义一个函数</h3><p>可以定义一个由自己想要功能的函数，以下是简单的规则：</p>
+<ul>
+<li>函数代码块以<code>def</code>关键词开头，后接函数标识符名称和圆括号 <code>()</code>。</li>
+<li>任何传入参数和自变量必须放在圆括号中间，圆括号之间可以用于定义参数。</li>
+<li>函数的第一行语句可以选择性地使用文档字符串—用于存放函数说明。</li>
+<li>函数内容以冒号起始，并且缩进。</li>
+<li><code>return [表达式]</code>结束函数，选择性地返回一个值给调用方。不带表达式的<code>return</code>相当于返回 <code>None</code>。</li>
+</ul>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p><code>Python</code>定义函数使用<code>def</code>关键字，一般格式如下：</p>
+<figure class="highlight flix"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">函数名（参数列表）</span></span>:</div><div class="line">    函数体</div></pre></div></div></figure>
+
+<p>默认情况下，参数值和参数名称是按函数声明中定义的顺序匹配起来的。<br>实例：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></div><div class="code"><pre><div class="line"><span class="comment"># 计算面积函数</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">area</span><span class="params">(width, height)</span>:</span></div><div class="line">    <span class="keyword">return</span> width * height</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_welcome</span><span class="params">(name)</span>:</span></div><div class="line">    print(<span class="string">"Welcome"</span>, name)</div><div class="line"> </div><div class="line">print_welcome(<span class="string">"Runoob"</span>)</div><div class="line">w = <span class="number">4</span></div><div class="line">h = <span class="number">5</span></div><div class="line">print(<span class="string">"width ="</span>, w, <span class="string">" height ="</span>, h, <span class="string">" area ="</span>, area(w, h))</div></pre></div></div></figure>
+
+<p>运行结果：</p>
+<figure class="highlight routeros"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">Welcome Runoob</div><div class="line">width = 4  height = 5 <span class="built_in"> area </span>= 20</div></pre></div></div></figure>
+
+<h3 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h3><p>在<code>python</code>中，类型属于对象，变量是没有类型的：</p>
+<figure class="highlight ini"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="attr">a</span>=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"></div><div class="line"><span class="attr">a</span>=<span class="string">"Runoob"</span></div></pre></div></div></figure>
+
+<p>以上代码中，<code>[1,2,3]</code> 是<code>List</code>类型，<code>&quot;Runoob&quot;</code>是<code>String</code>类型，而变量<code>a</code>是没有类型，她仅仅是一个对象的引用（一个指针），可以是指向 <code>List</code> 类型对象，也可以是指向 <code>String</code> 类型对象。</p>
+<h4 id="可更改-mutable-与不可更改-immutable-对象"><a href="#可更改-mutable-与不可更改-immutable-对象" class="headerlink" title="可更改(mutable)与不可更改(immutable)对象"></a>可更改(mutable)与不可更改(immutable)对象</h4><p>在<code>python</code>中，<code>strings</code>, <code>tuples</code>, 和<code>numbers</code>是不可更改的对象，而<code>list</code>,<code>dict</code>等则是可以修改的对象。<br>可变类型：变量赋值<code>la=[1,2,3,4]</code>后再赋值<code>la[2]=5</code>则是将<code>list la</code>的第三个元素值更改，本身<code>la</code>没有动，只是其内部的一部分值被修改了。  </p>
+<p><code>python</code>函数的参数传递：<br>不可变类型：类似<code>c++</code>的值传递，如整数、字符串、元组。如<code>fun（a）</code>，传递的只是<code>a</code>的值，没有影响<code>a</code>对象本身。比如在<code>fun（a）</code>内部修改<code>a</code>的值，只是修改另一个复制的对象，不会影响<code>a</code>本身。</p>
+<p>可变类型：类似<code>c++</code>的引用传递，如列表，字典。如<code>fun（la）</code>，则是将<code>la</code>真正的传过去，修改后<code>fun</code>外部的<code>la</code>也会受影响。</p>
+<p><code>python</code>中一切都是对象，严格意义我们不能说值传递还是引用传递，我们应该说传不可变对象和传可变对象。</p>
+<p>python 传不可变对象实例</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">ChangeInt</span><span class="params">( a )</span>:</span></div><div class="line">    a = <span class="number">10</span></div><div class="line"> </div><div class="line">b = <span class="number">2</span></div><div class="line">ChangeInt(b)</div><div class="line">print( b ) <span class="comment"># 结果是 2</span></div></pre></div></div></figure>
+
+<p>实例中有<code>int</code>对象<code>2</code>，指向它的变量是<code>b</code>，在传递给<code>ChangeInt</code>函数时，按传值的方式复制了变量<code>b</code>，<code>a</code>和<code>b</code>都指向了同一个<code>Int</code>对象，在<code>a=10</code>时，则新生成一个<code>int</code>值对象<code>10</code>，并让<code>a</code>指向它。</p>
+<p>传可变对象实例<br>可变对象在函数里修改了参数，那么在调用这个函数的函数里，原始的参数也被改变了。例如：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line"> </div><div class="line"><span class="comment"># 可写函数说明</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">changeme</span><span class="params">( mylist )</span>:</span></div><div class="line">   <span class="string">"修改传入的列表"</span></div><div class="line">   mylist.append([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line">   <span class="keyword">print</span> (<span class="string">"函数内取值: "</span>, mylist)</div><div class="line">   <span class="keyword">return</span></div><div class="line"> </div><div class="line"><span class="comment"># 调用changeme函数</span></div><div class="line">mylist = [<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>]</div><div class="line">changeme( mylist )</div><div class="line"><span class="keyword">print</span> (<span class="string">"函数外取值: "</span>, mylist)</div></pre></div></div></figure>
+
+<p>传入函数的和在末尾添加新内容的对象用的是同一个引用。故输出结果如下：</p>
+<figure class="highlight inform7"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">函数内取值:  <span class="comment">[10, 20, 30, <span class="comment">[1, 2, 3, 4]</span>]</span></div><div class="line">函数外取值:  <span class="comment">[10, 20, 30, <span class="comment">[1, 2, 3, 4]</span>]</span></div></pre></div></div></figure>
+
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>以下是调用函数时可使用的正式参数类型：</p>
+<ul>
+<li>必需参数</li>
+<li>关键字参数</li>
+<li>默认参数</li>
+<li>不定长参数</li>
+</ul>
+<h4 id="必需参数"><a href="#必需参数" class="headerlink" title="必需参数"></a>必需参数</h4><p>必需参数须以<strong>正确的顺序</strong>传入函数。调用时的数量必须和声明时的一样。</p>
+<p>调用<code>printme()</code>函数，你必须传入一个参数，不然会出现语法错误：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"> </div><div class="line"><span class="comment">#可写函数说明</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">printme</span><span class="params">( str )</span>:</span></div><div class="line">   <span class="string">"打印任何传入的字符串"</span></div><div class="line">   <span class="keyword">print</span> (str)</div><div class="line">   <span class="keyword">return</span></div><div class="line"> </div><div class="line"><span class="comment"># 调用 printme 函数，不加参数会报错</span></div><div class="line">printme()</div></pre></div></div></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight sql"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line">Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):</div><div class="line">  <span class="keyword">File</span> <span class="string">"test.py"</span>, line <span class="number">10</span>, <span class="keyword">in</span> &lt;<span class="keyword">module</span>&gt;</div><div class="line">    printme()</div><div class="line">TypeError: printme() <span class="keyword">missing</span> <span class="number">1</span> <span class="keyword">required</span> positional argument: <span class="string">'str'</span></div></pre></div></div></figure>
+
+<h4 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h4><p>关键字参数和函数调用关系紧密，函数调用使用关键字参数来确定传入的参数值。</p>
+<p>使用关键字参数允许函数调用时参数的顺序与声明时不一致，因为<code>Python</code>解释器能够用参数名匹配参数值。</p>
+<p>以下实例在函数<code>printme()</code>调用时使用参数名：</p>
+<figure class="highlight hsp"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"> </div><div class="line"><span class="meta">#可写函数说明</span></div><div class="line">def printme( <span class="keyword">str</span> ):</div><div class="line">   <span class="string">"打印任何传入的字符串"</span></div><div class="line">   <span class="keyword">print</span> (<span class="keyword">str</span>)</div><div class="line">   <span class="keyword">return</span></div><div class="line"> </div><div class="line"><span class="meta">#调用printme函数</span></div><div class="line">printme( <span class="keyword">str</span> = <span class="string">"cyy"</span>)</div></pre></div></div></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight ebnf"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="attribute">cyy</span></div></pre></div></div></figure>
+
+<p>以下实例中演示了函数参数的使用不需要使用指定顺序：</p>
+<figure class="highlight routeros"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="comment">#可写函数说明</span></div><div class="line">def printinfo( name, age ):</div><div class="line">   <span class="string">"打印任何传入的字符串"</span></div><div class="line">   <span class="builtin-name">print</span> (<span class="string">"名字: "</span>, name)</div><div class="line">   <span class="builtin-name">print</span> (<span class="string">"年龄: "</span>, age)</div><div class="line">   return</div><div class="line"> </div><div class="line"><span class="comment">#调用printinfo函数</span></div><div class="line">printinfo( <span class="attribute">age</span>=50, <span class="attribute">name</span>=<span class="string">"runoob"</span> )</div></pre></div></div></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight makefile"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="section">名字:  runoob</span></div><div class="line"><span class="section">年龄:  50</span></div></pre></div></div></figure>
+
+<h4 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h4><p>调用函数时，如果没有传递参数，则会使用默认参数。以下实例中如果没有传入<code>age</code>参数，则使用默认值：</p>
+<figure class="highlight routeros"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line"> </div><div class="line"><span class="comment">#可写函数说明</span></div><div class="line">def printinfo( name, age = 35 ):</div><div class="line">   <span class="string">"打印任何传入的字符串"</span></div><div class="line">   <span class="builtin-name">print</span> (<span class="string">"名字: "</span>, name)</div><div class="line">   <span class="builtin-name">print</span> (<span class="string">"年龄: "</span>, age)</div><div class="line">   return</div><div class="line"> </div><div class="line"><span class="comment">#调用printinfo函数</span></div><div class="line">printinfo( <span class="attribute">age</span>=50, <span class="attribute">name</span>=<span class="string">"runoob"</span> )</div><div class="line"><span class="builtin-name">print</span> (<span class="string">"------------------------"</span>)</div><div class="line">printinfo( <span class="attribute">name</span>=<span class="string">"runoob"</span> )</div></pre></div></div></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight asciidoc"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line">名字:  runoob</div><div class="line">年龄:  50</div><div class="line">------------------------</div><div class="line">名字:  runoob</div><div class="line">年龄:  35</div></pre></div></div></figure>
+
+<h4 id="不定长参数"><a href="#不定长参数" class="headerlink" title="不定长参数"></a>不定长参数</h4><p>你可能需要一个函数能处理比当初声明时更多的参数。这些参数叫做不定长参数，和上述2种参数不同，声明时不会命名。基本语法如下：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">functionname</span><span class="params">([formal_args,] *var_args_tuple )</span></span><span class="symbol">:</span></div><div class="line">   <span class="string">"函数_文档字符串"</span></div><div class="line">   function_suite</div><div class="line">   <span class="keyword">return</span> [expression]</div></pre></div></div></figure>
+
+<p>加了星号<code>*</code>的参数会以<strong>元组(tuple)</strong>的形式导入，存放所有未命名的变量参数。</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line">  </div><div class="line"><span class="comment"># 可写函数说明</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">printinfo</span><span class="params">( arg1, *vartuple )</span>:</span></div><div class="line">   <span class="string">"打印任何传入的参数"</span></div><div class="line">   <span class="keyword">print</span> (<span class="string">"输出: "</span>)</div><div class="line">   <span class="keyword">print</span> (arg1)</div><div class="line">   <span class="keyword">print</span> (vartuple)</div><div class="line"> </div><div class="line"><span class="comment"># 调用printinfo 函数</span></div><div class="line">printinfo( <span class="number">70</span>, <span class="number">60</span>, <span class="number">50</span> )</div></pre></div></div></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight gcode"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">输出: </div><div class="line"><span class="number">70</span></div><div class="line"><span class="comment">(60, 50)</span></div></pre></div></div></figure>
+
+<p>如果在函数调用时没有指定参数，它就是一个空元组。我们也可以不向函数传递未命名的变量。如下实例：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line"><span class="comment"># 可写函数说明</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">printinfo</span><span class="params">( arg1, *vartuple )</span>:</span></div><div class="line">   <span class="string">"打印任何传入的参数"</span></div><div class="line">   <span class="keyword">print</span> (<span class="string">"输出: "</span>)</div><div class="line">   <span class="keyword">print</span> (arg1)</div><div class="line">   <span class="keyword">for</span> var <span class="keyword">in</span> vartuple:</div><div class="line">      <span class="keyword">print</span> (var)</div><div class="line">   <span class="keyword">return</span></div><div class="line"> </div><div class="line"><span class="comment"># 调用printinfo 函数</span></div><div class="line">printinfo( <span class="number">10</span> )</div><div class="line">printinfo( <span class="number">70</span>, <span class="number">60</span>, <span class="number">50</span> )</div></pre></div></div></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight makefile"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line"><span class="section">输出:</span></div><div class="line">10</div><div class="line"><span class="section">输出:</span></div><div class="line">70</div><div class="line">60</div><div class="line">50</div></pre></div></div></figure>
+
+<p>还有一种就是参数带两个星号<code>**</code>基本语法如下：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">functionname</span><span class="params">([formal_args,] **var_args_dict )</span></span><span class="symbol">:</span></div><div class="line">   <span class="string">"函数_文档字符串"</span></div><div class="line">   function_suite</div><div class="line">   <span class="keyword">return</span> [expression]</div></pre></div></div></figure>
+
+<p>加了两个星号 <code>**</code>的参数会以<strong>字典</strong>的形式导入。</p>
+<figure class="highlight routeros"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line">  </div><div class="line"><span class="comment"># 可写函数说明</span></div><div class="line">def printinfo( arg1, **vardict ):</div><div class="line">   <span class="string">"打印任何传入的参数"</span></div><div class="line">   <span class="builtin-name">print</span> (<span class="string">"输出: "</span>)</div><div class="line">   <span class="builtin-name">print</span> (arg1)</div><div class="line">   <span class="builtin-name">print</span> (vardict)</div><div class="line"> </div><div class="line"><span class="comment"># 调用printinfo 函数</span></div><div class="line">printinfo(1, <span class="attribute">a</span>=2,b=3)</div></pre></div></div></figure>
+
+<p>以上实例输出结果：</p>
+<figure class="highlight 1c"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">输出: </div><div class="line"><span class="number">1</span></div><div class="line">&#123;'a': <span class="number">2</span>, 'b': <span class="number">3</span>&#125;</div></pre></div></div></figure>
+
+<p>声明函数时，参数中星号<code>*</code> 可以单独出现，例如:</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a,b,*,c)</span></span><span class="symbol">:</span></div><div class="line">    <span class="keyword">return</span> a+b+c</div></pre></div></div></figure>
+
+
+<p>如果<strong>单独出现</strong>星号<code>*</code><strong>后</strong>的参数必须用<strong>关键字传入</strong>。</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a,b,*,c)</span></span><span class="symbol">:</span></div><div class="line">...     <span class="keyword">return</span> a+b+c</div><div class="line">... </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; f(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)   <span class="comment"># 报错</span></div><div class="line">Traceback (most recent call last)<span class="symbol">:</span></div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt;</span></div><div class="line"><span class="symbol">TypeError:</span> f() takes <span class="number">2</span> positional arguments but <span class="number">3</span> were given</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; f(<span class="number">1</span>,<span class="number">2</span>,c=<span class="number">3</span>) <span class="comment"># 正常</span></div><div class="line"><span class="number">6</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt;</div></pre></div></div></figure>
+
+<h3 id="文档字符串"><a href="#文档字符串" class="headerlink" title="文档字符串"></a>文档字符串</h3><p>程序的可读性很重要。建议在函数体开始的部分附上函数定义说明的文档，这就是函数的文档字符串：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">echo</span><span class="params">(anything)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="string">'echo returns its input argument'</span> </div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> anything</div></pre></div></div></figure>
+
+<p>可以定义非常长的文档字符串，加上详细的规范说明，如下所示：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_if_true</span><span class="params">(thing, check)</span>:</span>     </div><div class="line">    <span class="string">'''     </span></div><div class="line"><span class="string">    Prints the first argument if a second argument is true.</span></div><div class="line"><span class="string">    The operation is:         </span></div><div class="line"><span class="string">        1. Check whether the *second* argument is true.         </span></div><div class="line"><span class="string">        2. If it is, print the *first* argument.     </span></div><div class="line"><span class="string">    '''</span>     </div><div class="line">    <span class="keyword">if</span> check:         </div><div class="line">        print(thing)</div></pre></div></div></figure>
+
+<p>调用<code>Python</code>函数<code>help()</code>可以打印输出一个函数的文档字符串。把函数名传入函数<code>help()</code>就会得到参数列表和规范的文档：</p>
+<figure class="highlight vim"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; <span class="keyword">help</span>(<span class="keyword">echo</span>) </div><div class="line">Help <span class="keyword">on</span> <span class="function"><span class="keyword">function</span> <span class="title">echo</span> <span class="title">in</span> <span class="title">module</span> __<span class="title">main__</span>: </span></div><div class="line"><span class="keyword">echo</span>(anything)     </div><div class="line">    <span class="keyword">echo</span> returns its <span class="built_in">input</span> <span class="keyword">argument</span></div></pre></div></div></figure>
+
+<p>如果仅仅想得到文档字符串：</p>
+<figure class="highlight vim"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; <span class="keyword">print</span>(<span class="keyword">echo</span>.__doc__) </div><div class="line"><span class="keyword">echo</span> returns its <span class="built_in">input</span> <span class="keyword">argument</span></div></pre></div></div></figure>
+
+
+<h3 id="内部函数"><a href="#内部函数" class="headerlink" title="内部函数"></a>内部函数</h3><p>在<code>Python</code>中，可以在函数中定义另外一个函数：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">outer</span><span class="params">(a, b)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(c, d)</span>:</span> </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> c + d </div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> inner(a, b) </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>outer(<span class="number">4</span>, <span class="number">7</span>) </div><div class="line"><span class="number">11</span></div></pre></div></div></figure>
+
+
+<p>当需要在函数内部多次执行复杂的任务时，内部函数是非常有用的，从而避免了循环和代码的堆叠重复。</p>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><p>内部函数可以看作一个闭包。<strong>闭包是一个可以由另一个函数动态生成的函数，并且可以改变和存储函数外创建的变量的值</strong>。<br>以下面的例子<code>knights()</code>为基础。现在，调用新的函数<code>knight2()</code>，把<code>inner()</code>函数变成一个叫<code>inner2()</code>的闭包。可以看出有以下不同点。</p>
+<ul>
+<li><code>inner2()</code>直接使用外部的<code>saying</code>参数，而不是通过另外一个参数获取。 </li>
+<li><code>knights2()</code>返回值为<code>inner2</code>函数，而不是调用它。<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">knights</span><span class="params">(saying)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">inner</span><span class="params">(quote)</span>:</span> </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">"We are the knights who say: '%s'"</span> % quote </div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> inner(saying) </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>knights(<span class="string">'Ni!'</span>) </div><div class="line"><span class="string">"We are the knights who say: 'Ni!'"</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">knights2</span><span class="params">(saying)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">inner2</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">"We are the knights who say: '%s'"</span> % saying </div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> inner2 </div><div class="line">...</div></pre></div></div></figure>
+
+</li>
+</ul>
+<p><code>inner2()</code>函数可以得到<code>saying</code>参数的值并且记录下来。<code>return inner2</code>这一行返回的是<code>inner2</code>函数的复制（没有直接调用）。所以它就是一个闭包：一个被动态创建的可以记录 外部变量的函数。<br>用不同的参数调用<code>knights2()</code>两次：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; a = knights2(<span class="string">'Duck'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; b = knights2(<span class="string">'Hasenpfeffer'</span>)</div></pre></div></div></figure>
+
+<p>那么<code>a</code>和<code>b</code>会是什么类型？</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; type(a) </div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">function</span>'&gt; </span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; type(b) </div><div class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">function</span>'&gt;</span></div></pre></div></div></figure>
+
+<p>它们是函数，同时也是闭包：</p>
+<figure class="highlight stylus"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; <span class="selector-tag">a</span> </div><div class="line">&lt;function knights2.&lt;locals&gt;<span class="selector-class">.inner2</span> at <span class="number">0</span>x10193e158&gt; </div><div class="line">&gt;&gt;&gt; <span class="selector-tag">b</span> </div><div class="line">&lt;function knights2.&lt;locals&gt;<span class="selector-class">.inner2</span> at <span class="number">0</span>x10193e1e0&gt;</div></pre></div></div></figure>
+
+<p>如果调用它们，它们会记录被<code>knights2</code>函数创建时的外部变量<code>saying</code>：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; a() </div><div class="line"><span class="string">"We are the knights who say: 'Duck'"</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; b() </div><div class="line"><span class="string">"We are the knights who say: 'Hasenpfeffer'"</span></div></pre></div></div></figure>
+
+
+<h3 id="匿名函数：lambda-函数"><a href="#匿名函数：lambda-函数" class="headerlink" title="匿名函数：lambda()函数"></a>匿名函数：<code>lambda()</code>函数</h3><p><code>Python</code>中，<code>lambda函数</code>是用一个语句表达的匿名函数。<strong>可以用它来代替小的函数</strong>。<br>首先，举一个使用普通函数的例子。定义函数<code>edit_story()</code>，参数列表如下所示：</p>
+<ul>
+<li><code>words</code>——单词列表 </li>
+<li><code>func</code>——遍历列表中单词的函数<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">edit_story</span><span class="params">(words, func)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="keyword">for</span> word <span class="keyword">in</span> words: </div><div class="line"><span class="meta">... </span>        print(func(word))</div></pre></div></div></figure>
+
+</li>
+</ul>
+<p>现在，需要一个单词列表和一个遍历单词的函数。对于单词，可以选择我的猫从某一台阶上掉下时发出的声音：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; stairs = [<span class="string">'thud'</span>, <span class="string">'meow'</span>, <span class="string">'thud'</span>, <span class="string">'hiss'</span>]</div></pre></div></div></figure>
+
+<p>对于函数，它要将每个单词的首字母变为大写，然后在末尾加上感叹号 , 用作猫画报的标题非常完美：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="function"><span class="keyword">def</span> <span class="title">enliven</span><span class="params">(word)</span></span>:  </div><div class="line"><span class="comment"># 让这些单词更有情感 </span></div><div class="line">...     <span class="keyword">return</span> word.capitalize() + <span class="string">'!'</span></div></pre></div></div></figure>
+
+<p>混合这些“配料”：</p>
+<figure class="highlight erlang-repl"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; edit_story(stairs, enliven) </div><div class="line">Thud! </div><div class="line">Meow! </div><div class="line">Thud! </div><div class="line">Hiss!</div></pre></div></div></figure>
+
+<p>最后，到了<code>lambda</code>。<code>enliven()</code> 函数可以简洁地用下面的一个<code>lambda</code>代替：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; edit_story(stairs, lambda <span class="symbol">word:</span> word.capitalize() + <span class="string">'!'</span>) </div><div class="line">Thud! </div><div class="line">Meow! </div><div class="line">Thud! </div><div class="line">Hiss! </div><div class="line"><span class="meta">&gt;&gt;</span>&gt;</div></pre></div></div></figure>
+
+<p><code>lambda</code>函数接收一个参数<code>word</code>。在冒号和末尾圆括号之间的部分为函数的定义。<br>通常，使用实际的函数（例如<code>enliven()</code>）会比使用<code>lambda</code>更清晰明了。但是，当需要定义很多小的函数以及记住它们的名字时，<code>lambda</code>会非常有用。尤其是在图形用户界面中，可以使用<code>lambda</code>来定义回调函数。 </p>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h3><p>生成器是<strong>用来创建<code>Python</code>序列</strong>的一个对象。使用它可以迭代庞大的序列，且不需要在内存中创建和存储整个序列。通常，生成器是为迭代器产生数据的。回想起来，我们已经在之前的例子中使用过其中一个，即<code>range()</code>，来产生一系列整数。<code>range()</code>在 <code>Python 2</code>中返回一个列表，这也限制了它要进入内存空间。<code>Python 2</code>中同样存在的生成器<code>xrange()</code>在 <code>Python 3</code>中成为标准的<code>range()</code>生成器。这个例子累加从 1 到 100 的整数：</p>
+<figure class="highlight lisp"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; sum(<span class="name">range</span>(<span class="number">1</span>, <span class="number">101</span>)) </div><div class="line"><span class="number">5050</span></div></pre></div></div></figure>
+
+<p>每次迭代生成器时，它会记录上一次调用的位置，并且返回下一个值。这一点和普通的函数是不一样的，一般函数都不记录前一次调用，而且都会在函数的第一行开始执行。<br>如果你想创建一个比较大的序列，使用生成器推导的代码会很长，这时可以尝试写一个生成器函数。生成器函数和普通函数类似，但是它的返回值使用 <code>yield</code>语句声明而不是<code>return</code>。下面编写我们自己的<code>range()</code>函数版本：</p>
+<figure class="highlight routeros"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; def my_range(<span class="attribute">first</span>=0, <span class="attribute">last</span>=10, <span class="attribute">step</span>=1): <span class="built_in">..</span>.     number = first </div><div class="line"><span class="built_in">..</span>.     <span class="keyword">while</span> number &lt; last: </div><div class="line"><span class="built_in">..</span>.         yield number </div><div class="line"><span class="built_in">..</span>.         number += <span class="keyword">step</span> </div><div class="line"><span class="built_in">..</span>.</div></pre></div></div></figure>
+
+<p>这是一个普通的函数：</p>
+<figure class="highlight ada"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; my_range </div><div class="line">&lt;<span class="keyword">function</span> <span class="title">my_range</span> at 0x10193e268&gt;</div></pre></div></div></figure>
+
+<p>并且它返回的是一个<strong>生成器对象</strong>：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; ranger = my_range(<span class="number">1</span>, <span class="number">5</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; ranger </div><div class="line">&lt;generator object my_range at <span class="number">0x101a0a168</span>&gt;</div></pre></div></div></figure>
+
+<p>可以对这个生成器对象进行迭代：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> x <span class="keyword">in</span> ranger:</div><div class="line"><span class="meta">... </span>       print(x) </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="number">1</span> </div><div class="line"><span class="number">2</span> </div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">4</span></div></pre></div></div></figure>
+
+<h3 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h3><p>有时你需要在不改变源代码的情况下修改已经存在的函数。常见的例子是增加一句调试声明，以查看传入的参数。<br><strong>装饰器实质上是一个函数</strong>。它把一个函数作为输入并且返回另外一个函数。在装饰器中，通常使用下面这些<code>Python</code>技巧：</p>
+<ul>
+<li><em>args 和 *</em>kwargs </li>
+<li>闭包 </li>
+<li>作为参数的函数  </li>
+</ul>
+<p>函数<code>document_it()</code>定义了一个装饰器，会实现如下功能：</p>
+<ul>
+<li>打印输出函数的名字和参数的值</li>
+<li>执行含有参数的函数 </li>
+<li>打印输出结果 </li>
+<li>返回修改后的函数  </li>
+</ul>
+<p>看下面的代码：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">document_it</span><span class="params">(func)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">new_function</span><span class="params">(*args, **kwargs)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">'Running function:'</span>, func.__name__) </div><div class="line"><span class="meta">... </span>        print(<span class="string">'Positional arguments:'</span>, args) </div><div class="line"><span class="meta">... </span>        print(<span class="string">'Keyword arguments:'</span>, kwargs) </div><div class="line"><span class="meta">... </span>        result = func(*args, **kwargs) </div><div class="line"><span class="meta">... </span>        print(<span class="string">'Result:'</span>, result) </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> result </div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> new_function</div></pre></div></div></figure>
+
+<p>无论传入<code>document_it()</code>的函数<code>func</code>是什么，装饰器都会返回一个新的函数，其中包含函数<code>document_it()</code> 增加的额外语句。实际上，装饰器并不需要执行函数<code>func</code>中的代码，只是在结束前函数<code>document_it()</code>调用函数<code>func</code>以便得到<code>func</code>的返回结果和附加代码的结果。  </p>
+<p>那么，如何使用装饰器？当然，可以通过人工赋值：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="function"><span class="keyword">def</span> <span class="title">add_ints</span><span class="params">(a, b)</span></span>: </div><div class="line">...     <span class="keyword">return</span> a + b  </div><div class="line">...  </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; add_ints(<span class="number">3</span>, <span class="number">5</span>) </div><div class="line"><span class="number">8</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; cooler_add_ints = document_it(add_ints)  <span class="comment"># 人工对装饰器赋值   </span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; cooler_add_ints(<span class="number">3</span>, <span class="number">5</span>) </div><div class="line">Running <span class="symbol">function:</span> add_ints </div><div class="line">Postitional <span class="symbol">arguments:</span> （<span class="number">3</span>， <span class="number">5</span>）</div><div class="line">Keyword <span class="symbol">arguments:</span> &#123;&#125; </div><div class="line"><span class="symbol">Result:</span> <span class="number">8</span>  </div><div class="line"><span class="number">8</span></div></pre></div></div></figure>
+
+
+<p>作为对前面人工装饰器赋值的替代，可以直接在要装饰的函数前添加装饰器名字<code>@decorator_name</code>：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; @document_it </div><div class="line">... <span class="function"><span class="keyword">def</span> <span class="title">add_ints</span><span class="params">(a, b)</span></span>: </div><div class="line">...     <span class="keyword">return</span> a + b ... </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; add_ints(<span class="number">3</span>, <span class="number">5</span>) </div><div class="line">Start function add_ints </div><div class="line">Positional <span class="symbol">arguments:</span> (<span class="number">3</span>, <span class="number">5</span>) </div><div class="line">Keyword <span class="symbol">arguments:</span> &#123;&#125; </div><div class="line"><span class="symbol">Result:</span> <span class="number">8</span> </div><div class="line"><span class="number">8</span></div></pre></div></div></figure>
+
+<p>同样一个函数可以有多个装饰器。下面，我们写一个对结果求平方的装饰器<code>square_it()</code>：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">square_it</span><span class="params">(func)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">new_function</span><span class="params">(*args, **kwargs)</span>:</span> </div><div class="line"><span class="meta">... </span>        result = func(*args, **kwargs) </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> result * result </div><div class="line"><span class="meta">... </span>    <span class="keyword">return</span> new_function </div><div class="line">...</div></pre></div></div></figure>
+
+<p>靠近函数定义（<code>def</code>上面）的装饰器最先执行，然后依次执行上面的。任何顺序都会得到相同的最终结果。下面的例子中会看到中间步骤的变化：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; @document_it </div><div class="line">... @square_it </div><div class="line">... <span class="function"><span class="keyword">def</span> <span class="title">add_ints</span><span class="params">(a, b)</span></span>: </div><div class="line">...     <span class="keyword">return</span> a + b </div><div class="line">... </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; add_ints(<span class="number">3</span>, <span class="number">5</span>) </div><div class="line">Running <span class="symbol">function:</span> new_function </div><div class="line">Positional <span class="symbol">arguments:</span> (<span class="number">3</span>, <span class="number">5</span>) </div><div class="line">Keyword <span class="symbol">arguments:</span> &#123;&#125; </div><div class="line"><span class="symbol">Result:</span> <span class="number">64</span> </div><div class="line"><span class="number">64</span></div></pre></div></div></figure>
+
+<p>交换两个装饰器的顺序：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; @square_it </div><div class="line">... @document_it </div><div class="line">... <span class="function"><span class="keyword">def</span> <span class="title">add_ints</span><span class="params">(a, b)</span></span>: </div><div class="line">...     <span class="keyword">return</span> a + b </div><div class="line">... </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; add_ints(<span class="number">3</span>, <span class="number">5</span>) </div><div class="line">Running <span class="symbol">function:</span> add_ints </div><div class="line">Positional <span class="symbol">arguments:</span> (<span class="number">3</span>, <span class="number">5</span>) </div><div class="line">Keyword <span class="symbol">arguments:</span> &#123;&#125; </div><div class="line"><span class="symbol">Result:</span> <span class="number">8</span> </div><div class="line"><span class="number">64</span></div></pre></div></div></figure>
+
+<h3 id="命名空间和作用域"><a href="#命名空间和作用域" class="headerlink" title="命名空间和作用域"></a>命名空间和作用域</h3><p>一个名称在不同的使用情况下可能指代不同的事物。<code>Python</code>程序有各种各样的命名空间，它指的是在该程序段内一个特定的名称是独一无二的，它和其他同名的命名空间是无关的。</p>
+<p>每一个函数定义自己的命名空间。如果在主程序（<code>main</code>）中定义一个变量<code>x</code>，在另外一个函数中也定义 <code>x</code> 变量，两者指代的是不同的变量。但是，天下也没有完全绝对的事情，需要的话，可以通过多种方式获取其他命名空间的名称。</p>
+<p>每个程序的主要部分定义了全局命名空间。因此，在这个命名空间的变量是全局变量。</p>
+<p>你可以在一个函数内得到某个全局变量的值：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; animal = <span class="string">'fruitbat'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="function"><span class="keyword">def</span> <span class="title">print_global</span><span class="params">()</span></span>: </div><div class="line">...     print(<span class="string">'inside print_global:'</span>, animal) ... </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; print(<span class="string">'at the top level:'</span>, animal) </div><div class="line">at the top <span class="symbol">level:</span> fruitbat </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; print_global() </div><div class="line">inside <span class="symbol">print_global:</span> fruitbat</div></pre></div></div></figure>
+
+<p>但是，如果想在函数中得到一个全局变量的值并且改变它，会报错：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">change_and_print_global</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    print(<span class="string">'inside change_and_print_global:'</span>, animal) </div><div class="line"><span class="meta">... </span>    animal = <span class="string">'wombat'</span> </div><div class="line"><span class="meta">... </span>    print(<span class="string">'after the change:'</span>, animal) </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>change_and_print_global() </div><div class="line">Traceback (most recent call last):   File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;   File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">2</span>, <span class="keyword">in</span> change_and_report_it UnboundLocalError: local variable <span class="string">'animal'</span> referenced before assignment</div></pre></div></div></figure>
+
+<p>实际上，你改变的另外一个同样被命名为<code>animal</code> 的变量，只不过这个变量在函数内部：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="function"><span class="keyword">def</span> <span class="title">change_local</span><span class="params">()</span></span>: </div><div class="line">...     animal = <span class="string">'wombat'</span> </div><div class="line">...     print(<span class="string">'inside change_local:'</span>, animal, id(animal)) </div><div class="line">... </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; change_local() </div><div class="line">inside <span class="symbol">change_local:</span> wombat <span class="number">4330406160</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; animal </div><div class="line"><span class="string">'fruitbat'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; id(animal) </div><div class="line"><span class="number">4330390832</span></div></pre></div></div></figure>
+
+<p>这里发生了什么？在函数第一行将字符串<code>fruitbat</code> 赋值给全局变量<code>animal</code>。函数<code>change_ local()</code> 也有一个叫作<code>animal</code>的变量。不同的是，它在自己的局部命名空间。</p>
+<p>我们使用<code>Python</code>内嵌函数<code>id()</code>打印输出每个对象的唯一的 ID 值，证明在函数<code>change_ local()</code> 中的变量<code>animal</code>和主程序中的<code>animal</code>不是同一个。</p>
+<p>为了读取全局变量而不是函数中的局部变量，需要在变量前面显式地加关键字<code>global</code>）：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>animal = <span class="string">'fruitbat'</span> </div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">change_and_print_global</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="keyword">global</span> animal </div><div class="line"><span class="meta">... </span>    animal = <span class="string">'wombat'</span> </div><div class="line"><span class="meta">... </span>    print(<span class="string">'inside change_and_print_global:'</span>, animal) </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>animal </div><div class="line"><span class="string">'fruitbat'</span> </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>change_and_print_global() </div><div class="line">inside change_and_print_global: wombat </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>animal </div><div class="line"><span class="string">'wombat'</span></div></pre></div></div></figure>
+
+<p>如果在函数中不声明关键字<code>global</code>，<code>Python</code>会使用局部命名空间，同时变量也是局部的。函数执行后回到原来的命名空间。<code>Python</code>提供了两个获取命名空间内容的函数：</p>
+<ul>
+<li><code>locals()</code>返回一个局部命名空间内容的字典； </li>
+<li><code>globals()</code>返回一个全局命名空间内容的字典。<br>下面是它们的实例：<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; animal = <span class="string">'fruitbat'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="function"><span class="keyword">def</span> <span class="title">change_local</span><span class="params">()</span></span>: </div><div class="line">...     animal = <span class="string">'wombat'</span>   <span class="comment">#局部变量 </span></div><div class="line">...     print(<span class="string">'locals:'</span>,locals()) </div><div class="line">... </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; animal </div><div class="line"><span class="string">'fruitbat'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; change_local() </div><div class="line"><span class="symbol">locals:</span> &#123;<span class="string">'animal'</span><span class="symbol">:<span class="string">'wombat'</span></span>&#125; </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; print(<span class="string">'globals:'</span>, globals())  <span class="comment">#表示时格式稍微发生变化 </span></div><div class="line"><span class="symbol">globals:</span>&#123;<span class="string">'animal'</span>: <span class="string">'fruitbat'</span>, </div><div class="line"><span class="string">'__doc__'</span>: None, </div><div class="line"><span class="string">'change_local'</span>: &lt;function change_it at <span class="number">0x1006c0170</span>&gt;, </div><div class="line"><span class="string">'__package__'</span>: None, <span class="string">'__name__'</span>: <span class="string">'__main__'</span>, <span class="string">'__loader__'</span>: &lt;<span class="class"><span class="keyword">class</span> '<span class="title">_frozen_importlib</span>.<span class="title">BuiltinImporter</span>'&gt;, '<span class="title">__builtins__</span>': &lt;module '<span class="title">builtins</span>'&gt;&#125; </span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; animal </div><div class="line"><span class="string">'fruitbat'</span></div></pre></div></div></figure>
+
+</li>
+</ul>
+<p>函数<code>change_local()</code>的局部命名空间只含有局部变量<code>animal</code>。全局命名空间含有全局变量<code>animal</code> 以及其他一些东西。</p>
+<h4 id="名称中-和-的用法"><a href="#名称中-和-的用法" class="headerlink" title="名称中_和__的用法"></a>名称中_和__的用法</h4><p>以两个下划线<code>__</code>开头和结束的名称都是<code>Python</code>的保留用法。因此，在自定义的变量中不能使用它们。选择这种命名模式是考虑到开发者一般是不会选择它们作为自己的变量的。</p>
+<p>例如，一个函数的名称是系统变量<code>function.__name__</code>，它的文档字符串是function.__ doc__：</p>
+<figure class="highlight vhdl"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; def amazing(): </div><div class="line">...     ''<span class="symbol">'This</span> <span class="keyword">is</span> the amazing <span class="keyword">function</span>. </div><div class="line">...     Want <span class="keyword">to</span> see it again?''' </div><div class="line">...     print(<span class="symbol">'This</span> <span class="keyword">function</span> <span class="keyword">is</span> named:', amazing.__name__) </div><div class="line">...     print(<span class="symbol">'And</span> its docstring <span class="keyword">is</span>:', amazing.__doc__) </div><div class="line">... </div><div class="line">&gt;&gt;&gt; amazing() </div><div class="line">This <span class="keyword">function</span> <span class="keyword">is</span> named: amazing <span class="keyword">And</span> its docstring <span class="keyword">is</span>: This <span class="keyword">is</span> the amazing <span class="keyword">function</span>.     Want <span class="keyword">to</span> see it again?</div></pre></div></div></figure>
+
+<p>如同之前<code>globals</code>的输出结果所示，主程序被赋值特殊的名字<code>__main__</code>。</p>
+<h3 id="使用try和except处理错误"><a href="#使用try和except处理错误" class="headerlink" title="使用try和except处理错误"></a>使用try和except处理错误</h3><p>在一些编程语言中，错误是通过特殊的函数返回值指出的，而<code>Python</code>使用异常，它是一段只有错误发生时执行的代码。</p>
+<p>之前已经接触到一些有关错误的例子，例如读取列表或者元组的越界位置或者字典中不存在的键。所以，当你执行可能出错的代码时，需要适当的异常处理程序用于阻止潜在的错误发生。</p>
+<p>在异常可能发生的地方添加异常处理程序，对于用户明确错误是一种好方法。即使不会及时解决问题，至少会记录运行环境并且停止程序执行。如果发生在某些函数中的异常不能被立刻捕捉，它会持续，直到被某个调用函数的异常处理程序所捕捉。在你不能提供自己的异常捕获代码时，<code>Python</code>会输出错误消息和关于错误发生处的信息，然后终止程序，例如下面的代码段：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; short_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; position = <span class="number">5</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; short_list[position] </div><div class="line">Traceback (most recent call last)<span class="symbol">:</span></div><div class="line">File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt; <span class="title">IndexError</span>: <span class="title">list</span> <span class="title">index</span> <span class="title">out</span> <span class="title">of</span> <span class="title">range</span></span></div></pre></div></div></figure>
+
+<p>与其让错误随机产生，不如使用<code>try</code>和<code>except</code>提供错误处理程序：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>short_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>position = <span class="number">5</span> </div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">try</span>: </div><div class="line"><span class="meta">... </span>    short_list[position] </div><div class="line"><span class="meta">... </span><span class="keyword">except</span>: </div><div class="line"><span class="meta">... </span>    print(<span class="string">'Need a position between 0 and'</span>, len(short_list)<span class="number">-1</span>, <span class="string">' but got'</span>, </div><div class="line"><span class="meta">... </span>           position) </div><div class="line"><span class="meta">... </span></div><div class="line">Need a position between <span class="number">0</span> <span class="keyword">and</span> <span class="number">2</span> but got <span class="number">5</span></div></pre></div></div></figure>
+
+<p>在<code>try</code>中的代码块会被执行。如果存在错误，就会抛出异常，然后执行<code>except</code>中的代码；否则，跳过<code>except</code>块代码。像前面那样指定一个无参数的 <code>except</code>适用于任何异常类型。如果可能发生多种类型的异常，最好是分开进行异常处理。当然，没人强迫你这么做，你可以使一个<code>except</code>去捕捉所 有的异常，但是这样的处理方式会比较泛化（类似于直接输出发生了一个错误）。当然也可以使用任意数量的异常处理程序。</p>
+<p>有时需要除了异常类型以外其他的异常细节，可以使用下面的格式获取整个异常对象：<code>except exceptiontype as name</code></p>
+<p>下面的例子首先会寻找是否有<code>IndexError</code>，因为它是由索引一个序列的非法位置抛出的异常类型。将一个<code>IndexError</code>异常赋给变量<code>err</code>，把其他的异常赋给变量<code>other</code>。示例中会输出所有存储在<code>other</code>中的该对象的异常。</p>
+<figure class="highlight vim"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; short_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] </div><div class="line">&gt;&gt;&gt; <span class="keyword">while</span> True: </div><div class="line">...     value = <span class="built_in">input</span>(<span class="string">'Position [q to quit]? '</span>) </div><div class="line">...     <span class="keyword">if</span> value == <span class="string">'q'</span>: </div><div class="line">...         <span class="keyword">break</span> </div><div class="line">...     <span class="keyword">try</span>: </div><div class="line">...         position = <span class="keyword">int</span>(value) </div><div class="line">...         <span class="keyword">print</span>(short_list[position]) </div><div class="line">...     except IndexError <span class="keyword">as</span> err: </div><div class="line">...         <span class="keyword">print</span>(<span class="string">'Bad index:'</span>, position) </div><div class="line">...     except Exception <span class="keyword">as</span> other: </div><div class="line">...         <span class="keyword">print</span>(<span class="string">'Something else broke:'</span>, other) </div><div class="line">... Position [q <span class="keyword">to</span> <span class="keyword">quit</span>]? <span class="number">1</span> </div><div class="line"><span class="number">2</span> </div><div class="line">Position [q <span class="keyword">to</span> <span class="keyword">quit</span>]? <span class="number">0</span> </div><div class="line"><span class="number">1</span> </div><div class="line">Position [q <span class="keyword">to</span> <span class="keyword">quit</span>]? <span class="number">2</span> </div><div class="line"><span class="number">3</span> </div><div class="line">Position [q <span class="keyword">to</span> <span class="keyword">quit</span>]? <span class="number">3</span> </div><div class="line">Bad <span class="built_in">index</span>: <span class="number">3</span> </div><div class="line">Position [q <span class="keyword">to</span> <span class="keyword">quit</span>]? <span class="number">2</span> </div><div class="line"><span class="number">3</span> </div><div class="line">Position [q <span class="keyword">to</span> <span class="keyword">quit</span>]? two</div><div class="line">Something <span class="keyword">else</span> broke: invalid literal <span class="keyword">for</span> <span class="keyword">int</span>() with base <span class="number">10</span>: <span class="string">'two'</span> </div><div class="line">Position [q <span class="keyword">to</span> <span class="keyword">quit</span>]? q</div></pre></div></div></figure>
+
+<p>输入 3 会抛出异常<code>IndexError</code>；输入<code>two</code>会使函数<code>int()</code>抛出异常，被第二个<code>except</code>所捕获。</p>
+<h3 id="编写自己的异常"><a href="#编写自己的异常" class="headerlink" title="编写自己的异常"></a>编写自己的异常</h3><p>前面一节讨论了异常处理，但是其中讲到的所有异常（例如<code>IndexError</code>）都是在<code>Python</code>或者它的标准库中提前定义好的。根据自己的目的可以使用任意的异常类型，同时也可以自己定义异常类型,用来处理程序中可能会出现的特殊情况。</p>
+<p>这里需要定义一个类的新对象。一个异常是一个类，即类<code>Exception</code>的一个子类。现在编写异常<code>UppercaseException</code>，在一个字符串中碰到大写字母会被抛出。</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">UppercaseException</span><span class="params">(Exception)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="keyword">pass</span> </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>words = [<span class="string">'eeenie'</span>, <span class="string">'meenie'</span>, <span class="string">'miny'</span>, <span class="string">'MO'</span>] </div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> word <span class="keyword">in</span> words: </div><div class="line"><span class="meta">... </span>    <span class="keyword">if</span> word.isupper(): </div><div class="line"><span class="meta">... </span>        <span class="keyword">raise</span> UppercaseException(word) ... </div><div class="line">Traceback (most recent call last):  </div><div class="line">File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">3</span>, <span class="keyword">in</span> &lt;module&gt; __main__.UppercaseException: MO</div></pre></div></div></figure>
+
+<p>即使没有定义<code>UppercaseException</code>的行为（注意到只使用<code>pass</code>），也可以通过继承其父类<code>Exception</code>在抛出异常时输出错误提示。</p>
+<p>你当然能够访问异常对象本身，并且输出它：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">try</span>: </div><div class="line"><span class="meta">... </span>    <span class="keyword">raise</span> OopsException(<span class="string">'panic'</span>) </div><div class="line"><span class="meta">... </span><span class="keyword">except</span> OopsException <span class="keyword">as</span> exc: </div><div class="line"><span class="meta">... </span>    print(exc) </div><div class="line"><span class="meta">... </span></div><div class="line">panic</div></pre></div></div></figure>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cyyuan</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://yuanyuan-cai.github.io/2019/08/06/Python学习：Python基础（下）/" title="Python学习：Python基础（下）">https://yuanyuan-cai.github.io/2019/08/06/Python学习：Python基础（下）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/计算机：语言/" rel="tag"># 计算机：语言</a>
+          
+        </div>
+      
+
+      
+        
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/05/工作：天目云网站采集点增删改操作后的数据复查/" rel="next" title="工作：天目云网站采集点增删改操作后的数据复查">
+                工作：天目云网站采集点增删改操作后的数据复查 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTA0My8yMTU2MQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+              站点概览
+            </li>
+          </ul>
+        
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image" src="/images/head_img.jpg" alt="cyyuan">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">cyyuan</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/YuanYuan-Cai" title="GitHub &rarr; https://github.com/YuanYuan-Cai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:iscyy@qq.com" title="E-Mail &rarr; mailto:iscyy@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+    
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#注释与-链接"><span class="nav-text">#注释与\链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python的条件语句"><span class="nav-text">Python的条件语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-循环语句"><span class="nav-text">Python 循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#while循环"><span class="nav-text">while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#跳出循环"><span class="nav-text">跳出循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环使用-else-语句"><span class="nav-text">循环使用 else 语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for迭代"><span class="nav-text">for迭代</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#跳出循环-1"><span class="nav-text">跳出循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环使用-else-语句-1"><span class="nav-text">循环使用 else 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用zip-并行迭代"><span class="nav-text">使用zip()并行迭代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用range-生成自然数序列"><span class="nav-text">使用range()生成自然数序列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推导式"><span class="nav-text">推导式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#列表推导式"><span class="nav-text">列表推导式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字典推导式"><span class="nav-text">字典推导式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合推导式"><span class="nav-text">集合推导式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器推导式"><span class="nav-text">生成器推导式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义一个函数"><span class="nav-text">定义一个函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数传递"><span class="nav-text">参数传递</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可更改-mutable-与不可更改-immutable-对象"><span class="nav-text">可更改(mutable)与不可更改(immutable)对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#必需参数"><span class="nav-text">必需参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键字参数"><span class="nav-text">关键字参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#默认参数"><span class="nav-text">默认参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不定长参数"><span class="nav-text">不定长参数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档字符串"><span class="nav-text">文档字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部函数"><span class="nav-text">内部函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包"><span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名函数：lambda-函数"><span class="nav-text">匿名函数：lambda()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成器"><span class="nav-text">生成器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#装饰器"><span class="nav-text">装饰器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名空间和作用域"><span class="nav-text">命名空间和作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#名称中-和-的用法"><span class="nav-text">名称中_和__的用法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用try和except处理错误"><span class="nav-text">使用try和except处理错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写自己的异常"><span class="nav-text">编写自己的异常</span></a></li></ol></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
+      
+
+
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cyyuan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">57k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">1:45</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+      网站总访客数
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+      总阅读数
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+    
+    
+  
+  <script color="148,0,211" opacity="0.5" zindex="-1" count="150" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+
+<script>
+  window.livereOptions = {
+    refer: '2019/08/06/Python学习：Python基础（下）/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 19533,
+      el: 'wpac-rating',
+      color: 'fadb14'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+  <script src="//code.tidio.co/qtw3rnxkbkbimidmyux9onapnf9udwfi.js"></script>
+
+
+
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>	
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+  <script>
+    function timer() {
+      var ages = moment.preciseDiff(moment(),moment(20190701,"YYYYMMDD"));
+      ages = ages.replace(/years?/, "年");
+      ages = ages.replace(/months?/, "月");
+      ages = ages.replace(/days?/, "天");
+      ages = ages.replace(/hours?/, "小时");
+      ages = ages.replace(/minutes?/, "分");
+      ages = ages.replace(/seconds?/, "秒");
+      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+      div.innerHTML = `我已在此等候你 ${ages}`;
+    }
+    var div = document.createElement("div");
+    //插入到copyright之后
+    var copyright = document.querySelector(".copyright");
+    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+    timer();
+    setInterval("timer()",1000)
+  </script>
+
+
+
+
+  <script>
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        document.title = '(つェ⊂)我藏好了哦~' + OriginTitile;
+        clearTimeout(titleTime);
+      } else {
+        document.title = '(*´∇｀*) 被你发现啦~' + OriginTitile;
+        titleTime = setTimeout(function() {
+          document.title = OriginTitile;
+        }, 2000);
+      }
+    });
+  </script>
+
+
+
+
+  <script async src="//code.tidio.co/qtw3rnxkbkbimidmyux9onapnf9udwfi.js"></script>
+
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>
