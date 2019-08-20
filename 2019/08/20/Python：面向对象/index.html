@@ -1,0 +1,1853 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="什么是对象Python 里的所有数据都是以对象形式存在的，无论是简单的数字类型还是复杂的代码模块。然而，Python 特殊的语法形式巧妙地将实现对象机制的大量细节隐藏了起来。输入num=7就可以创建一个值为7的整数对象，并且将这个对象赋值给变量num。 对象既包含数据（变量，更习惯称之为特性，attribute），也包含代码（函数，也称为方法）。它是某一类具体事物的特殊实例。例如，整数7就是一个包">
+<meta name="keywords" content="Python,计算机：语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python：面向对象">
+<meta property="og:url" content="https://yuanyuan-cai.github.io/2019/08/20/Python：面向对象/index.html">
+<meta property="og:site_name" content="cyyLoveStudy">
+<meta property="og:description" content="什么是对象Python 里的所有数据都是以对象形式存在的，无论是简单的数字类型还是复杂的代码模块。然而，Python 特殊的语法形式巧妙地将实现对象机制的大量细节隐藏了起来。输入num=7就可以创建一个值为7的整数对象，并且将这个对象赋值给变量num。 对象既包含数据（变量，更习惯称之为特性，attribute），也包含代码（函数，也称为方法）。它是某一类具体事物的特殊实例。例如，整数7就是一个包">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-20T07:07:46.017Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python：面向对象">
+<meta name="twitter:description" content="什么是对象Python 里的所有数据都是以对象形式存在的，无论是简单的数字类型还是复杂的代码模块。然而，Python 特殊的语法形式巧妙地将实现对象机制的大量细节隐藏了起来。输入num=7就可以创建一个值为7的整数对象，并且将这个对象赋值给变量num。 对象既包含数据（变量，更习惯称之为特性，attribute），也包含代码（函数，也称为方法）。它是某一类具体事物的特殊实例。例如，整数7就是一个包">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://yuanyuan-cai.github.io/2019/08/20/Python：面向对象/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python：面向对象 | cyyLoveStudy</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cyyLoveStudy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">爱生活，爱自己</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>文章</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-plan">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/plan/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>计划</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yuanyuan-cai.github.io/2019/08/20/Python：面向对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cyyuan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head_img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cyyLoveStudy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python：面向对象
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-08-20 15:07:59" itemprop="dateCreated datePublished" datetime="2019-08-20T15:07:59+08:00">2019-08-20</time>
+            </span>
+          
+
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">21k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">39 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h1><p>Python 里的所有数据都是以对象形式存在的，无论是简单的数字类型还是复杂的代码模块。然而，Python 特殊的语法形式巧妙地将实现对象机制的大量细节隐藏了起来。输入<code>num=7</code>就可以创建一个值为<code>7</code>的整数对象，并且将这个对象赋值给变量<code>num</code>。</p>
+<p>对象既包含数据（变量，更习惯称之为特性，attribute），也包含代码（函数，也称为方法）。它是某一类具体事物的特殊实例。例如，整数7就是一个包含了加法、乘法之类方法的对象。整数8则是另一个对象。这意味着在Python里，7和8都属于一个公共的类，我们称之为整数类。</p>
+<p>当你想要创建一个别人从来没有创建过的新对象时，首先必须定义一个类，用以指明该类型的对象所包含的内容（特性和方法）。</p>
+<p>可以把对象想象成名词，那么方法就是动词。对象代表着一个独立的事物，它的方法则定义了它是如何与其他事物相互作用的。</p>
+<p>与模块不同，你可以同时创建许多同类的对象，它们的特性值可能各不相同。对象就像是包含了代码的超级数据结构。 </p>
+<h1 id="使用class定义类"><a href="#使用class定义类" class="headerlink" title="使用class定义类"></a>使用class定义类</h1><p>对象如同塑料盒子。类（class）则像是制作盒子用的模具。例如，Python 的内置类<code>String</code>可以创建像 ‘cat’ 和 ‘duck’这样的字符串对象。Python中还有许多用来创建其他标准数据类型的类，包括列表、字典等。如果想要在Python中创建属于自己的对象，首先你必须用关键词<code>class</code>来定义一个类。先来看一个简单的例子。</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="keyword">pass</span></div></pre></div></div></figure>
+
+<p>同函数一样，用<code>pass</code>表示这个类是一个空类。上面这种定义类的方法已经是最简形式，无法再省略。你可以通过类名来创建对象，同调用函数一样：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; someone = Person()</div></pre></div></div></figure>
+
+<p>在这个例子中，<code>Person()</code>创建了一个<code>Person</code>类的对象，并给它赋值<code>someone</code>这个名字。但是，由于我们的<code>Person</code>类是空的，所以由它创建的对象<code>someone</code>实际上什么也做不了。<br>接下来将 Python 中特殊的对象初始化方法 <code>__ init__</code> 放入其中：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        <span class="keyword">pass</span></div></pre></div></div></figure>
+
+<p><code>__ init__()</code>是Python中一个特殊的函数名，用于根据类的定义创建实例对象。<code>self</code>参数指向了这个正在被创建的对象本身。</p>
+<p>当你在类声明里定义<code>__init__()</code>方法时，第一个参数必须为<code>self</code>。尽管<code>self</code>并不是一个 Python 保留字，但它很常用。没有人（包括你自己）在阅读你的代码时需要猜测使用<code>self</code>的意图。</p>
+<p>接着在初始化方法中添加<code>name</code>参数：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="class"><span class="keyword">class</span> <span class="title">Person</span>(): </span></div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name)</span></span>: </div><div class="line">...         <span class="keyword">self</span>.name = name </div><div class="line">... <span class="meta">&gt;&gt;&gt;</span></div></pre></div></div></figure>
+
+<p>现在，用<code>Person</code>类创建一个对象，为<code>name</code>特性传递一个字符串参数：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; hunter = Person(<span class="string">'Elmer Fudd'</span>)</div></pre></div></div></figure>
+
+<p>上面这短短的一行代码实际做了以下工作：</p>
+<ul>
+<li>查看<code>Person</code>类的定义；</li>
+<li>在内存中实例化（创建）一个新的对象； </li>
+<li>调用对象的<code>__init__</code>方法，将这个新创建的对象作为<code>self</code>传入，并将另一个参数（’Elmer- Fudd’）作为<code>name</code>传入； </li>
+<li>将<code>name</code>的值存入对象； </li>
+<li>返回这个新的对象； </li>
+<li>将名字 hunter 与这个对象关联。</li>
+</ul>
+<p>这个新对象与任何其他的 Python 对象一样。你可以把它当作列表、元组、字典或集合中的 元素，也可以把它当作参数传递给函数，或者把它做为函数的返回结果。</p>
+<p>我们刚刚传入的<code>name</code>参数此时又在哪儿呢？它作为对象的特性存储在了对象里。可以直接对它进行读写操作：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; print(<span class="string">'The mighty hunter: '</span>, hunter.name) The mighty <span class="symbol">hunter:</span> Elmer Fudd</div></pre></div></div></figure>
+
+<p>记住，在<code>Person</code>类定义的内部，你可以直接通过 <code>self.name</code>访问<code>name</code>特性。而当创建了一个实际的对象后，例如这里的<code>hunter</code>，需要通过<code>hunter.name</code>来访问它。</p>
+<p>在类的定义中，<code>__init__</code>并不是必需的。只有当需要区分由该类创建的不同对象时，才需要指定<code>__init__</code> 方法。</p>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>继承：从已有类中衍生出新的类，添加或修改部分功能。这是代码复用的一个绝佳的例子。使用继承得到的新类会自动获得旧类中的所有方法，而不需要进行任何复制。</p>
+<p>你只需要在新类里面定义自己额外需要的方法，或者按照需求对继承的方法进行修改即可。修改得到的新方法会覆盖原有的方法。我们习惯将原始的类称为父类、超类或基类，将新的类称作孩子类、子类或衍生类。</p>
+<p>现在，我们来试试继承。首先，定义一个空类<code>Car</code>。然后，定义一个<code>Car</code>的子类<code>Yugo</code>。定义子类使用的也是<code>class</code>关键词，不过需要把父类的名字放在子类名字后面的括号里 （<code>class Yugo(Car)</code>）：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Car</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="keyword">pass</span> </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Yugo</span><span class="params">(Car)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="keyword">pass</span> </div><div class="line">...</div></pre></div></div></figure>
+
+<p>接着，为每个类创建一个实例对象：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; give_me_a_car = Car() </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; give_me_a_yugo = Yugo()</div></pre></div></div></figure>
+
+<p>子类是父类的一种特殊情况，它属于父类。在面向对象的术语里，我们经常称<code>Yugo</code>是一个（is-a）<code>Car</code>。对象<code>give_me_a_yugo</code>是<code>Yugo</code>类的一个实例，但它同时继承了<code>Car</code>能做到的所有事情。</p>
+<p>更新一下类的定义，让它们发挥点儿作用：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Car</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">exclaim</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">"I'm a Car!"</span>) </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Yugo</span><span class="params">(Car)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="keyword">pass</span> </div><div class="line">...</div></pre></div></div></figure>
+
+<p>最后，为每一个类各创建一个对象，并调用刚刚声明的<code>exclaim</code>方法：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; give_me_a_car = Car() </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; give_me_a_yugo = Yugo() </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; give_me_a_car.exclaim() </div><div class="line">I<span class="string">'m a Car! </span></div><div class="line"><span class="string">&gt;&gt;&gt; give_me_a_yugo.exclaim() </span></div><div class="line"><span class="string">I'</span>m a Car!</div></pre></div></div></figure>
+
+
+<p>我们不需要进行任何特殊的操作，<code>Yugo</code>就自动从 <code>Car</code>那里继承了<code>exclaim()</code>方法。但事实上，我们并不希望<code>Yugo</code>在<code>exlaim()</code>方法里宣称它是一个 <code>Car</code>，这可能会造成身份危机 （无法区分 Car 和 Yugo）。让我们来看看怎么解决这个问题。</p>
+<h1 id="覆盖方法"><a href="#覆盖方法" class="headerlink" title="覆盖方法"></a>覆盖方法</h1><p>就像上面的例子展示的一样，新创建的子类会自动继承父类的所有信息。接下来将看到子类如何替代——更习惯说覆盖（override）——父类的方法。<code>Yugo</code>和 <code>Car</code>一定存在着某些区别，不然的话，创建它又有什么意义？试着改写一下<code>Yugo</code>中<code>exclaim()</code>方法的功能：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Car</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">exclaim</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">"I'm a Car!"</span>) </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Yugo</span><span class="params">(Car)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">exclaim</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">"I'm a Yugo! Much like a Car, but more Yugo-ish."</span>) </div><div class="line">...</div></pre></div></div></figure>
+
+<p>现在，为每个类创建一个对象：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; give_me_a_car = Car() </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; give_me_a_yugo = Yugo()</div></pre></div></div></figure>
+
+<p>看看它们各自会宣称什么？</p>
+<figure class="highlight vbnet"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; give_me_a_car.exclaim() </div><div class="line">I<span class="comment">'m a Car! </span></div><div class="line">&gt;&gt;&gt; give_me_a_yugo.exclaim() </div><div class="line">I<span class="comment">'m a Yugo! Much like a Car, but more Yugo-ish.</span></div></pre></div></div></figure>
+
+
+<p>在上面的例子中，我们覆盖了父类的<code>exclaim()</code> 方法。在子类中，可以覆盖任何父类的方法，包括 <code>__init__()</code>。下面的例子使用了之前创建过的 <code>Person</code>类。我们来创建两个子类，分别代表医生（MDPerson）和律师（JDPerson）：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.name = name </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">MDPerson</span><span class="params">(Person)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.name = <span class="string">"Doctor "</span> + name </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">JDPerson</span><span class="params">(Person)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.name = name + <span class="string">", Esquire"</span> </div><div class="line">...</div></pre></div></div></figure>
+
+<p>在上面的例子中，子类的初始化方法<code>__init__()</code> 接收的参数和父类<code>Person</code>一样，但存储到对象内部 <code>name</code>特性的值却不尽相同：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; person = Person(<span class="string">'Fudd'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; doctor = MDPerson(<span class="string">'Fudd'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; lawyer = JDPerson(<span class="string">'Fudd'</span>)</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; print(person.name) </div><div class="line">Fudd </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; print(doctor.name) </div><div class="line">Doctor Fudd </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; print(lawyer.name) </div><div class="line">Fudd, Esquire</div></pre></div></div></figure>
+
+
+<h1 id="添加新方法"><a href="#添加新方法" class="headerlink" title="添加新方法"></a>添加新方法</h1><p>子类还可以添加父类中没有的方法。回到<code>Car</code>类和 <code>Yugo</code>类，我们给<code>Yugo</code>类添加一个新的方法<code>need_a_push()</code>：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Car</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">exclaim</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">"I'm a Car!"</span>) </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Yugo</span><span class="params">(Car)</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">exclaim</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">"I'm a Yugo! Much like a Car, but more Yugo-ish."</span>) </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">need_a_push</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">"A little help here?"</span>) </div><div class="line">...</div></pre></div></div></figure>
+
+<p>接着，创建一个<code>Car</code>和一个<code>Yugo</code>对象：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; give_me_a_car = Car() </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; give_me_a_yugo = Yugo()</div></pre></div></div></figure>
+
+<p><code>Yugo</code>类的对象可以响应<code>need_a_push()</code>方法：</p>
+<figure class="highlight autohotkey"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; give_me_<span class="built_in">a_yugo</span>.need_<span class="built_in">a_push</span>() </div><div class="line"><span class="literal">A</span> little help here?</div></pre></div></div></figure>
+
+
+<p>但比它广义的<code>Car</code>无法响应该方法：</p>
+<figure class="highlight vim"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; give_me_a_car.need_a_push() </div><div class="line">Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):   </div><div class="line"> File <span class="string">"&lt;stdin&gt;"</span>, <span class="built_in">line</span> <span class="number">1</span>, in <span class="symbol">&lt;module&gt;</span> AttributeError: <span class="string">'Car'</span> object <span class="built_in">has</span> <span class="keyword">no</span> attribute <span class="string">'need_a_push'</span></div></pre></div></div></figure>
+
+<p>至此，<code>Yugo</code>终于可以做一些<code>Car</code>做不到的事情了。它的与众不同的特征开始体现了出来。</p>
+<h1 id="使用super从父类得到帮助"><a href="#使用super从父类得到帮助" class="headerlink" title="使用super从父类得到帮助"></a>使用super从父类得到帮助</h1><p>我们已经知道如何在子类中覆盖父类的方法，但如果想要调用父类的方法怎么办？<br>使用<code>super()</code>。下面的例子将定义一个新的类<code>EmailPerson</code>，用于表示有电子邮箱的<code>Person</code>。首先，来定义熟悉的<code>Person</code>类：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="class"><span class="keyword">class</span> <span class="title">Person</span>(): </span></div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name)</span></span>: </div><div class="line">...         <span class="keyword">self</span>.name = name </div><div class="line">...</div></pre></div></div></figure>
+
+<p>下面是子类的定义。注意，子类的初始化方法 <code>__init__()</code>中添加了一个额外的<code>email</code>参数：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="class"><span class="keyword">class</span> <span class="title">EmailPerson</span>(<span class="title">Person</span>): </span></div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name, email)</span></span>: </div><div class="line">...         <span class="keyword">super</span>().__init_<span class="number">_</span>(name) </div><div class="line">...         <span class="keyword">self</span>.email = email</div></pre></div></div></figure>
+
+<p>在子类中定义<code>__init__()</code>方法时，父类的<code>__init__()</code>方法会被覆盖。因此，在子类中，父类的初始化方法并不会被自动调用，我们必须显式调用它。以上代码实际上做了这样几件事情。</p>
+<ul>
+<li>通过<code>super()</code>方法获取了父类<code>Person</code>的定义。 - 子类的 <code>__init__()</code>调用了<code>Person.__init__()</code> 方法。它会自动将<code>self</code>参数传递给父类。因此，你只需传入其余参数即可。在上面的例子中，<code>Person()</code>能接受的其余参数指的是<code>name</code>。 </li>
+<li><code>self.email=email</code>这行新的代码才真正起到了将<code>EmailPerson</code>与<code>Person</code>区分开的作用。</li>
+</ul>
+<p>接下来，创建一个<code>EmailPerson</code>类的对象：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; bob = EmailPerson(<span class="string">'Bob Frapples'</span>, <span class="string">'bob@frapples.com'</span>)</div></pre></div></div></figure>
+
+<p>我们既可以访问<code>name</code>特性，也可以访问<code>email</code>特性：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; bob.name </div><div class="line"><span class="string">'Bob Frapples'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; bob.email </div><div class="line"><span class="string">'bob@frapples.com'</span></div></pre></div></div></figure>
+
+<p>为什么不像下面这样定义<code>EmailPerson</code>类呢？</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="class"><span class="keyword">class</span> <span class="title">EmailPerson</span>(<span class="title">Person</span>): </span></div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name, email)</span></span>: </div><div class="line">...         <span class="keyword">self</span>.name = name </div><div class="line">...         <span class="keyword">self</span>.email = email</div></pre></div></div></figure>
+
+<p>确实可以这么做，但这有悖我们使用继承的初衷。我们应该使用<code>super()</code>来让<code>Person</code>完成它应该做的事情，就像任何一个单纯的<code>Person</code>对象一样。除此之外，不这么写还有另一个好处：如果<code>Person</code>类的定义在未来发生改变，使用<code>super()</code>可以保证这些改变会自动反映到<code>EmailPerson</code>类上，而不需要手动修改。</p>
+<p>子类可以按照自己的方式处理问题，但如果仍需要借助父类的帮助，使用<code>super()</code>是最佳的选择（就像现实生活中孩子与父母的关系一样）。</p>
+<h1 id="self的自辩"><a href="#self的自辩" class="headerlink" title="self的自辩"></a>self的自辩</h1><p>Python 中经常被争议的一点就是必须把<code>self</code>设置为实例方法（前面例子中你见到的所有方法都是实例方法）的第一个参数。Python使用<code>self</code>参数来找到正确的对象所包含的特性和方法。通过下面的例子，我会告诉你调用对象方法背后Python实际做的工作。</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; car = Car() </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; car.exclaim() </div><div class="line">I<span class="string">'m a Car!</span></div></pre></div></div></figure>
+
+<p>Python 在背后做了以下两件事情：</p>
+<ul>
+<li>查找<code>car</code>对象所属的类（<code>Car</code>）； </li>
+<li>把<code>car</code>对象作为<code>self</code>参数传给<code>Car</code>类所包含的 <code>exclaim()</code>方法。</li>
+</ul>
+<p>了解调用机制后，为了好玩，我们甚至可以像下面这样进行调用，这与普通的调用语法 （<code>car.exclaim()</code>）效果完全一致：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; Car.exclaim(car) </div><div class="line">I<span class="string">'m a Car!</span></div></pre></div></div></figure>
+
+<p>当然，我们没有理由使用这种臃肿的语法。</p>
+<h1 id="使用属性对特性进行访问和设置"><a href="#使用属性对特性进行访问和设置" class="headerlink" title="使用属性对特性进行访问和设置"></a>使用属性对特性进行访问和设置</h1><p>有一些面向对象的语言支持私有特性。这些特性无法从对象外部直接访问，我们需要编写<code>getter</code>和 <code>setter</code>方法对这些私有特性进行读写操作。</p>
+<p>Python 不需要<code>getter</code>和<code>setter</code>方法，因为 Python 里所有特性都是公开的，使用时全凭自觉。<br>如果你不放心直接访问对象的特性，可以为对象编写 <code>setter</code>和<code>getter</code>方法。但更具Python风格的解决方案是使用属性（property）。</p>
+<p>下面的例子中，首先定义一个<code>Duck</code>类，它仅包含一个<code>hidden_name</code>特性。（下一节会告诉你命名私有特性的一种更好的方式。）我们不希望别人能够直接访问这个特性，因此需要 定义两个方法：<code>getter</code> 方法（<code>get_name()</code>）和<code>setter</code>方法（<code>set_name()</code>）。我们在每个方法中都添加一个<code>print()</code>函数，这样就能方便地知道它们何时被调用。最后，把这些方法设置为<code>name</code>属性：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Duck</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_name)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.hidden_name = input_name </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">'inside the getter'</span>) </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> self.hidden_name </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">set_name</span><span class="params">(self, input_name)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">'inside the setter'</span>) </div><div class="line"><span class="meta">... </span>        self.hidden_name = input_name </div><div class="line"><span class="meta">... </span>    name = property(get_name, set_name)</div></pre></div></div></figure>
+
+<p>这两个新方法在最后一行之前都与普通的<code>getter</code>和 <code>setter</code>方法没有任何区别，而最后一行则把这两个方法定义为了<code>name</code>属性。<code>property()</code>的第一个参数是<code>getter</code>方法，第二个参数是<code>setter</code>方法。现在，当你尝试访问<code>Duck</code>类对象的<code>name</code>特性时，<code>get_name()</code>会被自动 调用：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl = Duck(<span class="string">'Howard'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name </div><div class="line">inside the getter </div><div class="line"><span class="string">'Howard'</span></div></pre></div></div></figure>
+
+<p>当然，也可以显式调用<code>get_name()</code>方法，它就像普通的<code>getter</code>方法一样：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.get_name() </div><div class="line">inside the getter </div><div class="line"><span class="string">'Howard'</span></div></pre></div></div></figure>
+
+<p>当对<code>name</code>特性执行赋值操作时，<code>set_name()</code> 方法会被调用：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name = <span class="string">'Daffy'</span> </div><div class="line">inside the setter </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name </div><div class="line">inside the getter </div><div class="line"><span class="string">'Daffy'</span></div></pre></div></div></figure>
+
+<p>也可以显式调用<code>set_name()</code>方法：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.set_name(<span class="string">'Daffy'</span>) </div><div class="line">inside the setter </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name </div><div class="line">inside the getter </div><div class="line"><span class="string">'Daffy'</span></div></pre></div></div></figure>
+
+
+<p>另一种定义属性的方式是使用修饰符（decorator）。下一个例子会定义两个不同的方法，它们都叫 <code>name()</code>，但包含不同的修饰符：</p>
+<ul>
+<li><code>@property</code>，用于指示<code>getter</code>方法； </li>
+<li><code>@name.setter</code>，用于指示<code>setter</code>方法。</li>
+</ul>
+<p>实际代码如下所示：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Duck</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_name)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.hidden_name = input_name </div><div class="line"><span class="meta">... </span>    @property </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">'inside the getter'</span>) </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> self.hidden_name </div><div class="line"><span class="meta">... </span>    @name.setter </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self, input_name)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">'inside the setter'</span>) </div><div class="line"><span class="meta">... </span>        self.hidden_name = input_name</div></pre></div></div></figure>
+
+
+<p>你仍然可以像之前访问特性一样访问<code>name</code>，但这里没有了显式的<code>get_name()</code>和<code>set_name()</code>方法：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl = Duck(<span class="string">'Howard'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name </div><div class="line">inside the getter </div><div class="line"><span class="string">'Howard'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name = <span class="string">'Donald'</span> </div><div class="line">inside the setter </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name </div><div class="line">inside the getter </div><div class="line"><span class="string">'Donald'</span></div></pre></div></div></figure>
+
+<div class="note info">
+            <p>实际上，如果有人能猜到我们在类的内部用的特性名是<code>hidden_name</code>，他仍 然可以直接通过 <code>fowl.hidden_name</code>进行读写操作。</p>
+          </div>
+
+<p>在前面几个例子中，我们都使用<code>name</code>属性指向类中存储的某一特性（在我们的例子中是<code>hidden_name</code>）。除此之外，属性还可以指向一个计算结果值。我们来定义一个<code>Circle</code>类，它包含<code>radius</code>特性以及一个计算属性<code>diameter</code>：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="class"><span class="keyword">class</span> <span class="title">Circle</span>():</span></div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, radius)</span></span>: </div><div class="line">...         <span class="keyword">self</span>.radius = radius </div><div class="line">...     @property </div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">diameter</span><span class="params">(<span class="keyword">self</span>)</span></span>: </div><div class="line">...         <span class="keyword">return</span> <span class="number">2</span> * <span class="keyword">self</span>.radius </div><div class="line">...</div></pre></div></div></figure>
+
+<p>创建一个<code>Circle</code>对象，并给<code>radius</code>赋予一个初值：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; c = Circle(<span class="number">5</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; c.radius </div><div class="line"><span class="number">5</span></div></pre></div></div></figure>
+
+<p>可以像访问特性（例如<code>radius</code>）一样访问属性 <code>diameter</code>：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; c.diameter </div><div class="line"><span class="number">10</span></div></pre></div></div></figure>
+
+<p>真正有趣的还在后面。我们可以随时改变<code>radius</code> 特性的值，计算属性<code>diameter</code>会自动根据新的值更新自己：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; c.radius = <span class="number">7</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; c.diameter </div><div class="line"><span class="number">14</span></div></pre></div></div></figure>
+
+<p>如果你没有指定某一特性的<code>setter</code>属性（<code>@diameter.setter</code>），那么将无法从类的外部对它的值进行设置。这对于那些只读的特性非常有用：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; c.diameter = <span class="number">20</span> </div><div class="line">Traceback (most recent call last)<span class="symbol">:</span></div><div class="line">File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt; <span class="title">AttributeError</span>: <span class="title">can</span>'<span class="title">t</span> <span class="title">set</span> <span class="title">attribute</span></span></div></pre></div></div></figure>
+
+<p>与直接访问特性相比，使用<code>property</code>还有一个巨大的优势：如果你改变了某个特性的定义，只需要在类定义里修改相关代码即可，不需要在每一处调用修改。</p>
+<h1 id="使用名称重整保护私有特性"><a href="#使用名称重整保护私有特性" class="headerlink" title="使用名称重整保护私有特性"></a>使用名称重整保护私有特性</h1><p>前面的<code>Duck</code>例子中，为了隐藏内部特性，我们曾将其命名为<code>hidden_name</code>。其实，Python对那些需要刻意隐藏在类内部的特性有自己的命名规范：由连续的两个下划线开头（<strong>）。<br>我们来把<code>hidden_name</code>改名为`</strong>name`，如下所示：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Duck</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, input_name)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.__name = input_name </div><div class="line"><span class="meta">... </span>    @property </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">'inside the getter'</span>) </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> self.__name </div><div class="line"><span class="meta">... </span>    @name.setter </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self, input_name)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">'inside the setter'</span>) </div><div class="line"><span class="meta">... </span>        self.__name = input_name </div><div class="line">...</div></pre></div></div></figure>
+
+<p>看看代码是否还能正常工作：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl = Duck(<span class="string">'Howard'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name </div><div class="line">inside the getter </div><div class="line"><span class="string">'Howard'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name = <span class="string">'Donald'</span> </div><div class="line">inside the setter </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl.name </div><div class="line">inside the getter </div><div class="line"><span class="string">'Donald'</span></div></pre></div></div></figure>
+
+<p>看起来不错！现在，你无法在外部访问 <code>__name</code> 特性了：</p>
+<figure class="highlight vim"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; fowl.__name </div><div class="line">Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):</div><div class="line">File <span class="string">"&lt;stdin&gt;"</span>, <span class="built_in">line</span> <span class="number">1</span>, in <span class="symbol">&lt;module&gt;</span> AttributeError: <span class="string">'Duck'</span> object <span class="built_in">has</span> <span class="keyword">no</span> attribute <span class="string">'__name'</span></div></pre></div></div></figure>
+
+<p>这种命名规范本质上并没有把特性变成私有，但 Python 确实将它的名字重整了，让外部 的代码无法使用。如果你实在好奇名称重整是怎么实现的，我可以偷偷地告诉你其中的奥 秘，但不要告诉别人哦：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; fowl._Duck__name </div><div class="line"><span class="string">'Donald'</span></div></pre></div></div></figure>
+
+<h1 id="方法的类型"><a href="#方法的类型" class="headerlink" title="方法的类型"></a>方法的类型</h1><p>有些数据（特性）和函数（方法）是类本身的一部分，还有一些是由类创建的实例的一部分。</p>
+<p>在类的定义中，以<code>self</code>作为第一个参数的方法都是实例方法（instance method）。它们在创建自定义类时最常用。实例方法的首个参数是<code>self</code>，当它被调用时，Python 会把调用该方法的对象作为<code>self</code>参数传入。</p>
+<p>与之相对，类方法（class method）会作用于整个类，对类作出的任何改变会对它的所有实例对象产生影响。在类定义内部，用前缀修饰符<code>@classmethod</code>指定的方法都是类方法。与 实例方法类似，类方法的第一个参数是类本身。在 Python 中，这个参数常被写作<code>cls</code>，因为全称 <code>class</code>是保留字，在这里我们无法使用。下面的例子中，我们为类A定义一个类方法来记录一共有多少个类A的对象被创建：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    count = <span class="number">0</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        A.count += <span class="number">1</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">exclaim</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">"I'm an A!"</span>) </div><div class="line"><span class="meta">... </span>    @classmethod </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">kids</span><span class="params">(cls)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">"A has"</span>, cls.count, <span class="string">"little objects."</span>) </div><div class="line"><span class="meta">... </span>&gt;&gt;&gt; </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>easy_a = A() </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>breezy_a = A() </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>wheezy_a = A() </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>A.kids() </div><div class="line">A has <span class="number">3</span> little objects.</div></pre></div></div></figure>
+
+<p>注意，上面的代码中，我们使用的是<code>A.count</code>（类特性），而不是<code>self.count</code>（可能是对象 的特性）。在<code>kids()</code>方法中，我们使用的是 <code>cls.count</code>，它与<code>A.count</code>的作用一样。</p>
+<p>类定义中的方法还存在着第三种类型，它既不会影响类也不会影响类的对象。它们出现在类的定义中仅仅是为了方便，否则它们只能孤零零地出现在代码的其他地方，这会影响代码的逻辑性。这种类型的方法被称作静态方法（static method），用<code>@staticmethod</code>修饰， 它既不需要 <code>self</code>参数也不需要<code>class</code>参数。下面例子中的静态方法是一则<code>CoyoteWeapon</code>的广告：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">CoyoteWeapon</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    @staticmethod </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">commercial</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">'This CoyoteWeapon has been brought to you by Acme'</span>) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>CoyoteWeapon.commercial() </div><div class="line">This CoyoteWeapon has been brought to you by Acme</div></pre></div></div></figure>
+
+<p>注意，在这个例子中，我们甚至都不用创建任何 <code>CoyoteWeapon</code>类的对象就可以调用这个方法，句法优雅不失风格。</p>
+<h1 id="鸭子类型"><a href="#鸭子类型" class="headerlink" title="鸭子类型"></a>鸭子类型</h1><p>Python 对实现多态（polymorphism）要求得十分宽松，这意味着我们可以对不同对象调用同名的操作，甚至不用管这些对象的类型是什么。</p>
+<p>我们来为三个<code>Quote</code>类设定同样的初始化方法 <code>__init__()</code>，然后再添加两个新函数：</p>
+<ul>
+<li><code>who()</code>返回保存的<code>person</code>字符串的值； </li>
+<li><code>says()</code>返回保存的<code>words</code>字符串的内容，并添上指定的标点符号。</li>
+</ul>
+<p>它们的具体实现如下所示：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Quote</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, person, words)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.person = person </div><div class="line"><span class="meta">... </span>        self.words = words </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">who</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> self.person </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">says</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> self.words + <span class="string">'.'</span> </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">QuestionQuote</span><span class="params">(Quote)</span>:</span> </div><div class="line"><span class="meta">... </span>     <span class="function"><span class="keyword">def</span> <span class="title">says</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>         <span class="keyword">return</span> self.words + <span class="string">'?'</span> </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">ExclamationQuote</span><span class="params">(Quote)</span>:</span> </div><div class="line"><span class="meta">... </span>     <span class="function"><span class="keyword">def</span> <span class="title">says</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>         <span class="keyword">return</span> self.words + <span class="string">'!'</span> </div><div class="line"><span class="meta">... </span></div><div class="line">&gt;&gt;&gt;</div></pre></div></div></figure>
+
+<p>我们不需要改变<code>QuestionQuote</code>或者<code>ExclamationQuote</code>的初始化方式，因此没有覆盖它们的<code>__init__()</code> 方法。Python会自动调用父类<code>Quote</code>的初始化函数<code>__init__()</code>来存储实例变量<code>person</code>和<code>words</code>，这就是我们可以在子类<code>QuestionQuote</code>和 <code>ExclamationQuote</code>的对象 里访问 <code>self.words</code> 的原因。</p>
+<p>接下来创建一些对象：</p>
+<figure class="highlight shell"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; hunter = Quote(<span class="string">'Elmer Fudd'</span>, <span class="string">"I'm hunting wabbits"</span>) </span></div><div class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(hunter.who(), <span class="string">'says:'</span>,hunter.says()) Elmer Fudd says: I<span class="string">'m hunting wabbits. </span></span></div><div class="line"> </div><div class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; hunted1 = QuestionQuote(<span class="string">'Bugs Bunny'</span>, <span class="string">"What's up, doc"</span>) </span></div><div class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(hunted1.who(),<span class="string">'says:'</span>,hunted1.says()) </span></div><div class="line">Bugs Bunny says: What's up, doc? </div><div class="line"></div><div class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; hunted2 = ExclamationQuote(<span class="string">'Daffy Duck'</span>, <span class="string">"It's rabbit season"</span>) </span></div><div class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="built_in">print</span>(hunted2.who(),<span class="string">'says:'</span>,hunted2.says()) </span></div><div class="line">Daffy Duck says: It's rabbit season!</div></pre></div></div></figure>
+
+
+<p>三个不同版本的<code>says()</code>为上面三种类提供了不同的响应方式，这是面向对象的语言中多态的传统形式。</p>
+<p>Python 在这方面走得更远一些，无论对象的种类是什么，只要包含<code>who()</code>和<code>says()</code>，你便可以调用它。我们再来定义一个<code>BabblingBrook</code>类，它与我们之前的猎人猎物（<code>Quote</code>类的后代）什么的没有任何关系：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">BabblingBrook</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">who</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">'Brook'</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">says</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        <span class="keyword">return</span> <span class="string">'Babble'</span> </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>brook = BabblingBrook()</div></pre></div></div></figure>
+
+<p>现在，对不同对象执行<code>who()</code>和<code>says()</code>方法，其中有一个（<code>brook</code>）与其他类型的对象毫无关联：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="function"><span class="keyword">def</span> <span class="title">who_says</span><span class="params">(obj)</span></span>: </div><div class="line">...     print(obj.who(), <span class="string">'says'</span>, obj.says()) ... </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; who_says(hunter) </div><div class="line">Elmer Fudd says I<span class="string">'m hunting wabbits. </span></div><div class="line"><span class="string">&gt;&gt;&gt; who_says(hunted1) </span></div><div class="line"><span class="string">Bugs Bunny says What'</span>s up, doc? </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; who_says(hunted2) </div><div class="line">Daffy Duck says It<span class="string">'s rabbit season! </span></div><div class="line"><span class="string">&gt;&gt;&gt; who_says(brook) </span></div><div class="line"><span class="string">Brook says Babble</span></div></pre></div></div></figure>
+
+
+<p>这种方式有时被称作鸭子类型（duck typing）</p>
+<h1 id="特殊方法"><a href="#特殊方法" class="headerlink" title="特殊方法"></a>特殊方法</h1><p>到目前为止，你已经能创建并使用基本对象了。现在再往深钻研一些。</p>
+<p>当我们输入像<code>a = 3 + 8</code>这样的式子时，整数 3 和 8 是怎么知道如何实现+的？同样，a又是怎么知道如何使用 = 来获取计算结果的？你可以使用 Python 的特殊方法（special method），有时也被称作魔术方法（magic method），来实现这些操作符的功能。</p>
+<p>这些特殊方法的名称以双下划线（<strong>）开头和结束。没错，你已经见过其中一个： `</strong>init__`  ，它根据类的定义以及传入的参数对新创建的对象进行初始化。</p>
+<p>假设你有一个简单的<code>Word</code>类，现在想要添加一个 <code>equals()</code>方法来比较两个词是否一致，忽略大小写。也就是说，一个包含值 ‘ha’ 的 Word 对象与包含 ‘HA’ 的是相同的。</p>
+<p>下面的代码是第一次尝试，创建一个普通方法<code>equals()</code>。<code>self.text</code>是当前<code>Word</code>对象所包含的字符串文本，<code>equals()</code>方法将该字符串与<code>word2</code>（另一个<code>Word</code>对象）所包含的字符串做比较：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Word</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, text)</span>:</span> </div><div class="line"><span class="meta">... </span>       self.text = text </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">... </span>   <span class="function"><span class="keyword">def</span> <span class="title">equals</span><span class="params">(self, word2)</span>:</span> </div><div class="line"><span class="meta">... </span>       <span class="keyword">return</span> self.text.lower() == word2.text.lower() </div><div class="line">...</div></pre></div></div></figure>
+
+<p>接着创建三个包含不同字符串的<code>Word</code>对象：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; first = Word(<span class="string">'ha'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; second = Word(<span class="string">'HA'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; third = Word(<span class="string">'eh'</span>)</div></pre></div></div></figure>
+
+<p>当字符串’ha’和’HA’被转换为小写形式再进行比较时（我们就是这么做的），它们应该是相等的：</p>
+<figure class="highlight applescript"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; <span class="keyword">first</span>.<span class="keyword">equals</span>(<span class="keyword">second</span>) </div><div class="line">True</div></pre></div></div></figure>
+
+<p>但字符串 ‘eh’ 无论如何与 ‘ha’ 也不会相等：</p>
+<figure class="highlight applescript"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; <span class="keyword">first</span>.<span class="keyword">equals</span>(<span class="keyword">third</span>) </div><div class="line">False</div></pre></div></div></figure>
+
+<p>我们成功定义了<code>equals()</code>方法来进行小写转换并比较。但试想一下，如果能通过 <code>if first == second</code> 进行比较的话岂不更妙？这样类会更自然，表现得更像一个 Python 内置的类。</p>
+<p>好的，来试试吧，把前面例子中的<code>equals()</code>方法的名称改为 <code>__eq__()</code>（请先暂时接受，后面我会解释为什么这么命名）：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="class"><span class="keyword">class</span> <span class="title">Word</span>(): </span></div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, text)</span></span>: </div><div class="line">...         <span class="keyword">self</span>.text = text </div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(<span class="keyword">self</span>, word2)</span></span>: </div><div class="line">...         <span class="keyword">return</span> <span class="keyword">self</span>.text.lower() == word2.text.lower() </div><div class="line">...</div></pre></div></div></figure>
+
+<p>修改就此结束，来看看新的版本能否正常工作：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; first = Word(<span class="string">'ha'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; second = Word(<span class="string">'HA'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; third = Word(<span class="string">'eh'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; first == second </div><div class="line">True </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; first == third </div><div class="line">False</div></pre></div></div></figure>
+
+<p>太神奇了！是不是如同魔术一般？仅需将方法名改为 Python 里进行相等比较的特殊方法名<code>__eq__()</code> 即可。表 1 和表 2</p>
+<p>列出了最常用的一些魔术方法。<br>表1：和比较相关的魔术方法<br>方法名| 使用<br>—|—<br><code>__eq__(self, other)</code> | self == other<br><code>__ne__(self, other)</code> | self != other<br><code>__lt__(self, other)</code> |self &lt; other<br><code>__gt__(self, other)</code> |self &gt; other<br><code>__le__(self, other)</code> |self &lt;= other<br><code>__ge__(self, other)</code> |self &gt;= other</p>
+<p>表2：和数学相关的魔术方法</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>使用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>__add__(self, other)</code></td>
+<td>self + other</td>
+</tr>
+<tr>
+<td><code>__sub__(self, other)</code></td>
+<td>self - other</td>
+</tr>
+<tr>
+<td><code>__mul__(self, other)</code></td>
+<td>self * other</td>
+</tr>
+<tr>
+<td><code>__ﬂoordiv__(self, other)</code></td>
+<td>self // other</td>
+</tr>
+<tr>
+<td><code>__truediv__(self, other)</code></td>
+<td>self / other</td>
+</tr>
+<tr>
+<td><code>__mod__(self, other)</code></td>
+<td>self % other</td>
+</tr>
+<tr>
+<td><code>__pow__(self, other)</code></td>
+<td>self ** other</td>
+</tr>
+</tbody></table>
+<p>不仅数字类型可以使用像+（魔术方法<code>__add__()</code>）和 -（魔术方法<code>__sub__()</code>）的数学运算符，一些其他的类型也可以使用。例如，Python 的字符串类型使用 + 进行拼接，使用 * 进 行复制。关于字符串的魔术方法还有很多，你可以在 Python 3 在线文档的 Special method names（<a href="https://docs.python.org/3/reference/datamodel.html#special-method-names）里找到，其中" target="_blank" rel="noopener">https://docs.python.org/3/reference/datamodel.html#special-method-names）里找到，其中</a> 最常用的一些参见下面的表3。</p>
+<p>表6-3：其他种类的魔术方法<br>方法名 | 使用<br>—|—<br><code>__str__(self)</code> |str(self)<br><code>__repr__(self)</code> |repr(self)<br><code>__len__(self)</code>|len(self)</p>
+<p>除了 <code>__init__()</code>外，你会发现在编写类方法时最常用到的是 <code>__str__()</code>，它用于定义如何打印对象信息。print() 方法，<code>str()</code>方法以及关于字符串格式化的相 关方法都会用到<code>__str__()</code>。交互式解释器则用 <code>__repr__()</code>方法输出变量。如果在你的类 既没有定义 <code>__str__()</code>也没有定义 <code>__repr__()</code>，Python会输出类似下面这样的默认字符串：</p>
+<figure class="highlight stylus"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; first = Word(<span class="string">'ha'</span>) </div><div class="line">&gt;&gt;&gt; first </div><div class="line">&lt;__main__<span class="selector-class">.Word</span> <span class="selector-tag">object</span> at <span class="number">0</span>x1006ba3d0&gt; </div><div class="line">&gt;&gt;&gt; print(first) </div><div class="line">&lt;__main__<span class="selector-class">.Word</span> <span class="selector-tag">object</span> at <span class="number">0</span>x1006ba3d0&gt;</div></pre></div></div></figure>
+
+
+<p> 我们将<code>__str__()</code> 和<code>__repr__()</code>方法都添加到 <code>Word</code>类里，让输出的对象信息变得更好看些：<br> <figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; <span class="class"><span class="keyword">class</span> <span class="title">Word</span>(): </span></div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, text)</span></span>: </div><div class="line">...         <span class="keyword">self</span>.text = text </div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__eq__</span><span class="params">(<span class="keyword">self</span>, word2)</span></span>: </div><div class="line">...         <span class="keyword">return</span> <span class="keyword">self</span>.text.lower() == word2.text.lower() </div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(<span class="keyword">self</span>)</span></span>: </div><div class="line">...         <span class="keyword">return</span> <span class="keyword">self</span>.text </div><div class="line">...     <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(<span class="keyword">self</span>)</span></span>: </div><div class="line">...         <span class="keyword">return</span> <span class="string">'Word("'</span>  <span class="keyword">self</span>.text  <span class="string">'")'</span> ... </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; first = Word(<span class="string">'ha'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; first          <span class="comment"># uses __repr__ </span></div><div class="line">Word(<span class="string">"ha"</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; print(first)   <span class="comment"># uses __str__ </span></div><div class="line">ha</div></pre></div></div></figure></p>
+<p>更多关于魔术方法的内容请查看 Python 在线文档（<a href="https://docs.python.org/3/reference/" target="_blank" rel="noopener">https://docs.python.org/3/reference/</a> datamodel.html#special-method-names）。 </p>
+<h1 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h1><p>如果你想要创建的子类在大多数情况下的行为都和父类相似的话（子类是父类的一种特殊情况，它们之间是 is-a 的关系），使用继承是非常不错的选择。建立复杂的继承关系确实很吸引人，但有些时候使用组合（composition）或聚合（aggregation）更加符合现实的逻辑（x 含有 y，它们之间是 has-a 的关系）。</p>
+<p>一只鸭子是鸟的一种（is-a），它有一条尾巴 （has-a）。尾巴并不是鸭子的一种，它是鸭子的组成部分。下个例子中，我们会建立 bill 和 tail 对象，并将它们都提供给 duck 使用：</p>
+<figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Bill</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, description)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.description = description </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Tail</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, length)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.length = length </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">Duck</span><span class="params">()</span>:</span> </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, bill, tail)</span>:</span> </div><div class="line"><span class="meta">... </span>        self.bill = bill </div><div class="line"><span class="meta">... </span>        self.tail = tail </div><div class="line"><span class="meta">... </span>    <span class="function"><span class="keyword">def</span> <span class="title">about</span><span class="params">(self)</span>:</span> </div><div class="line"><span class="meta">... </span>        print(<span class="string">'This duck has a'</span>, bill.description, <span class="string">'bill and a'</span>,tail.length, <span class="string">'tail'</span>)                    </div><div class="line"><span class="meta">... </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>tail = Tail(<span class="string">'long'</span>) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bill = Bill(<span class="string">'wide orange'</span>) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>duck = Duck(bill, tail) </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>duck.about() </div><div class="line">This duck has a wide orange bill <span class="keyword">and</span> a long tail</div></pre></div></div></figure>
+
+
+<h1 id="何时使用类和对象而不是模块"><a href="#何时使用类和对象而不是模块" class="headerlink" title="何时使用类和对象而不是模块"></a>何时使用类和对象而不是模块</h1><p>有一些方法可以帮助你决定是把你的代码封装到类里还是模块里。</p>
+<ul>
+<li>当你需要许多具有相似行为（方法）但不同状态（特性）的实例时，使用对象是最好的选择。 </li>
+<li>类支持继承，但模块不支持。 </li>
+<li>如果你想要保证实例的唯一性，使用模块是最好的选择。不管模块在程序中被引用多少次，始终只有一个实例被加载。（对Java和C++程序员来说，如果读过Erich Gamma的《设计模式：可复用面向对象软件的基础》，可以把 Python 模块理解为单例。）</li>
+<li>如果你有一系列包含多个值的变量，并且它们能作为参数传入不同的函数，那么最好将它们封装到类里面。举个例子，你可能会使用以 <code>size</code>和<code>color</code> 为键的字典代表一张彩色图片。你可以在程序中为每张图片创建不同的字典，并把它们作为参数传递给像 <code>scale()</code>或者<code>transform()</code>之类的函数。但这么做的话，一旦你想要添加其他的键或者函数会变得非常麻烦。为了保证统一性，应该定义一个<code>Image</code> 类，把<code>size</code>和<code>color</code>作为特性，把<code>scale()</code>和 <code>transform()</code>定义为方法。这么一来，关于一张图片的所有数据和可执行的操作都存储在了统一的位置。</li>
+<li>用最简单的方式解决问题。使用字典、列表和元组往往要比使用模块更加简单、简洁且快速。而使用类则更为复杂。</li>
+</ul>
+<p>创始人 Guido 的建议：</p>
+<blockquote class="blockquote-center"><p>不要过度构建数据结构。尽量使用元组（以及命名元组）而不是对象。尽量使用 简单的属性域而不是 <code>getter/setter</code>函数……内置数据类型是你最好的朋友。尽可 能多地使用数字、字符串、元组、列表、集合以及字典。多看看容器库提供的类 型，尤其是双端队列。<br>—— Guido van Rossum</p>
+</blockquote>
+
+<h2 id="命名元组"><a href="#命名元组" class="headerlink" title="命名元组"></a>命名元组</h2><p>由于 Guido 刚刚提到了命名元组（named tuple），那么我们就在这里谈一谈关于它的事情。</p>
+<p>命名元组是元组的子类，你既可以通过名称（使用<code>.name</code>）来访问其中的值，也可以通过位置进行访问（使用 <code>[offset]</code>）。</p>
+<p>我们来把前面例子中的<code>Duck</code>类改写成命名元组，简洁起见，把<code>bill</code>和<code>tail</code>当作简单的字符串特性而不当作类。我们可以通过将下面两个参数传入<code>namedtuple</code>函数来创建命名元组：</p>
+<ul>
+<li>名称； </li>
+<li>由多个域名组成的字符串，各个域名之间由空格隔开。</li>
+</ul>
+<p>命名元组并不是Python自动支持的类型，使用之前需要加载与其相关的模块，下面例子中的第一行就是在进行模块加载工作：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; from collections import namedtuple </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; Duck = namedtuple(<span class="string">'Duck'</span>, <span class="string">'bill tail'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck = Duck(<span class="string">'wide orange'</span>, <span class="string">'long'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck Duck(bill=<span class="string">'wide orange'</span>, tail=<span class="string">'long'</span>) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck.bill </div><div class="line"><span class="string">'wide orange'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck.tail </div><div class="line"><span class="string">'long'</span></div></pre></div></div></figure>
+
+<p>也可以用字典来构造一个命名元组：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; parts = &#123;<span class="string">'bill'</span>: <span class="string">'wide orange'</span>, <span class="string">'tail'</span>: <span class="string">'long'</span>&#125; </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck2 = Duck(**parts) </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck2 </div><div class="line">Duck(bill=<span class="string">'wide orange'</span>, tail=<span class="string">'long'</span>)</div></pre></div></div></figure>
+
+<p>注意，上面例子中的<code>**parts</code>，它是个关键词变量（keyword argument）。它的作用是将 <code>parts</code>字典中的键和值抽取出来作为参数提供给<code>Duck()</code>使用。它与下面这行代码的功能一样：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck2 = Duck(bill = <span class="string">'wide orange'</span>, tail = <span class="string">'long'</span>)</div></pre></div></div></figure>
+
+<p>命名元组是不可变的，但你可以替换其中某些域的值并返回一个新的命名元组：</p>
+<figure class="highlight routeros"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; duck3 = duck2._replace(<span class="attribute">tail</span>=<span class="string">'magnificent'</span>, <span class="attribute">bill</span>=<span class="string">'crushing'</span>) </div><div class="line">&gt;&gt;&gt; duck3</div><div class="line">Duck(<span class="attribute">bill</span>=<span class="string">'crushing'</span>, <span class="attribute">tail</span>=<span class="string">'magnificent'</span>)</div></pre></div></div></figure>
+
+<p>假设我们把 duck 定义为字典：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck_dict = &#123;<span class="string">'bill'</span>: <span class="string">'wide orange'</span>, <span class="string">'tail'</span>: <span class="string">'long'</span>&#125; </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck_dict </div><div class="line">&#123;<span class="string">'tail'</span>: <span class="string">'long'</span>, <span class="string">'bill'</span>: <span class="string">'wide orange'</span>&#125;</div></pre></div></div></figure>
+
+<p>可以向字典里添加新的域（键值对）：</p>
+<figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck_dict[<span class="string">'color'</span>] = <span class="string">'green'</span> </div><div class="line"><span class="meta">&gt;&gt;</span>&gt; duck_dict </div><div class="line">&#123;<span class="string">'color'</span>: <span class="string">'green'</span>, <span class="string">'tail'</span>: <span class="string">'long'</span>, <span class="string">'bill'</span>: <span class="string">'wide orange'</span>&#125;</div></pre></div></div></figure>
+
+<p>但无法对命名元组这么做：</p>
+<figure class="highlight vim"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">&gt;&gt;&gt; duck.color = <span class="string">'green'</span> </div><div class="line">Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):   File <span class="string">"&lt;stdin&gt;"</span>, <span class="built_in">line</span> <span class="number">1</span>, in <span class="symbol">&lt;module&gt;</span> AttributeError: <span class="string">'dict'</span> object <span class="built_in">has</span> <span class="keyword">no</span> attribute <span class="string">'color'</span></div></pre></div></div></figure>
+
+<p>作为总结，我列出了一些使用命名元组的好处：</p>
+<ul>
+<li>它无论看起来还是使用起来都和不可变对象非常相似； </li>
+<li>与使用对象相比，使用命名元组在时间和空间上效率更高； </li>
+<li>可以使用点号（.）对特性进行访问，而不需要使用字典风格的方括号； </li>
+<li>可以把它作为字典的键。</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cyyuan</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://yuanyuan-cai.github.io/2019/08/20/Python：面向对象/" title="Python：面向对象">https://yuanyuan-cai.github.io/2019/08/20/Python：面向对象/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/计算机：语言/" rel="tag"># 计算机：语言</a>
+          
+        </div>
+      
+
+      
+        
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/08/Python学习：Python基础（下）/" rel="next" title="Python学习：Python基础（下）">
+                Python学习：Python基础（下） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTA0My8yMTU2MQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+              站点概览
+            </li>
+          </ul>
+        
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image" src="/images/head_img.jpg" alt="cyyuan">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">cyyuan</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/YuanYuan-Cai" title="GitHub &rarr; https://github.com/YuanYuan-Cai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:iscyy@qq.com" title="E-Mail &rarr; mailto:iscyy@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+    
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是对象"><span class="nav-text">什么是对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用class定义类"><span class="nav-text">使用class定义类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#继承"><span class="nav-text">继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#覆盖方法"><span class="nav-text">覆盖方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加新方法"><span class="nav-text">添加新方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用super从父类得到帮助"><span class="nav-text">使用super从父类得到帮助</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#self的自辩"><span class="nav-text">self的自辩</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用属性对特性进行访问和设置"><span class="nav-text">使用属性对特性进行访问和设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用名称重整保护私有特性"><span class="nav-text">使用名称重整保护私有特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法的类型"><span class="nav-text">方法的类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#鸭子类型"><span class="nav-text">鸭子类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#特殊方法"><span class="nav-text">特殊方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合"><span class="nav-text">组合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#何时使用类和对象而不是模块"><span class="nav-text">何时使用类和对象而不是模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#命名元组"><span class="nav-text">命名元组</span></a></li></ol></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
+      
+
+
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cyyuan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">81k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">2:27</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+      网站总访客数
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+      总阅读数
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+    
+    
+  
+  <script color="148,0,211" opacity="0.5" zindex="-1" count="150" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+
+<script>
+  window.livereOptions = {
+    refer: '2019/08/20/Python：面向对象/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 19533,
+      el: 'wpac-rating',
+      color: 'fadb14'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+  <script src="//code.tidio.co/qtw3rnxkbkbimidmyux9onapnf9udwfi.js"></script>
+
+
+
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>	
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+  <script>
+    function timer() {
+      var ages = moment.preciseDiff(moment(),moment(20190701,"YYYYMMDD"));
+      ages = ages.replace(/years?/, "年");
+      ages = ages.replace(/months?/, "月");
+      ages = ages.replace(/days?/, "天");
+      ages = ages.replace(/hours?/, "小时");
+      ages = ages.replace(/minutes?/, "分");
+      ages = ages.replace(/seconds?/, "秒");
+      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+      div.innerHTML = `我已在此等候你 ${ages}`;
+    }
+    var div = document.createElement("div");
+    //插入到copyright之后
+    var copyright = document.querySelector(".copyright");
+    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+    timer();
+    setInterval("timer()",1000)
+  </script>
+
+
+
+
+  <script>
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        document.title = '(つェ⊂)我藏好了哦~' + OriginTitile;
+        clearTimeout(titleTime);
+      } else {
+        document.title = '(*´∇｀*) 被你发现啦~' + OriginTitile;
+        titleTime = setTimeout(function() {
+          document.title = OriginTitile;
+        }, 2000);
+      }
+    });
+  </script>
+
+
+
+
+  <script async src="//code.tidio.co/qtw3rnxkbkbimidmyux9onapnf9udwfi.js"></script>
+
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>
