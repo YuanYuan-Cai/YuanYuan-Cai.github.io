@@ -109,18 +109,18 @@
 
 
 
-  <meta name="description" content="excel处理工具:xlrd与xlwt  xlrd是python语言中读取excel的扩展工具包，可以实现指定表单、指定单元格的读取。 xlwt是python语言中写excel的扩展工具包，可以实现指定表单、指定单元格的写入。   一、xlrd安装使用 pip install xlrd 来安装xlrd模块。 基本操作12345678910111213141516171819202122232425">
+  <meta name="description" content="excel处理工具:xlrd与xlwt  xlrd是python语言中读取excel的扩展工具包，可以实现指定表单、指定单元格的读取。 xlwt是python语言中写excel的扩展工具包，可以实现指定表单、指定单元格的写入。   一、xlrd安装使用 pip install xlrd 来安装xlrd模块。 基本操作xlrw基础操作123456789101112131415161718192021">
 <meta name="keywords" content="Python,计算机：语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python：excel处理（xld与xlwt）">
 <meta property="og:url" content="https://yuanyuan-cai.github.io/2019/07/16/Python：excel处理（xld与xlwt）/index.html">
 <meta property="og:site_name" content="cyyLoveStudy">
-<meta property="og:description" content="excel处理工具:xlrd与xlwt  xlrd是python语言中读取excel的扩展工具包，可以实现指定表单、指定单元格的读取。 xlwt是python语言中写excel的扩展工具包，可以实现指定表单、指定单元格的写入。   一、xlrd安装使用 pip install xlrd 来安装xlrd模块。 基本操作12345678910111213141516171819202122232425">
+<meta property="og:description" content="excel处理工具:xlrd与xlwt  xlrd是python语言中读取excel的扩展工具包，可以实现指定表单、指定单元格的读取。 xlwt是python语言中写excel的扩展工具包，可以实现指定表单、指定单元格的写入。   一、xlrd安装使用 pip install xlrd 来安装xlrd模块。 基本操作xlrw基础操作123456789101112131415161718192021">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-07-31T07:13:40.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python：excel处理（xld与xlwt）">
-<meta name="twitter:description" content="excel处理工具:xlrd与xlwt  xlrd是python语言中读取excel的扩展工具包，可以实现指定表单、指定单元格的读取。 xlwt是python语言中写excel的扩展工具包，可以实现指定表单、指定单元格的写入。   一、xlrd安装使用 pip install xlrd 来安装xlrd模块。 基本操作12345678910111213141516171819202122232425">
+<meta name="twitter:description" content="excel处理工具:xlrd与xlwt  xlrd是python语言中读取excel的扩展工具包，可以实现指定表单、指定单元格的读取。 xlwt是python语言中写excel的扩展工具包，可以实现指定表单、指定单元格的写入。   一、xlrd安装使用 pip install xlrd 来安装xlrd模块。 基本操作xlrw基础操作123456789101112131415161718192021">
 
 
 
@@ -498,11 +498,10 @@
 </ul>
 </blockquote>
 <h2 id="一、xlrd"><a href="#一、xlrd" class="headerlink" title="一、xlrd"></a>一、xlrd</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>使用 <code>pip install xlrd</code> 来安装<code>xlrd</code>模块。</p>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></div><div class="code"><pre><div class="line"><span class="comment"># 示例：</span></div><div class="line"><span class="comment"># 导入扩展包</span></div><div class="line"><span class="keyword">import</span> xlrd</div><div class="line"><span class="comment"># 打开Excel文件读取数据</span></div><div class="line">data = xlrd.open_workbook(<span class="string">'excelFile.xls'</span>) [<span class="number">1</span>] </div><div class="line"><span class="comment"># 获取一个工作表</span></div><div class="line">table = data.sheets()[<span class="number">0</span>]                 <span class="comment">#通过索引顺序获取</span></div><div class="line">table = data.sheet_by_index(<span class="number">0</span>)           <span class="comment">#通过索引顺序获取</span></div><div class="line">table = data.sheet_by_name(<span class="string">u'Sheet1'</span>)    <span class="comment">#通过名称获取</span></div><div class="line"><span class="comment"># 获取整行和整列的值（数组）</span></div><div class="line">table.row_values(i)</div><div class="line">table.col_values(i)</div><div class="line"><span class="comment"># 获取行数和列数</span></div><div class="line">nrows = table.nrows</div><div class="line">ncols = table.ncols</div><div class="line"><span class="comment"># 循环行列表数据</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(nrows ):</div><div class="line"><span class="keyword">print</span> table.row_values(i)</div><div class="line"><span class="comment"># 单元格</span></div><div class="line">table.cell(rowx,colx)</div><div class="line">cell_A1 = table.cell(<span class="number">0</span>,<span class="number">0</span>).value</div><div class="line">cell_C4 = table.cell(<span class="number">3</span>,<span class="number">2</span>).value</div><div class="line"><span class="comment"># 使用行列索引</span></div><div class="line">cell_A1 = table.row(<span class="number">0</span>)[<span class="number">0</span>].value</div><div class="line">cell_A2 = table.col(<span class="number">1</span>)[<span class="number">0</span>].value</div><div class="line"><span class="comment"># 简单的写入</span></div><div class="line">row = <span class="number">0</span></div><div class="line">col = <span class="number">0</span></div><div class="line"><span class="comment"># 常用单元格中的类型 </span></div><div class="line">empty,<span class="number">1</span> string, <span class="number">2</span> number, <span class="number">3</span> date, <span class="number">4</span> boolean, <span class="number">5</span> error, <span class="number">6</span> blank</div><div class="line">ctype = <span class="number">1</span> value = <span class="string">'单元格的值'</span></div><div class="line"><span class="comment"># 扩展的格式化</span></div><div class="line">xf = <span class="number">0</span>  </div><div class="line">table.put_cell(row, col, ctype, value, xf)</div><div class="line">table.cell(<span class="number">0</span>,<span class="number">0</span>)        <span class="comment">#单元格的值'</span></div><div class="line">table.cell(<span class="number">0</span>,<span class="number">0</span>).value  <span class="comment">#单元格的值'</span></div></pre></div></div></figure>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><figure class="highlight python"><figcaption><span>xlrw基础操作</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例：</span></span><br><span class="line"><span class="comment"># 导入扩展包</span></span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="comment"># 打开Excel文件读取数据</span></span><br><span class="line">data = xlrd.open_workbook(<span class="string">'excelFile.xls'</span>) [<span class="number">1</span>] </span><br><span class="line"><span class="comment"># 获取一个工作表</span></span><br><span class="line">table = data.sheets()[<span class="number">0</span>]                 <span class="comment">#通过索引顺序获取</span></span><br><span class="line">table = data.sheet_by_index(<span class="number">0</span>)           <span class="comment">#通过索引顺序获取</span></span><br><span class="line">table = data.sheet_by_name(<span class="string">u'Sheet1'</span>)    <span class="comment">#通过名称获取</span></span><br><span class="line"><span class="comment"># 获取整行和整列的值（数组）</span></span><br><span class="line">table.row_values(i)</span><br><span class="line">table.col_values(i)</span><br><span class="line"><span class="comment"># 获取行数和列数</span></span><br><span class="line">nrows = table.nrows</span><br><span class="line">ncols = table.ncols</span><br><span class="line"><span class="comment"># 循环行列表数据</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(nrows ):</span><br><span class="line"><span class="keyword">print</span> table.row_values(i)</span><br><span class="line"><span class="comment"># 单元格</span></span><br><span class="line">table.cell(rowx,colx)</span><br><span class="line">cell_A1 = table.cell(<span class="number">0</span>,<span class="number">0</span>).value</span><br><span class="line">cell_C4 = table.cell(<span class="number">3</span>,<span class="number">2</span>).value</span><br><span class="line"><span class="comment"># 使用行列索引</span></span><br><span class="line">cell_A1 = table.row(<span class="number">0</span>)[<span class="number">0</span>].value</span><br><span class="line">cell_A2 = table.col(<span class="number">1</span>)[<span class="number">0</span>].value</span><br><span class="line"><span class="comment"># 简单的写入</span></span><br><span class="line">row = <span class="number">0</span></span><br><span class="line">col = <span class="number">0</span></span><br><span class="line"><span class="comment"># 常用单元格中的类型 </span></span><br><span class="line">empty,<span class="number">1</span> string, <span class="number">2</span> number, <span class="number">3</span> date, <span class="number">4</span> boolean, <span class="number">5</span> error, <span class="number">6</span> blank</span><br><span class="line">ctype = <span class="number">1</span> value = <span class="string">'单元格的值'</span></span><br><span class="line"><span class="comment"># 扩展的格式化</span></span><br><span class="line">xf = <span class="number">0</span>  </span><br><span class="line">table.put_cell(row, col, ctype, value, xf)</span><br><span class="line">table.cell(<span class="number">0</span>,<span class="number">0</span>)        <span class="comment">#单元格的值'</span></span><br><span class="line">table.cell(<span class="number">0</span>,<span class="number">0</span>).value  <span class="comment">#单元格的值'</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="二、xlwt"><a href="#二、xlwt" class="headerlink" title="二、xlwt"></a>二、xlwt</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>使用 <code>pip install xlwt</code> 来安装<code>xlwt</code>模块。</p>
-<h3 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h3><figure class="highlight python"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line"><span class="comment"># 导入模块</span></div><div class="line"><span class="keyword">import</span> xlwt</div><div class="line"><span class="comment"># 创建workbook（其实就是excel，后来保存一下就行）</span></div><div class="line">workbook = xlwt.Workbook(encoding = <span class="string">'ascii'</span>)</div><div class="line"><span class="comment"># 创建表</span></div><div class="line">worksheet = workbook.add_sheet(<span class="string">'My Worksheet'</span>)</div><div class="line"><span class="comment"># 往单元格内写入内容</span></div><div class="line">worksheet.write(<span class="number">0</span>, <span class="number">0</span>, label = <span class="string">'Row 0, Column 0 Value'</span>)</div><div class="line"><span class="comment"># 保存</span></div><div class="line">workbook.save(<span class="string">'Excel_Workbook.xls'</span>)</div></pre></div></div></figure>
-
+<h3 id="基本操作-1"><a href="#基本操作-1" class="headerlink" title="基本操作"></a>基本操作</h3><figure class="highlight python"><figcaption><span>xlwt基础操作</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入模块</span></span><br><span class="line"><span class="keyword">import</span> xlwt</span><br><span class="line"><span class="comment"># 创建workbook（其实就是excel，后来保存一下就行）</span></span><br><span class="line">workbook = xlwt.Workbook(encoding = <span class="string">'ascii'</span>)</span><br><span class="line"><span class="comment"># 创建表</span></span><br><span class="line">worksheet = workbook.add_sheet(<span class="string">'My Worksheet'</span>)</span><br><span class="line"><span class="comment"># 往单元格内写入内容</span></span><br><span class="line">worksheet.write(<span class="number">0</span>, <span class="number">0</span>, label = <span class="string">'Row 0, Column 0 Value'</span>)</span><br><span class="line"><span class="comment"># 保存</span></span><br><span class="line">workbook.save(<span class="string">'Excel_Workbook.xls'</span>)</span><br></pre></td></tr></table></figure>
 
 
       
@@ -693,7 +692,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -726,7 +729,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -826,7 +833,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">81k</span>
+    <span title="站点总字数">79k</span>
   
 
   
@@ -835,7 +842,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:28</span>
+    <span title="站点阅读时长">2:24</span>
   
 </div>
 
@@ -1360,6 +1367,32 @@
   
 
   
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
 
   
 <script>

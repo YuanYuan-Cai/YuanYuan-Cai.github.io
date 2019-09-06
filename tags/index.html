@@ -448,11 +448,19 @@
                   
                 
               
-              目前共计 8 个标签
+                
+                  
+                
+              
+                
+                  
+                
+              
+              目前共计 10 个标签
             </div>
             <div class="tag-cloud-tags">
               
-                <a href="/tags/Excel/" style="font-size: 12px; color: #ccc">Excel</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/NexT/" style="font-size: 12px; color: #ccc">NexT</a> <a href="/tags/Python/" style="font-size: 30px; color: #111">Python</a> <a href="/tags/前端/" style="font-size: 12px; color: #ccc">前端</a> <a href="/tags/工具/" style="font-size: 12px; color: #ccc">工具</a> <a href="/tags/计划/" style="font-size: 12px; color: #ccc">计划</a> <a href="/tags/计算机：语言/" style="font-size: 30px; color: #111">计算机：语言</a>
+                <a href="/tags/Excel/" style="font-size: 12px; color: #ccc">Excel</a> <a href="/tags/Hexo/" style="font-size: 12px; color: #ccc">Hexo</a> <a href="/tags/NexT/" style="font-size: 12px; color: #ccc">NexT</a> <a href="/tags/Python/" style="font-size: 30px; color: #111">Python</a> <a href="/tags/前端/" style="font-size: 12px; color: #ccc">前端</a> <a href="/tags/工具/" style="font-size: 12px; color: #ccc">工具</a> <a href="/tags/数学/" style="font-size: 12px; color: #ccc">数学</a> <a href="/tags/考研/" style="font-size: 12px; color: #ccc">考研</a> <a href="/tags/计划/" style="font-size: 12px; color: #ccc">计划</a> <a href="/tags/计算机：语言/" style="font-size: 30px; color: #111">计算机：语言</a>
               
             </div>
           </div>
@@ -539,7 +547,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -572,7 +584,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -656,7 +672,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">81k</span>
+    <span title="站点总字数">79k</span>
   
 
   
@@ -665,7 +681,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:28</span>
+    <span title="站点阅读时长">2:24</span>
   
 </div>
 
@@ -1170,6 +1186,32 @@
   
 
   
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
 
   
 <script>
