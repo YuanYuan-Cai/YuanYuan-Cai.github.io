@@ -469,28 +469,31 @@
 <h2 align="center">Step 1 &rarr; Go to NexT dir</h2>
 
 <p>Change dir to <strong>NexT</strong> directory. There must be <code>layout</code>, <code>source</code>, <code>languages</code> and other directories:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/next</span><br><span class="line">$ ls</span><br><span class="line">bower.json  _config.yml  docs  gulpfile.coffee  languages  layout  LICENSE.md  package.json  README.md  scripts  <span class="built_in">source</span>  <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">$ <span class="built_in">cd</span> themes/next</div><div class="line">$ ls</div><div class="line">bower.json  _config.yml  docs  gulpfile.coffee  languages  layout  LICENSE.md  package.json  README.md  scripts  <span class="built_in">source</span>  <span class="built_in">test</span></div></pre></div></div></figure>
+
 
 <h2 align="center">Step 2 &rarr; Get module</h2>
 
 <p>Install module to <code>source/lib</code> directory:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pdf <span class="built_in">source</span>/lib/pdf</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pdf <span class="built_in">source</span>/lib/pdf</div></pre></div></div></figure>
+
 
 <h2 align="center">Step 3 &rarr; Set it up</h2>
 
 <p>Enable module in <strong>NexT</strong> <code>_config.yml</code> file:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># PDF tag, requires two plugins: pdfObject and pdf.js</span></span><br><span class="line"><span class="comment"># pdfObject will try to load pdf files natively, if failed, pdf.js will be used.</span></span><br><span class="line"><span class="comment"># The following `cdn` setting is only for pdfObject, because cdn for pdf.js might be blocked by CORS policy.</span></span><br><span class="line"><span class="comment"># So, YOU MUST install the dependency of pdf.js if you want to use pdf tag and make it work on all browsers.</span></span><br><span class="line"><span class="comment"># See: https://github.com/theme-next/theme-next-pdf</span></span><br><span class="line"><span class="attr">pdf:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Default height</span></span><br><span class="line"><span class="attr">  height:</span> <span class="number">500</span><span class="string">px</span></span><br><span class="line"><span class="attr">  pdfobject:</span></span><br><span class="line">    <span class="comment"># Use 2.1.1 as default, jsdelivr as default CDN, works everywhere even in China</span></span><br><span class="line"><span class="attr">    cdn:</span> <span class="string">//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js</span></span><br><span class="line">    <span class="comment"># CDNJS, provided by cloudflare, maybe the best CDN, but not works in China</span></span><br><span class="line">    <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></div><div class="code"><pre><div class="line"><span class="comment"># PDF tag, requires two plugins: pdfObject and pdf.js</span></div><div class="line"><span class="comment"># pdfObject will try to load pdf files natively, if failed, pdf.js will be used.</span></div><div class="line"><span class="comment"># The following `cdn` setting is only for pdfObject, because cdn for pdf.js might be blocked by CORS policy.</span></div><div class="line"><span class="comment"># So, YOU MUST install the dependency of pdf.js if you want to use pdf tag and make it work on all browsers.</span></div><div class="line"><span class="comment"># See: https://github.com/theme-next/theme-next-pdf</span></div><div class="line"><span class="attr">pdf:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line">  <span class="comment"># Default height</span></div><div class="line"><span class="attr">  height:</span> <span class="number">500</span><span class="string">px</span></div><div class="line"><span class="attr">  pdfobject:</span></div><div class="line">    <span class="comment"># Use 2.1.1 as default, jsdelivr as default CDN, works everywhere even in China</span></div><div class="line"><span class="attr">    cdn:</span> <span class="string">//cdn.jsdelivr.net/npm/pdfobject@2.1.1/pdfobject.min.js</span></div><div class="line">    <span class="comment"># CDNJS, provided by cloudflare, maybe the best CDN, but not works in China</span></div><div class="line">    <span class="comment">#cdn: //cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js</span></div></pre></div></div></figure>
+
 
 <h1 align="center">Usage</h1>
 In order to embed PDF files in the article, you just need to create an `pdf` tag with the URL of your local PDF file, e.g.
 
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% pdf <span class="regexp">/path/</span>to<span class="regexp">/your/</span><span class="keyword">file</span>.pdf %&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line">&#123;% pdf <span class="regexp">/path/</span>to<span class="regexp">/your/</span><span class="keyword">file</span>.pdf %&#125;</div></pre></div></div></figure>
 
 <p>Notice: Do not use cross-origin PDF files, it might be blocked by the CORS policy.</p>
 <p>Enjoy it!</p>
 <h1 align="center">Update</h1>
 
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/next/<span class="built_in">source</span>/lib/pdf</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">$ <span class="built_in">cd</span> themes/next/<span class="built_in">source</span>/lib/pdf</div><div class="line">$ git pull</div></pre></div></div></figure>
 
 
         
@@ -777,7 +780,7 @@ In order to embed PDF files in the article, you just need to create an `pdf` tag
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">79k</span>
+    <span title="站点总字数">81k</span>
   
 
   
@@ -786,7 +789,7 @@ In order to embed PDF files in the article, you just need to create an `pdf` tag
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">2:24</span>
+    <span title="站点阅读时长">2:28</span>
   
 </div>
 
