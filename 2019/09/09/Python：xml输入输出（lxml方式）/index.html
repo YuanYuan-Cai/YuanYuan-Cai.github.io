@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1.0.2/themes/blue/pace-theme-minimal.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="xml简介什么是xml？xml即可扩展标记语言，它可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。 XML 树结构XML 文档形成了一种树结构，它从”根部”开始，然后扩展到”枝叶”。 一个 XML 文档实例XML 文档使用简单的具有自我描述性的语法： 1234567&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;not">
+<meta name="keywords" content="Python,计算机：语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python：xml输入输出（lxml方式）">
+<meta property="og:url" content="https://yuanyuan-cai.github.io/2019/09/09/Python：xml输入输出（lxml方式）/index.html">
+<meta property="og:site_name" content="cyyLoveStudy">
+<meta property="og:description" content="xml简介什么是xml？xml即可扩展标记语言，它可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。 XML 树结构XML 文档形成了一种树结构，它从”根部”开始，然后扩展到”枝叶”。 一个 XML 文档实例XML 文档使用简单的具有自我描述性的语法： 1234567&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;not">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2036461-c9c9b3a6a5354258.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-09-09T07:39:54.035Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python：xml输入输出（lxml方式）">
+<meta name="twitter:description" content="xml简介什么是xml？xml即可扩展标记语言，它可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。 XML 树结构XML 文档形成了一种树结构，它从”根部”开始，然后扩展到”枝叶”。 一个 XML 文档实例XML 文档使用简单的具有自我描述性的语法： 1234567&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;not">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2036461-c9c9b3a6a5354258.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://yuanyuan-cai.github.io/2019/09/09/Python：xml输入输出（lxml方式）/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python：xml输入输出（lxml方式） | cyyLoveStudy</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">cyyLoveStudy</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">爱生活，爱自己</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>文章</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-plan">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/plan/" rel="section"><i class="menu-item-icon fa fa-fw fa-calendar"></i> <br>计划</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yuanyuan-cai.github.io/2019/09/09/Python：xml输入输出（lxml方式）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cyyuan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head_img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cyyLoveStudy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python：xml输入输出（lxml方式）
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-09 15:40:34" itemprop="dateCreated datePublished" datetime="2019-09-09T15:40:34+08:00">2019-09-09</time>
+            </span>
+          
+
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">7k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">13 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="xml简介"><a href="#xml简介" class="headerlink" title="xml简介"></a>xml简介</h1><h2 id="什么是xml？"><a href="#什么是xml？" class="headerlink" title="什么是xml？"></a>什么是xml？</h2><p>xml即可扩展标记语言，它可以用来标记数据、定义数据类型，是一种允许用户对自己的标记语言进行定义的源语言。</p>
+<h2 id="XML-树结构"><a href="#XML-树结构" class="headerlink" title="XML 树结构"></a>XML 树结构</h2><p>XML 文档形成了一种树结构，它从”根部”开始，然后扩展到”枝叶”。</p>
+<h3 id="一个-XML-文档实例"><a href="#一个-XML-文档实例" class="headerlink" title="一个 XML 文档实例"></a>一个 XML 文档实例</h3><p>XML 文档使用简单的具有自我描述性的语法：</p>
+<figure class="highlight xml"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">note</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">to</span>&gt;</span>Tove<span class="tag">&lt;/<span class="name">to</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">from</span>&gt;</span>Jani<span class="tag">&lt;/<span class="name">from</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">heading</span>&gt;</span>Reminder<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>Don't forget me this weekend!<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">note</span>&gt;</span></div></pre></div></div></figure>
+
+<p>第一行是 XML 声明。它定义 XML 的版本（1.0）和所使用的编码（UTF-8 : 万国码, 可显示各种语言）。</p>
+<p>下一行描述文档的根元素（像在说：”本文档是一个便签”）：</p>
+<figure class="highlight apache"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="section">&lt;note&gt;</span></div></pre></div></div></figure>
+
+<p>接下来 4 行描述根的 4 个子元素（<code>to</code>, <code>from</code>, <code>heading</code> 以及 <code>body</code>）：</p>
+<figure class="highlight xml"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">to</span>&gt;</span>Tove<span class="tag">&lt;/<span class="name">to</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">from</span>&gt;</span>Jani<span class="tag">&lt;/<span class="name">from</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">heading</span>&gt;</span>Reminder<span class="tag">&lt;/<span class="name">heading</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>Don't forget me this weekend!<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></div></div></figure>
+
+<p>最后一行定义根元素的结尾：</p>
+<figure class="highlight apache"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="section">&lt;/note&gt;</span></div></pre></div></div></figure>
+
+<p>可以假设，从这个实例中，XML 文档包含了一张 Jani 写给 Tove 的便签。</p>
+<h3 id="XML-文档形成一种树结构"><a href="#XML-文档形成一种树结构" class="headerlink" title="XML 文档形成一种树结构"></a>XML 文档形成一种树结构</h3><p>XML 文档必须包含<strong>根元素</strong>。该元素是所有其他元素的<strong>父元素</strong>。</p>
+<p>XML 文档中的元素形成了一棵文档树。这棵树从根部开始，并扩展到树的最底端。</p>
+<p>所有的元素都可以有子元素：</p>
+<figure class="highlight xml"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">root</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">child</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">subchild</span>&gt;</span>.....<span class="tag">&lt;/<span class="name">subchild</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></div></pre></div></div></figure>
+
+<p>父、子以及同胞等术语用于描述元素之间的关系。父元素拥有子元素。相同层级上的子元素成为同胞（兄弟或姐妹）。</p>
+<p>所有的元素都可以有文本内容和属性（类似 HTML 中）。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p><img src="https://upload-images.jianshu.io/upload_images/2036461-c9c9b3a6a5354258.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Python：xml输入输出- xml简介-XML 树结构-实例-树形结构图"></p>
+<figure class="highlight xml"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></div><div class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">bookstore</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">"COOKING"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Everyday Italian<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">author</span>&gt;</span>Giada De Laurentiis<span class="tag">&lt;/<span class="name">author</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="name">year</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">price</span>&gt;</span>30.00<span class="tag">&lt;/<span class="name">price</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">book</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">"CHILDREN"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Harry Potter<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">author</span>&gt;</span>J K. Rowling<span class="tag">&lt;/<span class="name">author</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="name">year</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">price</span>&gt;</span>29.99<span class="tag">&lt;/<span class="name">price</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">book</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">"WEB"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Learning XML<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">author</span>&gt;</span>Erik T. Ray<span class="tag">&lt;/<span class="name">author</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">year</span>&gt;</span>2003<span class="tag">&lt;/<span class="name">year</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">price</span>&gt;</span>39.95<span class="tag">&lt;/<span class="name">price</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">book</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bookstore</span>&gt;</span></div></pre></div></div></figure>
+
+<p>实例中的根元素是<code>&lt;bookstore&gt;</code>。文档中的所有<code>&lt;book&gt;</code>元素都被包含在<code>&lt;bookstore&gt;</code> 中。<br><code>&lt;book&gt;</code>元素有 4 个子元素：<code>&lt;title&gt;</code>、<code>&lt;author&gt;</code>、<code>&lt;year&gt;</code>、<code>&lt;price&gt;</code>。</p>
+<h1 id="lxml方式-读写xml文档"><a href="#lxml方式-读写xml文档" class="headerlink" title="lxml方式:读写xml文档"></a>lxml方式:读写xml文档</h1><p>lxml不是Python自带的标准库。需要自己安装，如下方式安装：</p>
+<figure class="highlight cmake"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line">pip <span class="keyword">install</span> lxml</div></pre></div></div></figure>
+
+<h2 id="读xml文档"><a href="#读xml文档" class="headerlink" title="读xml文档"></a>读xml文档</h2><h3 id="1）文档解析"><a href="#1）文档解析" class="headerlink" title="1）文档解析"></a>1）文档解析</h3><p>lxml可以解析xml的<strong>字符串</strong>，使用<code>etree.fromstring</code>方法，如下所示：</p>
+<figure class="highlight vbnet"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="meta">#coding:utf-8</span></div><div class="line"><span class="keyword">from</span> lxml import etree</div><div class="line"> </div><div class="line">xml_text = <span class="comment">'<span class="doctag">&lt;xml&gt;</span><span class="doctag">&lt;head&gt;</span><span class="doctag">&lt;/head&gt;</span><span class="doctag">&lt;body&gt;</span><span class="doctag">&lt;/body&gt;</span><span class="doctag">&lt;/xml&gt;</span>'</span></div><div class="line">xml = etree.fromstring(xml_text)</div></pre></div></div></figure>
+
+<p>lxml可以直接读取xml文件。</p>
+<p>为了演示方便，找个xml文档作为例子，文件名为<code>test.xml</code>：</p>
+<figure class="highlight xml"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">root</span> <span class="attr">version</span>=<span class="string">"1.2"</span> <span class="attr">tag</span>=<span class="string">"test"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>test xml document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">items</span> <span class="attr">id</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">source</span>&gt;</span>aa<span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">target</span>&gt;</span>AA<span class="tag">&lt;/<span class="name">target</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">items</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">items</span> <span class="attr">id</span>=<span class="string">"2"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">source</span>&gt;</span>bb<span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">target</span>&gt;</span>BB<span class="tag">&lt;/<span class="name">target</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">items</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">items</span> <span class="attr">id</span>=<span class="string">"3"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">source</span>&gt;</span>cc<span class="tag">&lt;/<span class="name">source</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">target</span> <span class="attr">id</span>=<span class="string">"3t"</span>&gt;</span>CC<span class="tag">&lt;<span class="name">bpt</span> <span class="attr">id</span>=<span class="string">"3t1"</span>/&gt;</span>cc<span class="tag">&lt;/<span class="name">target</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">items</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">root</span>&gt;</span></div></pre></div></div></figure>
+
+<p>lxml读取xml文件的代码如下所示：</p>
+<figure class="highlight clean"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></div><div class="code"><pre><div class="line">#coding:utf<span class="number">-8</span></div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line"> </div><div class="line">xml = etree.parse(<span class="string">'test.xml'</span>) #读取test.xml文件</div></pre></div></div></figure>
+
+<h3 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h3><p>根节点root中有两个属性，我们可以通过如下方法获取根节点和其属性：</p>
+<figure class="highlight coffeescript"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></div><div class="code"><pre><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line"> </div><div class="line">xml = etree.parse(<span class="string">'test.xml'</span>) <span class="comment">#读取test.xml文件</span></div><div class="line">root = xml.getroot() <span class="comment">#获取根节点</span></div><div class="line"></div><div class="line"><span class="comment">#获取属性</span></div><div class="line"><span class="built_in">print</span>(root.items()) <span class="comment">#获取全部属性和属性值</span></div><div class="line"><span class="built_in">print</span>(root.keys())  <span class="comment">#获取全部属性</span></div><div class="line"><span class="built_in">print</span>(root.get(<span class="string">'version'</span>, <span class="string">''</span>)) <span class="comment">#获取具体某个属性</span></div></pre></div></div></figure>
+
+<p>得到如下结果：</p>
+<figure class="highlight scheme"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line">[(<span class="symbol">'version</span>', <span class="symbol">'1.0</span>'), (<span class="symbol">'tag</span>', <span class="symbol">'test</span>')]</div><div class="line">[<span class="symbol">'version</span>', <span class="symbol">'tag</span>']</div><div class="line"><span class="number">1.2</span></div></pre></div></div></figure>
+
+
+<h3 id="获取节点"><a href="#获取节点" class="headerlink" title="获取节点"></a>获取节点</h3><p>假如我们不知道root节点下有什么节点，可以通过循环遍历。</p>
+<figure class="highlight crmsh"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">for <span class="keyword">node</span> <span class="title">in</span> root.getchildren():</div><div class="line">    print(<span class="keyword">node</span>.<span class="title">tag</span>) <span class="comment">#输出节点的标签名</span></div></pre></div></div></figure>
+
+<p>得到如下结果：</p>
+<figure class="highlight ada"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">head</div><div class="line"><span class="keyword">body</span></div></pre></div></div></figure>
+
+<ul>
+<li>若xml文档比较大，还可以使用itergetchildren方法。该方法得到一个生成器。</li>
+<li>这里，你可以用dir(root)可以查得节点对象有什么方法。可以获取兄弟节点、父节点等方法。</li>
+<li>若知道文档结构，还可以使用XPath方法获取节点。</li>
+</ul>
+<p>如，需要获取全部items节点。使用XPath方法得到一个元素列表，代码如下：</p>
+<figure class="highlight less"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="selector-tag">root</span><span class="selector-class">.xpath</span>(<span class="string">'//items'</span>)</div></pre></div></div></figure>
+
+<ul>
+<li><p>可得到3个items元素，无论items元素的位置在哪。</p>
+</li>
+<li><p>我们也可以通过root和items之间的相对路径，严格得到我们想要位置的元素：</p>
+<figure class="highlight less"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="selector-tag">root</span><span class="selector-class">.xpath</span>(<span class="string">'body/items'</span>)</div></pre></div></div></figure>
+</li>
+<li><p>一样可以得到3个元素，不过该xpath语法要严格很多。</p>
+</li>
+<li><p>假如head节点下也有items元素，该语法就不会获取到该元素。</p>
+</li>
+<li><p>若指定的XPath语法获取不到任何元素，将返回空列表。</p>
+</li>
+</ul>
+<h3 id="获取文本"><a href="#获取文本" class="headerlink" title="获取文本"></a>获取文本</h3><p>有些元素中有文本，这个可以通过text属性获取。</p>
+<figure class="highlight crmsh"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="comment">#获取source元素中的文本</span></div><div class="line">for <span class="keyword">node</span> <span class="title">in</span> root.<span class="keyword">xpath</span>('//source'):</div><div class="line">    print(<span class="keyword">node</span>.<span class="title">text</span>)</div></pre></div></div></figure>
+
+
+
+<ul>
+<li><p>另外，还有一种情况，节点和文本混合的情况。</p>
+</li>
+<li><p>如test.xml中id为3t的target元素。target元素中有两段文本，以及文本中间还有个bpt元素。</p>
+<figure class="highlight routeros"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line">&lt;target <span class="attribute">id</span>=<span class="string">"3t"</span>&gt;&lt;bpt <span class="attribute">id</span>=<span class="string">"3t1"</span>/&gt;CCcc&lt;/target&gt;</div></pre></div></div></figure>
+</li>
+<li><p>在xml.minidom的方法，文本也是一种节点，这个问题好解决。</p>
+</li>
+<li><p>而在lxml中，文本不是节点。这种情况需要通过itertext方法或tail属性解决。</p>
+</li>
+</ul>
+<p>先尝试获取该元素的text属性：</p>
+<figure class="highlight cmake"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="comment">#获取id属性为3t的target元素，注意后面的[0]</span></div><div class="line"><span class="keyword">target</span> = root.xpath('//<span class="keyword">target</span>[@id=<span class="string">"3t"</span>]')[<span class="number">0</span>]</div><div class="line"> </div><div class="line"><span class="comment">#输出该元素的text属性值</span></div><div class="line">print(<span class="keyword">target</span>.text)</div></pre></div></div></figure>
+
+<p>将得到”CC”，后面的节点和”cc”获取不到。则<strong>text属性是获取到该节点下的第1段文本</strong>。</p>
+<p>若该节点先是一个节点，再是文字：</p>
+<figure class="highlight routeros"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line">&lt;target <span class="attribute">id</span>=<span class="string">"3t"</span>&gt;&lt;bpt <span class="attribute">id</span>=<span class="string">"3t1"</span>/&gt;CCcc&lt;/target&gt;</div></pre></div></div></figure>
+
+<p>text属性将为None。</p>
+<p>我们可以用itertext方法获取全部文本：</p>
+<figure class="highlight scheme"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line">'<span class="symbol">'.join</span>(<span class="name">target.itertext</span>())</div></pre></div></div></figure>
+
+<p>将得到”CCcc”。itertext方法得到一个生成器。该生成器是该节点下的全部文本生成器列表。</p>
+<p>那假如我还需要获取其中的子节点，确保xml的结构的话，就需要使用tail属性。</p>
+<p>tail属性是获取节点后的文本。我们可以先用text属性获取第1个文本，其他文本都通过子节点的tail属性获取。例如，我需要获取上面target元素的全部文本，若碰到子节点，则获取其id属性值一起拼成一个字符串。</p>
+<figure class="highlight processing"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></div><div class="code"><pre><div class="line">texts = []</div><div class="line"> </div><div class="line">#获取第<span class="number">1</span>段文本</div><div class="line"><span class="keyword">if</span> target.<span class="built_in">text</span>:</div><div class="line">    texts.<span class="built_in">append</span>(target.<span class="built_in">text</span>)</div><div class="line"> </div><div class="line">#遍历子节点</div><div class="line"><span class="keyword">for</span> sub in target.iterchildren():</div><div class="line">    texts.<span class="built_in">append</span>(<span class="string">'-%s-'</span> % sub.<span class="built_in">get</span>(<span class="string">'id'</span>, <span class="string">''</span>))</div><div class="line">    texts.<span class="built_in">append</span>(sub.tail)</div><div class="line">    </div><div class="line">#合并结果</div><div class="line"><span class="built_in">print</span>(<span class="string">''</span>.<span class="built_in">join</span>(texts))</div></pre></div></div></figure>
+
+<p>将得到”CC-3t1-cc”。</p>
+<h2 id="写xml文档"><a href="#写xml文档" class="headerlink" title="写xml文档"></a>写xml文档</h2><p>模范test.xml文件，用lxml创建新的xml文档，结构和test.xml文件一致。</p>
+<h3 id="创建文档（节点）"><a href="#创建文档（节点）" class="headerlink" title="创建文档（节点）"></a>创建文档（节点）</h3><ul>
+<li>对于lxml来说，任意节点都可以保存成一个xml文档。</li>
+<li>我们只需要给该节点加入属性、内容、子节点等等即可。</li>
+</ul>
+<p>那么创建节点方法如下：</p>
+<figure class="highlight clean"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line">#coding:utf<span class="number">-8</span></div><div class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree</div><div class="line"> </div><div class="line">#创建标签为root的节点</div><div class="line">root = etree.Element(<span class="string">'root'</span>)</div></pre></div></div></figure>
+
+
+<p>在创建节点的同时，也可以给该节点加入命名空间：</p>
+<figure class="highlight ini"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="attr">root</span> = etree.Element(<span class="string">'root'</span>, nsmap=&#123;<span class="string">'xmlns'</span>:<span class="string">'http://www.w3.org/1999/xhtml'</span>&#125;)</div></pre></div></div></figure>
+
+
+<p>在上面的test.xml中，还有两组属性。可用set方法添加属性：</p>
+<figure class="highlight cs"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">root.<span class="keyword">set</span>(<span class="string">'version'</span>, <span class="string">'1.2'</span>)</div><div class="line">root.<span class="keyword">set</span>(<span class="string">'tag'</span>, <span class="string">'test'</span>)</div></pre></div></div></figure>
+
+
+<p>当然，也可以在创建节点的时候，就写入属性：</p>
+<figure class="highlight ini"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="attr">attribs</span> = &#123;<span class="string">'version'</span>:<span class="string">'1.2'</span>, <span class="string">'tag'</span>:<span class="string">'test'</span>&#125;</div><div class="line"><span class="attr">root</span> = etree.Element(<span class="string">'root'</span>, attrib=attribs)</div></pre></div></div></figure>
+
+
+<h3 id="添加子节点"><a href="#添加子节点" class="headerlink" title="添加子节点"></a>添加子节点</h3><p>添加根节点之后，根节点下有两个子节点：head和body。</p>
+<p>添加子节点有两种方法，先看方法1：</p>
+<figure class="highlight xquery"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line">head = etree.Element(<span class="string">'head'</span>)</div><div class="line">root.append<span class="built_in">(head</span>)</div></pre></div></div></figure>
+
+<p>该方法是创建节点，再用append方法追加到root节点中。</p>
+<p>还有一种方法，直接创建子节点：</p>
+<figure class="highlight ini"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="attr">head</span> = etree.SubElement(root, <span class="string">'head'</span>)</div></pre></div></div></figure>
+
+<p>推荐使用第2种方法，比较快捷。<br>若需要写属性值，除了用set方法。etree.SubElement方法也可以像etree.Element方法一样直接写入属性。</p>
+<figure class="highlight ini"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="attr">head</span> = etree.SubElement(root, <span class="string">'head'</span>, attrib=&#123;<span class="string">'id'</span>:<span class="string">'head_id'</span>&#125;)</div></pre></div></div></figure>
+
+
+<h3 id="添加文本"><a href="#添加文本" class="headerlink" title="添加文本"></a>添加文本</h3><p>test.xml文档中，有几个地方需要添加文本。先给head添加title属性，并加入文本：</p>
+<figure class="highlight ini"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></div><div class="code"><pre><div class="line"><span class="attr">title</span> = etree.SubElement(head, <span class="string">'title'</span>)</div><div class="line"><span class="attr">title.text</span> = <span class="string">'test xml document'</span></div></pre></div></div></figure>
+
+<p>直接给text赋值即可。</p>
+<p>比较复杂的情况是上面提到的节点和文本混合的情况。这里同样给tail属性赋值即可。</p>
+<figure class="highlight ini"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></div><div class="code"><pre><div class="line"><span class="attr">body</span> = etree.SubElement(root, <span class="string">'body'</span>)</div><div class="line"><span class="attr">items</span> = etree.SubElement(body, <span class="string">'items'</span>, attrib=&#123;<span class="string">'id'</span>:<span class="string">'3'</span>&#125;)</div><div class="line"><span class="attr">target</span> = etree.SubElement(items, <span class="string">'target'</span>, attrib=&#123;<span class="string">'id'</span>:<span class="string">'3t'</span>&#125;)</div><div class="line"><span class="comment">#写入第1段文本</span></div><div class="line"><span class="attr">target.text</span> = <span class="string">'CC'</span></div><div class="line"> </div><div class="line"><span class="comment">#写入CC后面的节点</span></div><div class="line"><span class="attr">bpt</span> = etree.SubElement(target, <span class="string">'bpt'</span>, attrib=&#123;<span class="string">'id'</span>:<span class="string">'3t1'</span>&#125;)</div><div class="line"> </div><div class="line"><span class="comment">#写入第2段文本，即bpt元素后面的文本</span></div><div class="line"><span class="attr">bpt.tail</span> = <span class="string">'cc'</span></div></pre></div></div></figure>
+
+<p>通过，该方法可以有条理的写入文本。</p>
+<h3 id="写CDATA形式"><a href="#写CDATA形式" class="headerlink" title="写CDATA形式"></a>写CDATA形式</h3><figure class="highlight ruby"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line"><span class="meta">&gt;&gt;</span>&gt; el = Element(<span class="string">'content'</span>)</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; el.text = CDATA(<span class="string">'a string'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; print(el.text)</div><div class="line">a string</div><div class="line"><span class="meta">&gt;&gt;</span>&gt; print(tostring(el, encoding=<span class="string">"unicode"</span>))</div></pre></div></div></figure>
+
+<p><content><!--[CDATA[a string]]--></content></p>
+<h3 id="保存文档"><a href="#保存文档" class="headerlink" title="保存文档"></a>保存文档</h3><p>文档写好之后，就保存文档。保存文档这里有两种方法。</p>
+<p>一种为通过etree.tostring方法得到xml的文本，再手动写入。这个方法过于麻烦。</p>
+<p>常规方法是通过etree的tree对象保存文件:</p>
+<figure class="highlight autoit"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></div><div class="code"><pre><div class="line"><span class="meta">#节点转为tree对象</span></div><div class="line">tree = etree.ElementTree(root)</div><div class="line">tree.write(<span class="string">'test.xml'</span>, pretty_print=<span class="literal">True</span>, xml_declaration=<span class="literal">True</span>, encoding=<span class="string">'utf-8'</span>)</div></pre></div></div></figure>
+
+<p>各个参数含义如下：</p>
+<ul>
+<li>第1个参数是xml的完整路径(包括文件名)；</li>
+<li>pretty_print参数是否美化代码；</li>
+<li>xml_declaration参数是否写入xml声明，就是我们看到xml文档第1行文字；</li>
+<li>encoding参数很明显是保存的编码。</li>
+</ul>
+<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><a href="https://www.runoob.com/xml/xml-tree.html" target="_blank" rel="noopener">XML树结构</a></li>
+<li><a href="http://yshblog.com/blog/151" target="_blank" rel="noopener">Python读写XML文档(lxml方式)</a></li>
+<li><a href="https://lxml.de/tutorial.html" target="_blank" rel="noopener">lxml-etree</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>cyyuan</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://yuanyuan-cai.github.io/2019/09/09/Python：xml输入输出（lxml方式）/" title="Python：xml输入输出（lxml方式）">https://yuanyuan-cai.github.io/2019/09/09/Python：xml输入输出（lxml方式）/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/计算机：语言/" rel="tag"># 计算机：语言</a>
+          
+        </div>
+      
+
+      
+        
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
+          </div>
+        
+
+        
+
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/09/Selenium2.x-Python基础使用和常用语法/" rel="next" title="Selenium-Python基础使用和常用语法">
+                Selenium-Python基础使用和常用语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTA0My8yMTU2MQ=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+              站点概览
+            </li>
+          </ul>
+        
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <a href="/">
+                <img class="site-author-image" itemprop="image" src="/images/head_img.jpg" alt="cyyuan">
+              </a>
+            
+              <p class="site-author-name" itemprop="name">cyyuan</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/YuanYuan-Cai" title="GitHub &rarr; https://github.com/YuanYuan-Cai" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:iscyy@qq.com" title="E-Mail &rarr; mailto:iscyy@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+    
+      
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xml简介"><span class="nav-text">xml简介</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是xml？"><span class="nav-text">什么是xml？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML-树结构"><span class="nav-text">XML 树结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个-XML-文档实例"><span class="nav-text">一个 XML 文档实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML-文档形成一种树结构"><span class="nav-text">XML 文档形成一种树结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lxml方式-读写xml文档"><span class="nav-text">lxml方式:读写xml文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#读xml文档"><span class="nav-text">读xml文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）文档解析"><span class="nav-text">1）文档解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取属性"><span class="nav-text">获取属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取节点"><span class="nav-text">获取节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取文本"><span class="nav-text">获取文本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写xml文档"><span class="nav-text">写xml文档</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建文档（节点）"><span class="nav-text">创建文档（节点）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加子节点"><span class="nav-text">添加子节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加文本"><span class="nav-text">添加文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#写CDATA形式"><span class="nav-text">写CDATA形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保存文档"><span class="nav-text">保存文档</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文档"><span class="nav-text">参考文档</span></a></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
+        
+      
+
+
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">cyyuan</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">99k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">3:01</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+      网站总访客数
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+      总阅读数
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+    
+    
+  
+  <script color="148,0,211" opacity="0.5" zindex="-1" count="150" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+    
+
+
+<script>
+  window.livereOptions = {
+    refer: '2019/09/09/Python：xml输入输出（lxml方式）/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('3');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+<script>
+if ($('body').find('pre.mermaid').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      mermaid.initialize({
+        theme: 'forest',
+        logLevel: 3,
+        flowchart: { curve: 'linear' },
+        gantt: { axisFormat: '%m/%d/%Y' },
+        sequence: { actorMargin: 50 }
+      });
+    }
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 19533,
+      el: 'wpac-rating',
+      color: 'fadb14'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
+  
+
+  
+<script>
+  $('.highlight').not('.gist .highlight').each(function(i, e) {
+    var $wrap = $('<div>').addClass('highlight-wrap');
+    $(e).after($wrap);
+    $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function(e) {
+      var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+        return $(e).text();
+      }).toArray().join('\n');
+      var ta = document.createElement('textarea');
+      var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+      ta.style.top = yPosition + 'px'; // Prevent page scroll
+      ta.style.position = 'absolute';
+      ta.style.opacity = '0';
+      ta.readOnly = true;
+      ta.value = code;
+      document.body.appendChild(ta);
+      const selection = document.getSelection();
+      const selected = selection.rangeCount > 0 ? selection.getRangeAt(0) : false;
+      ta.select();
+      ta.setSelectionRange(0, code.length);
+      ta.readOnly = false;
+      var result = document.execCommand('copy');
+      
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
+      ta.blur(); // For iOS
+      $(this).blur();
+      if (selected) {
+        selection.removeAllRanges();
+        selection.addRange(selected);
+      }
+    })).on('mouseleave', function(e) {
+      var $b = $(this).find('.copy-btn');
+      setTimeout(function() {
+        $b.text('复制');
+      }, 300);
+    }).append(e);
+  })
+</script>
+
+
+  
+
+  
+  <script src="//code.tidio.co/qtw3rnxkbkbimidmyux9onapnf9udwfi.js"></script>
+
+
+
+  <script type="text/javascript" src="/lib/zclip/clipboard.min.js"></script>	
+<script type="text/javascript" src="/js/src/custom.js"></script>
+
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment-precise-range-plugin@1.3.0/moment-precise-range.min.js"></script>
+  <script>
+    function timer() {
+      var ages = moment.preciseDiff(moment(),moment(20190701,"YYYYMMDD"));
+      ages = ages.replace(/years?/, "年");
+      ages = ages.replace(/months?/, "月");
+      ages = ages.replace(/days?/, "天");
+      ages = ages.replace(/hours?/, "小时");
+      ages = ages.replace(/minutes?/, "分");
+      ages = ages.replace(/seconds?/, "秒");
+      ages = ages.replace(/\d+/g, '<span style="color:#1890ff">$&</span>');
+      div.innerHTML = `我已在此等候你 ${ages}`;
+    }
+    var div = document.createElement("div");
+    //插入到copyright之后
+    var copyright = document.querySelector(".copyright");
+    document.querySelector(".footer-inner").insertBefore(div, copyright.nextSibling);
+    timer();
+    setInterval("timer()",1000)
+  </script>
+
+
+
+
+  <script>
+    var OriginTitile = document.title;
+    var titleTime;
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        document.title = '(つェ⊂)我藏好了哦~' + OriginTitile;
+        clearTimeout(titleTime);
+      } else {
+        document.title = '(*´∇｀*) 被你发现啦~' + OriginTitile;
+        titleTime = setTimeout(function() {
+          document.title = OriginTitile;
+        }, 2000);
+      }
+    });
+  </script>
+
+
+
+
+  <script async src="//code.tidio.co/qtw3rnxkbkbimidmyux9onapnf9udwfi.js"></script>
+
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>
