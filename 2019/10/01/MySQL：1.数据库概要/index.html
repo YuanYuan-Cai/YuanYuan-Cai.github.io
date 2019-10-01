@@ -109,14 +109,26 @@
 
 
 
-  <meta name="keywords" content="Python,HTML5,CSS3,JavaScript">
-<meta property="og:type" content="website">
-<meta property="og:title" content="cyyLoveStudy">
-<meta property="og:url" content="https://yuanyuan-cai.github.io/archives/2019/07/index.html">
+  <meta name="description" content="使用环境和工具 MySQL 8.0 sever（5.7之后就是8） MySQL Workbench 8.0 Excel VS Code  关于本课程学习熟悉数据库的使用及设计，有能力设计基本的数据库  第一阶段：数据库入门 基本概念及SQL基本语法    第二阶段：数据库建模 关系型数据库设计，实体关系模型，Normalize Data Model    第三阶段：数据库分析 数据仓库及纬度模型设">
+<meta name="keywords" content="MySQL,计算机：数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL：1.数据库概要">
+<meta property="og:url" content="https://yuanyuan-cai.github.io/2019/10/01/MySQL：1.数据库概要/index.html">
 <meta property="og:site_name" content="cyyLoveStudy">
+<meta property="og:description" content="使用环境和工具 MySQL 8.0 sever（5.7之后就是8） MySQL Workbench 8.0 Excel VS Code  关于本课程学习熟悉数据库的使用及设计，有能力设计基本的数据库  第一阶段：数据库入门 基本概念及SQL基本语法    第二阶段：数据库建模 关系型数据库设计，实体关系模型，Normalize Data Model    第三阶段：数据库分析 数据仓库及纬度模型设">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2036461-e2303e5252577e1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2036461-26ac71a33ed6dfb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2036461-a6b4ecf99e48402a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2036461-13b162a88ac8a9cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2036461-565194e2a227842d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2036461-375a6cae317c4fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2036461-db3abd11fdecb3d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-10-01T12:20:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cyyLoveStudy">
+<meta name="twitter:title" content="MySQL：1.数据库概要">
+<meta name="twitter:description" content="使用环境和工具 MySQL 8.0 sever（5.7之后就是8） MySQL Workbench 8.0 Excel VS Code  关于本课程学习熟悉数据库的使用及设计，有能力设计基本的数据库  第一阶段：数据库入门 基本概念及SQL基本语法    第二阶段：数据库建模 关系型数据库设计，实体关系模型，Normalize Data Model    第三阶段：数据库分析 数据仓库及纬度模型设">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2036461-e2303e5252577e1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -124,7 +136,7 @@
 
   
   
-  <link rel="canonical" href="https://yuanyuan-cai.github.io/archives/2019/07/">
+  <link rel="canonical" href="https://yuanyuan-cai.github.io/2019/10/01/MySQL：1.数据库概要/">
 
 
 
@@ -134,7 +146,7 @@
   };
 </script>
 
-  <title>归档 | cyyLoveStudy</title>
+  <title>MySQL：1.数据库概要 | cyyLoveStudy</title>
   
 
 
@@ -182,7 +194,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -358,244 +370,453 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yuanyuan-cai.github.io/2019/10/01/MySQL：1.数据库概要/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cyyuan">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head_img.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="cyyLoveStudy">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySQL：1.数据库概要
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-10-01 20:09:22" itemprop="dateCreated datePublished" datetime="2019-10-01T20:09:22+08:00">2019-10-01</time>
+            </span>
+          
+
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">2.9k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">5 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      <span class="archive-page-counter">
-        
-        
+      
+
+      
+        <h1 id="使用环境和工具"><a href="#使用环境和工具" class="headerlink" title="使用环境和工具"></a>使用环境和工具</h1><ul>
+<li>MySQL 8.0 sever（5.7之后就是8）</li>
+<li>MySQL Workbench 8.0</li>
+<li>Excel</li>
+<li>VS Code</li>
+</ul>
+<h1 id="关于本课程"><a href="#关于本课程" class="headerlink" title="关于本课程"></a>关于本课程</h1><p>学习熟悉数据库的使用及设计，有能力设计基本的数据库</p>
+<ul>
+<li>第一阶段：数据库入门<ul>
+<li>基本概念及SQL基本语法 </li>
+</ul>
+</li>
+<li>第二阶段：数据库建模<ul>
+<li>关系型数据库设计，实体关系模型，Normalize Data Model </li>
+</ul>
+</li>
+<li>第三阶段：数据库分析<ul>
+<li>数据仓库及纬度模型设计 Dimensional Model </li>
+</ul>
+</li>
+<li>第四阶段：数据库优化及整合</li>
+<li>操作+超商数据库项目</li>
+</ul>
+<h1 id="几个原则"><a href="#几个原则" class="headerlink" title="几个原则"></a>几个原则</h1><ul>
+<li>语言规范</li>
+<li><a href="https://www.sqlstyle.guide/zh/" target="_blank" rel="noopener">https://www.sqlstyle.guide/zh/</a></li>
+<li>按需求设计 =》使用 =》优化，循序渐进</li>
+</ul>
+<h1 id="Workbench"><a href="#Workbench" class="headerlink" title="Workbench"></a>Workbench</h1><ul>
+<li>针对MySQL的图形界面工具</li>
+<li>SQL Development</li>
+<li>Data Modeling</li>
+<li>Server Administration</li>
+<li>Data Migration</li>
+</ul>
+<h1 id="宏观看数据"><a href="#宏观看数据" class="headerlink" title="宏观看数据"></a>宏观看数据</h1><ul>
+<li>计算机都在干什么？  <pre class="mermaid" style="text-align: center;">
+            graph LR
+            id1[计算]-- 传输---id2[存储]
+          </pre></li>
+<li>流动的数据  <pre class="mermaid" style="text-align: center;">
+            graph LR
+            id1[产生]
+id2[存储]
+id3[传输]
+id4[处理]
+id1-->id2
+id2-->id3
+id3-->id4
+id4-->id1
+          </pre></li>
+<li>场景<ul>
+<li>网站 </li>
+<li>应用程序 </li>
+<li>手机App </li>
+<li>智能家电 </li>
+<li>商业智能系统 </li>
+<li>大数据系统</li>
+</ul>
+</li>
+<li>数据存储及访问的问题？<ul>
+<li>存储 </li>
+<li>电脑查询，人工查询 </li>
+<li>新建，增加，修改，删除 </li>
+<li>大量 </li>
+<li>故障？ </li>
+<li>同时访问</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="数据库-1"><a href="#数据库-1" class="headerlink" title="数据库"></a>数据库</h2><ul>
+<li>数据库就像电子化的档案库，用来存储数字档案的。</li>
+<li>本质上讲，数据库就是数据的集合，信息的载体。</li>
+</ul>
+<h2 id="数据库的特点"><a href="#数据库的特点" class="headerlink" title="数据库的特点"></a>数据库的特点</h2><ol>
+<li>可以通过某种特定的操作语言（SQL）进行增删改查（CRUD）等数据操作</li>
+<li>可以通过某种特定的数据定义语言来建立新的数据库</li>
+<li>支持大量，长时间的存储，并在数据查询和更新时支持对数据的有效存储 </li>
+<li>具有持久性，面对故障、错误或用户错误使用数据库时，数据库可以恢复保证数据一致性</li>
+<li>可以控制多个用户对数据的同时存取，不允许相互干扰，也不允许对数据不完整的操作</li>
+</ol>
+<h2 id="Excel-？"><a href="#Excel-？" class="headerlink" title="Excel ？"></a>Excel ？</h2><ul>
+<li>Excel算不算数据库？<ul>
+<li>可以算，也可以不算。因为其有些特点不适合数据库。比如说数据库支持数据量大，但是excel存数据并不算很大。</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库相关的数据"><a href="#数据库相关的数据" class="headerlink" title="数据库相关的数据"></a>数据库相关的数据</h2><ul>
+<li>数据： 数据库存的数据 </li>
+<li>元数据：描述数据库结构及其约束的数据 </li>
+<li>日志记录：修改信息等</li>
+<li>统计记录：数据特征的数据，例如，库大小等 </li>
+<li>索引：对数据库数据有效存取的数据结构</li>
+</ul>
+<h1 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h1><ul>
+<li>基本理念 </li>
+<li>数据库数据基本概念</li>
+</ul>
+<h2 id="常见关系型数据库"><a href="#常见关系型数据库" class="headerlink" title="常见关系型数据库"></a>常见关系型数据库</h2><ul>
+<li>Oracle</li>
+<li>mysql</li>
+<li>sql sever</li>
+<li>……</li>
+</ul>
+<h2 id="数据库历史"><a href="#数据库历史" class="headerlink" title="数据库历史"></a>数据库历史</h2><p><img src="https://upload-images.jianshu.io/upload_images/2036461-e2303e5252577e1c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据库历史.png"><br>推荐文章：<a href="https://www.vertabelo.com/blog/notes-from-the-lab/why-sql-is-neither-legacy-nor-low-level-but-simply-awesome" target="_blank" rel="noopener">https://www.vertabelo.com/blog/notes-from-the-lab/why-sql-is-neither-legacy-nor-low-level-but-simply-awesome</a></p>
+<h2 id="关系型数据库-1"><a href="#关系型数据库-1" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><ul>
+<li>关系<ul>
+<li>一对一</li>
+<li>一对多</li>
+<li>多对多</li>
+</ul>
+</li>
+</ul>
+<h3 id="关系型数据库的一些主要概念"><a href="#关系型数据库的一些主要概念" class="headerlink" title="关系型数据库的一些主要概念"></a>关系型数据库的一些主要概念</h3><ul>
+<li>表 Table(s) </li>
+<li>列 Column(s) </li>
+<li>记录 Record(s) </li>
+<li>关系 Relation(s) </li>
+<li>键值 Key(s)</li>
+</ul>
+<h3 id="Schema-模式"><a href="#Schema-模式" class="headerlink" title="Schema 模式"></a>Schema 模式</h3><ul>
+<li>数据库的组织和结构 </li>
+<li>就是数据库对象的集合，所谓的数据库对象也就是常说的表， 索引，视图，存储过程等。<br><img src="https://upload-images.jianshu.io/upload_images/2036461-26ac71a33ed6dfb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Schema模式.png"></li>
+</ul>
+<h3 id="关系-Relationships"><a href="#关系-Relationships" class="headerlink" title="关系 Relationships"></a>关系 Relationships</h3><ul>
+<li>一对多<br><img src="https://upload-images.jianshu.io/upload_images/2036461-a6b4ecf99e48402a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一对多.png"></li>
+<li>一对一<br><img src="https://upload-images.jianshu.io/upload_images/2036461-13b162a88ac8a9cf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一对一.png"></li>
+<li>多对多<br><img src="https://upload-images.jianshu.io/upload_images/2036461-565194e2a227842d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="多对多.png"></li>
+</ul>
+<h3 id="我们怎么使用数据库"><a href="#我们怎么使用数据库" class="headerlink" title="我们怎么使用数据库"></a>我们怎么使用数据库</h3><ul>
+<li>先想清楚需要存储什么的数据到数据库 </li>
+<li>然后根据需求创建数据库结构 </li>
+<li>然后我们之后可以用来怎样查询</li>
+</ul>
+<h3 id="约束-Constrains"><a href="#约束-Constrains" class="headerlink" title="约束 Constrains"></a>约束 Constrains</h3><ul>
+<li>主键约束,Primary Key constraint Unique Identifier. Not Null. </li>
+<li>非空,NOT NULL constraint Ensures that column does not accept nulls </li>
+<li>唯一,UNIQUE constraint Ensures that all values in column are unique </li>
+<li>预设值,DEFAULT constraint Assigns value to attribute when a new row is added to table </li>
+<li>限定,CHECK constraint Validates data when attribute value is entered</li>
+</ul>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><ul>
+<li>结构化查询语言(Structured Query Language)简称SQL，是一种数据库查询和程序设计语言，用于存取数据以及查询、更新 和管理关系数据库系统；</li>
+<li>狭义上说，SQL就是用来和关系型数据库交互的语言</li>
+</ul>
+<h2 id="哪里都有SQL"><a href="#哪里都有SQL" class="headerlink" title="哪里都有SQL"></a>哪里都有SQL</h2><ul>
+<li>全栈</li>
+<li>大数据</li>
+<li>excel</li>
+<li>BI</li>
+<li>……</li>
+</ul>
+<h2 id="SQL-Language"><a href="#SQL-Language" class="headerlink" title="SQL Language"></a>SQL Language</h2><ul>
+<li>DDL data definition language </li>
+<li>DML data manipulation language </li>
+<li>DCL data control language</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Data Definition</th>
+<th>Data Manipulation</th>
+<th>Query</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Create Database</td>
+<td>Add Data</td>
+<td>Select</td>
+</tr>
+<tr>
+<td>Create Table</td>
+<td>Update Data</td>
+<td>Join</td>
+</tr>
+<tr>
+<td>Alter Table</td>
+<td>Delete Data</td>
+<td>Union</td>
+</tr>
+<tr>
+<td>Drop Table</td>
+<td>Query Data</td>
+<td>Sub-Query</td>
+</tr>
+<tr>
+<td>Create Index</td>
+<td></td>
+<td>Aggregation</td>
+</tr>
+</tbody></table>
+<h2 id="语言的描述——BNF范式"><a href="#语言的描述——BNF范式" class="headerlink" title="语言的描述——BNF范式"></a>语言的描述——BNF范式</h2><ul>
+<li>描述一个文法，我们常常使用巴斯克范式（BNF范式）来描述一个文法的结构</li>
+<li>方括号( [ ] )内包含的为可选项。</li>
+<li>大括号( { } )内包含的为可重复0至无数次的项。</li>
+<li>竖线( | )表示在其左右两边任选一项，相当于”OR”的意思。 </li>
+<li>尖括号( &lt; &gt; )内包含的为必选项</li>
+</ul>
+<h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><p><img src="https://upload-images.jianshu.io/upload_images/2036461-375a6cae317c4fa2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2036461-db3abd11fdecb3d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="重命名.png"></p>
+<h1 id="SELECT语句"><a href="#SELECT语句" class="headerlink" title="SELECT语句"></a>SELECT语句</h1><figure class="highlight cs"><div class="figcode"><div class="gutter"><pre><div class="line">1</div></pre></div><div class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> employment</div></pre></div></div></figure>
+
+<ul>
+<li>这句话的意思是从查询表<code>employment</code>所有数据</li>
+<li><code>select</code> 和 <code>from</code> 是关键字</li>
+<li><code>*</code>：代表了所有</li>
+<li><code>employment</code>：表名称</li>
+</ul>
+<h2 id="一些简单的操作SQL语句"><a href="#一些简单的操作SQL语句" class="headerlink" title="一些简单的操作SQL语句"></a>一些简单的操作SQL语句</h2><figure class="highlight sql"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></div><div class="code"><pre><div class="line"><span class="keyword">USE</span> 数据库名称database1; <span class="comment">#使用数据库database1</span></div><div class="line"></div><div class="line"><span class="keyword">SHOW</span> <span class="keyword">DATABASE</span>; <span class="comment">#显示所有的数据库名称</span></div><div class="line"></div><div class="line"><span class="keyword">SHOW</span> <span class="keyword">TABLES</span>; <span class="comment">#显示正在使用的数据库的所有表名称</span></div></pre></div></div></figure>
+
+
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ul>
+<li>创建一个表格的基本语句<figure class="highlight lsl"><div class="figcode"><div class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></div><div class="code"><pre><div class="line">CREATE TABLE 表名称</div><div class="line">(</div><div class="line">列名称<span class="number">1</span> 数据类型,</div><div class="line">列名称<span class="number">2</span> 数据类型,</div><div class="line">列名称<span class="number">3</span> 数据类型,</div><div class="line">)</div></pre></div></div></figure>
+
+</li>
+</ul>
+<h2 id="几种数据类型"><a href="#几种数据类型" class="headerlink" title="几种数据类型"></a>几种数据类型</h2><ul>
+<li>数值 Numeric Types </li>
+<li>日期和时间 Date and Time Types </li>
+<li>字符串 String Types </li>
+<li>空间数据 Spatial Data Types </li>
+<li>JSON数据 The JSON Data Type</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
         
           
         
-        嗯..! 目前共计 18 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
+        <div class="post-tags">
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
+            <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          
+            <a href="/tags/计算机：数据库/" rel="tag"># 计算机：数据库</a>
+          
+        </div>
+      
+
+      
+        
+        <div class="post-widgets">
+        
+          <div class="wp_rating">
+            <div id="wpac-rating"></div>
           </div>
         
-        
 
         
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
         
-          <a class="post-title-link" href="/2019/07/31/工作：天目云租户转成品库采集点增删改自动化查询/" itemprop="url">
-            
-              <span itemprop="name">工作：天目云租户转成品库采集点增删改自动化查询</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-31T15:12:29+08:00" content="2019-07-31">
-          07-31
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+        </div>
+      
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/31/Python：遍历列表时删除元素/" itemprop="url">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span itemprop="name">Python：遍历列表时删除元素</span>
+              <a href="/2019/10/01/MySQL：3.添加数据/" rel="prev" title="MySQL：添加数据">
+                <i class="fa fa-chevron-left"></i> MySQL：添加数据
+              </a>
             
-          </a>
-        
-      </h2>
+          </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-31T15:11:47+08:00" content="2019-07-31">
-          07-31
-        </time>
-      </div>
+          <span class="post-nav-divider"></span>
 
-    </header>
-  </article>
-
-
-
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/01/MySQL：2.创建表单/" rel="next" title="MySQL：2.数据库概要">
+                MySQL：2.数据库概要 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/24/Python学习：Python基础（中）/" itemprop="url">
-            
-              <span itemprop="name">Python学习：Python基础（中）</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-24T02:34:16+08:00" content="2019-07-24">
-          07-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/17/工作：媒立方采集点数据与天目云采集点差异比较/" itemprop="url">
-            
-              <span itemprop="name">工作：媒立方采集点数据与天目云采集点差异比较</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-17T16:31:00+08:00" content="2019-07-17">
-          07-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/07/16/Python：excel处理（xld与xlwt）/" itemprop="url">
-            
-              <span itemprop="name">Python：excel处理（xld与xlwt）</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-07-16T16:31:00+08:00" content="2019-07-16">
-          07-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-    </div>
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NTA0My8yMTU2MQ=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -616,9 +837,18 @@
 
       
         
+          <ul class="sidebar-nav motion-element">
+            <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+              文章目录
+            </li>
+            <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+              站点概览
+            </li>
+          </ul>
+        
       
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -764,6 +994,22 @@
       </div>
     
       
+        
+        <!--noindex-->
+          <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+            <div class="post-toc">
+
+              
+                
+              
+
+              
+                <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用环境和工具"><span class="nav-text">使用环境和工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于本课程"><span class="nav-text">关于本课程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#几个原则"><span class="nav-text">几个原则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Workbench"><span class="nav-text">Workbench</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#宏观看数据"><span class="nav-text">宏观看数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库"><span class="nav-text">数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库-1"><span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的特点"><span class="nav-text">数据库的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Excel-？"><span class="nav-text">Excel ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库相关的数据"><span class="nav-text">数据库相关的数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关系型数据库"><span class="nav-text">关系型数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见关系型数据库"><span class="nav-text">常见关系型数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库历史"><span class="nav-text">数据库历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系型数据库-1"><span class="nav-text">关系型数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关系型数据库的一些主要概念"><span class="nav-text">关系型数据库的一些主要概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Schema-模式"><span class="nav-text">Schema 模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系-Relationships"><span class="nav-text">关系 Relationships</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我们怎么使用数据库"><span class="nav-text">我们怎么使用数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#约束-Constrains"><span class="nav-text">约束 Constrains</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL"><span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#哪里都有SQL"><span class="nav-text">哪里都有SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Language"><span class="nav-text">SQL Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语言的描述——BNF范式"><span class="nav-text">语言的描述——BNF范式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建"><span class="nav-text">创建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SELECT语句"><span class="nav-text">SELECT语句</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些简单的操作SQL语句"><span class="nav-text">一些简单的操作SQL语句</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据类型"><span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#几种数据类型"><span class="nav-text">几种数据类型</span></a></li></ol></li></ol></div>
+              
+
+            </div>
+          </section>
+        <!--/noindex-->
         
       
 
@@ -955,6 +1201,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
 
   
 
@@ -970,6 +1220,26 @@
 
   
 
+
+  
+    
+
+
+<script>
+  window.livereOptions = {
+    refer: '2019/10/01/MySQL：1.数据库概要/'
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+</script>
+
+  
 
 
   
@@ -1360,6 +1630,25 @@ if ($('body').find('pre.mermaid').length) {
   
 
   
+  <script>
+    wpac_init = window.wpac_init || [];
+    wpac_init.push({
+      widget: 'Rating',
+      id: 19533,
+      el: 'wpac-rating',
+      color: 'fadb14'
+    });
+    (function() {
+      if ('WIDGETPACK_LOADED' in window) return;
+      WIDGETPACK_LOADED = true;
+      var mc = document.createElement('script');
+      mc.type = 'text/javascript';
+      mc.async = true;
+      mc.src = '//embed.widgetpack.com/widget.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+    })();
+  </script>
+
 
   
   
